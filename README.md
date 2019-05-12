@@ -53,7 +53,10 @@ NetworkClient - Alamofire
   - Call ContactList API [ ]
   - Call Gravatar API [ ]
   
-Create POSO Objects
+Create POSO Person Object [ ]
+Create POSO Person Translator Object [ ]
+Create POSO Image Object [ ]
+Create POSO Image Translator Object [ ]
 
 #### Phase 2: Implement Pagination UI ####
 Master Scene
