@@ -15,6 +15,8 @@
 		153F3DC8228328930006D614 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DC6228328930006D614 /* LaunchScreen.storyboard */; };
 		153F3DD3228328930006D614 /* PDContactListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DD2228328930006D614 /* PDContactListTests.swift */; };
 		153F3DDE228458680006D614 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DDD228458670006D614 /* README.md */; };
+		153F3DE0228819290006D614 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DDF228819290006D614 /* Utilities.swift */; };
+		153F3DE22288194E0006D614 /* UtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DE12288194E0006D614 /* UtilitiesTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		153F3DD2228328930006D614 /* PDContactListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDContactListTests.swift; sourceTree = "<group>"; };
 		153F3DD4228328930006D614 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		153F3DDD228458670006D614 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		153F3DDF228819290006D614 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		153F3DE12288194E0006D614 /* UtilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 				153F3DC6228328930006D614 /* LaunchScreen.storyboard */,
 				153F3DC9228328930006D614 /* Info.plist */,
 				153F3DC1228328920006D614 /* PDContactList.xcdatamodeld */,
+				153F3DDF228819290006D614 /* Utilities.swift */,
 			);
 			path = PDContactList;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 			children = (
 				153F3DD2228328930006D614 /* PDContactListTests.swift */,
 				153F3DD4228328930006D614 /* Info.plist */,
+				153F3DE12288194E0006D614 /* UtilitiesTests.swift */,
 			);
 			path = PDContactListTests;
 			sourceTree = "<group>";
@@ -206,6 +212,7 @@
 			files = (
 				153F3DBD228328920006D614 /* ViewController.swift in Sources */,
 				153F3DC3228328920006D614 /* PDContactList.xcdatamodeld in Sources */,
+				153F3DE0228819290006D614 /* Utilities.swift in Sources */,
 				153F3DBB228328920006D614 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153F3DE22288194E0006D614 /* UtilitiesTests.swift in Sources */,
 				153F3DD3228328930006D614 /* PDContactListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
