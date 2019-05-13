@@ -53,8 +53,8 @@ NetworkClient - Alamofire
   - Call ContactList API [ ]
   - Call Gravatar API [ ]
   
-Create POSO Person Object [ ]
-Create POSO Person Translator Object [ ]
+Create POSO Person Object [x ]
+Create POSO Person Translator Object [x ]
 Create POSO Image Object [ ]
 Create POSO Image Translator Object [ ]
 

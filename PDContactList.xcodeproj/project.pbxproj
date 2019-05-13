@@ -17,6 +17,12 @@
 		153F3DDE228458680006D614 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DDD228458670006D614 /* README.md */; };
 		153F3DE0228819290006D614 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DDF228819290006D614 /* Utilities.swift */; };
 		153F3DE22288194E0006D614 /* UtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DE12288194E0006D614 /* UtilitiesTests.swift */; };
+		15629B4D22882D5500821ADD /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B4C22882D5500821ADD /* Person.swift */; };
+		15629B4F2288300200821ADD /* PersonTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B4E2288300200821ADD /* PersonTranslator.swift */; };
+		15629B512288305400821ADD /* StubPDResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 15629B502288305400821ADD /* StubPDResponse.json */; };
+		15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B542288307B00821ADD /* CannedResponseLoader.swift */; };
+		15629B592288313D00821ADD /* PersonTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B582288313D00821ADD /* PersonTranslatorTests.swift */; };
+		15AD0BA72288583C00D7E037 /* PDNetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BA62288583C00D7E037 /* PDNetworkResponse.swift */; };
 		7694D1FF05C14B8486D5B4F0 /* Pods_PDContactList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796442503667B088FFBFFD3D /* Pods_PDContactList.framework */; };
 		ECCDD36D79C48388D0D1A7EB /* Pods_PDContactListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843A5B9B449BE5418D9CCCD7 /* Pods_PDContactListTests.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +53,12 @@
 		153F3DDD228458670006D614 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		153F3DDF228819290006D614 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		153F3DE12288194E0006D614 /* UtilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesTests.swift; sourceTree = "<group>"; };
+		15629B4C22882D5500821ADD /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		15629B4E2288300200821ADD /* PersonTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTranslator.swift; sourceTree = "<group>"; };
+		15629B502288305400821ADD /* StubPDResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StubPDResponse.json; sourceTree = "<group>"; };
+		15629B542288307B00821ADD /* CannedResponseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannedResponseLoader.swift; sourceTree = "<group>"; };
+		15629B582288313D00821ADD /* PersonTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTranslatorTests.swift; sourceTree = "<group>"; };
+		15AD0BA62288583C00D7E037 /* PDNetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDNetworkResponse.swift; sourceTree = "<group>"; };
 		23AECF58D0AB82E9B16AD866 /* Pods-PDContactList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDContactList.release.xcconfig"; path = "Target Support Files/Pods-PDContactList/Pods-PDContactList.release.xcconfig"; sourceTree = "<group>"; };
 		796442503667B088FFBFFD3D /* Pods_PDContactList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PDContactList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		843A5B9B449BE5418D9CCCD7 /* Pods_PDContactListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PDContactListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +130,7 @@
 		153F3DB9228328920006D614 /* PDContactList */ = {
 			isa = PBXGroup;
 			children = (
+				15629B4B22882D3F00821ADD /* Model */,
 				153F3DBA228328920006D614 /* AppDelegate.swift */,
 				153F3DBC228328920006D614 /* ViewController.swift */,
 				153F3DBE228328920006D614 /* Main.storyboard */,
@@ -133,11 +146,40 @@
 		153F3DD1228328930006D614 /* PDContactListTests */ = {
 			isa = PBXGroup;
 			children = (
+				15629B532288306C00821ADD /* Helper */,
+				15629B522288306600821ADD /* Model */,
 				153F3DD2228328930006D614 /* PDContactListTests.swift */,
 				153F3DD4228328930006D614 /* Info.plist */,
 				153F3DE12288194E0006D614 /* UtilitiesTests.swift */,
+				15629B502288305400821ADD /* StubPDResponse.json */,
 			);
 			path = PDContactListTests;
+			sourceTree = "<group>";
+		};
+		15629B4B22882D3F00821ADD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				15629B4C22882D5500821ADD /* Person.swift */,
+				15629B4E2288300200821ADD /* PersonTranslator.swift */,
+				15AD0BA62288583C00D7E037 /* PDNetworkResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		15629B522288306600821ADD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				15629B582288313D00821ADD /* PersonTranslatorTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		15629B532288306C00821ADD /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				15629B542288307B00821ADD /* CannedResponseLoader.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15629B512288305400821ADD /* StubPDResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,9 +352,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15629B4D22882D5500821ADD /* Person.swift in Sources */,
 				153F3DBD228328920006D614 /* ViewController.swift in Sources */,
+				15629B4F2288300200821ADD /* PersonTranslator.swift in Sources */,
 				153F3DC3228328920006D614 /* PDContactList.xcdatamodeld in Sources */,
 				153F3DE0228819290006D614 /* Utilities.swift in Sources */,
+				15AD0BA72288583C00D7E037 /* PDNetworkResponse.swift in Sources */,
 				153F3DBB228328920006D614 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +368,8 @@
 			files = (
 				153F3DE22288194E0006D614 /* UtilitiesTests.swift in Sources */,
 				153F3DD3228328930006D614 /* PDContactListTests.swift in Sources */,
+				15629B592288313D00821ADD /* PersonTranslatorTests.swift in Sources */,
+				15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
