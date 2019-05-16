@@ -40,6 +40,17 @@ class MainViewController: UIViewController {
 
 extension MainViewController: MainViewControllerType {
     func setupView(state: MainViewState) {
+        if Thread.isMainThread {
+            setupViewOnMainThread(state: state)
+        } else {
+            DispatchQueue.main.async {
+                self.setupViewOnMainThread(state: state)
+            }
+        }
+    }
+    
+    private func setupViewOnMainThread(state: MainViewState) {
+        precondition(Thread.isMainThread)
         switch state {
         case .emptyState:
             tableView.isHidden = true
