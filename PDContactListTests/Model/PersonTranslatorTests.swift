@@ -22,8 +22,15 @@ class PersonTranslatorTests: XCTestCase {
             XCTFail("failed to parse from stub response")
             return
         }
-        let expectedPerson = Person(id: 1, name: "David Lam", email: [Person.Email(value: "", primary: true)])
-        assert(persons.first! == expectedPerson)
+        
+        let expectedPerson = Person(id: 3,
+                                    name: "Linn Linda",
+                                    orgId: Person.Organization(name: "Drivepipe",
+                                                               peopleCount: 1,
+                                                               address: "Dr. Atl 123, Santa María La Ribera, Mexico City, CDMX, Mexico"),
+                                    phone: [Person.Phone(label: "Work", value: "1222222222222", primary: true)],
+                                    email: [Person.Email(label: "work", value: "d@c.com", primary: true)])
+        assert(persons[2] == expectedPerson) // this person is chosen because of completeness of data
         assert(persons.count == 4)
     }
 }

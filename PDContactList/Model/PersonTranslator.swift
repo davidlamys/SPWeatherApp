@@ -12,6 +12,7 @@ struct PersonTranslator {
     static func translateFromNetworkResponse(data: Data) -> Result<[Person], Error> {
         do {
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             let response = try decoder.decode(PDNetworkResponse.self, from: data)
             let persons = response.data
             return Result.success(persons)
@@ -24,6 +25,7 @@ struct PersonTranslator {
     static func translateFromUserDefaults(data: Data) -> Result<[Person], Error> {
         do {
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             let persons = try decoder.decode([Person].self, from: data)
             return Result.success(persons)
             
@@ -34,6 +36,7 @@ struct PersonTranslator {
     
     static func translateToData(from array: [Person]) -> Result<Data, Error> {
         let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
         do {
             let encoded = try encoder.encode(array)
             return Result.success(encoded)

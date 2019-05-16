@@ -10,10 +10,6 @@ import XCTest
 @testable import PDContactList
 
 class MainViewModelTests: XCTestCase {
-    let stubPayload = [
-        Person(id: 1, name: "David", email: []),
-        Person(id: 2, name: "Mirjam", email: [])
-    ]
 
     var subject: MainViewModel!
     var mainViewControllerMock: MainViewControllerMock!
