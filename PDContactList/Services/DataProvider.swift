@@ -29,7 +29,7 @@ struct DataProvider: DataProviderType {
     
     func fetchContactLists(completion: @escaping (([Person], DataSource) -> Void)) {
         clientType.request(request: .fetchContactList,
-                       translator: PersonTranslator.translateFrom) { result in
+                       translator: PersonTranslator.translateFromNetworkResponse) { result in
             precondition(Thread.isMainThread == false)
             switch result {
             case .failure(let error):

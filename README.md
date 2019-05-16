@@ -48,8 +48,8 @@ DataProvider
     - Call network NetworkClient [ x]
       - if network succeed [ x]
         - parse response [x ]
-        - store response [ ]
-      - else return local data [ ]
+        - store response [ x ]
+      - else return local data [ x ]
 
 NetworkClient - Alamofire
   - Call ContactList API [ x]

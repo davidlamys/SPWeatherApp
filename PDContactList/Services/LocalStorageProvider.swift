@@ -18,11 +18,32 @@ class LocalStorageProvider: LocalStorageProviderType {
     private init(){}
     
     func getContactListFromLocal(completion: @escaping (([Person]) -> Void)) {
+        let defaults = UserDefaults.standard
+        guard let savedData = defaults.object(forKey: "SavedList") as? Data else {
+            completion([])
+            return
+        }
+
+        let result = PersonTranslator.translateFromUserDefaults(data: savedData)
         
+        switch result {
+        case .success(let list):
+            completion(list)
+        case .failure(let error):
+            logError(error)
+            completion([])
+        }
     }
     
-    func saveContactList(data: [Person]) {
-        
+    func saveContactList(data list: [Person]) {
+        let result = PersonTranslator.translateToData(from: list)
+        switch result {
+        case .success(let data):
+            let defaults = UserDefaults.standard
+            defaults.set(data, forKey: "SavedList")
+        case .failure(let error):
+            logError(error)
+        }
     }
     
 }

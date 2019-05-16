@@ -17,7 +17,7 @@ class PersonTranslatorTests: XCTestCase {
     }
 
     func testPersonTranslatorReturnsArrayOfPerson() {
-        let translationResult = PersonTranslator.translateFrom(networkResponse: response as! Data)
+        let translationResult = PersonTranslator.translateFromNetworkResponse(data: response as! Data)
         guard case .success(let persons) = translationResult else {
             XCTFail("failed to parse from stub response")
             return
