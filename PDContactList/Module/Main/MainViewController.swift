@@ -13,6 +13,7 @@ protocol MainViewControllerType: class {
 }
 
 enum Text: String {
+    case welcomMessage = "Hello dear new user, please add/import new contacts on website :)"
     case placeholderText = "Looks like this is the first time you use the app and there is no internet"
     case loadingText = "Loading...please wait for the good stuff"
 }
@@ -52,6 +53,9 @@ extension MainViewController: MainViewControllerType {
     private func setupViewOnMainThread(state: MainViewState) {
         precondition(Thread.isMainThread)
         switch state {
+        case .displayWelcomeMessage:
+            tableView.isHidden = true
+            stateFeedbackLabel.text = Text.welcomMessage.rawValue
         case .emptyState:
             tableView.isHidden = true
             stateFeedbackLabel.text = Text.placeholderText.rawValue

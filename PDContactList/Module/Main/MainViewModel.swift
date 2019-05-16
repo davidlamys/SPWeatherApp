@@ -26,9 +26,12 @@ class MainViewModel: MainViewModelType {
     func viewDidLoad() {
         view.setupView(state: .loading)
         dataProvider.fetchContactLists { [weak self] (result, dataSource) in
-            if result.isEmpty {
+            switch (result.isEmpty, dataSource) {
+            case (true, .local):
                 self?.view.setupView(state: .emptyState)
-            } else {
+            case (true, .network):
+                self?.view.setupView(state: .displayWelcomeMessage)
+            case (false, _):
                 self?.view.setupView(state: .loaded(persons: result))
             }
         }

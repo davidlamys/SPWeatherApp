@@ -29,9 +29,9 @@ Experiment with SwiftGen (if time permits) to explore localisation
 Master Scene
   - upon launch, call dataProvider [x ]
     - if dataProvider returns empty array from network
-      - present placeholder label [ ]
+      - present placeholder label [x ]
     - elseif dataProvider returns empty array from local
-      - present placeholder label [ ]
+      - present placeholder label [x ]
     - else
       - update master contact list [x ]
   - upon tapping [ ]

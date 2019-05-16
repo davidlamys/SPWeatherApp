@@ -33,6 +33,11 @@ class DataProviderStub: DataProviderType {
         dataSource = .network
     }
     
+    func setupForBadNeworkWithNoLocalData() {
+        payload = [Person]()
+        dataSource = .local
+    }
+    
     func fetchContactLists(completion: @escaping(([Person], DataSource) -> Void)) {
         completion(payload, dataSource)
     }

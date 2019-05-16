@@ -59,5 +59,16 @@ class MainViewControllerTests: XCTestCase {
         let secondCell = subject.tableView(subject.tableView, cellForRowAt: IndexPath(row: 1, section: 0))
         assert(secondCell.textLabel?.text == "Mirjam")
     }
+    
+    func testLoadScreenWithEmptyContactList() {
+        // WHEN
+        subject.setupView(state: .emptyState)
+        subject.setupView(state: .loading)
+        subject.setupView(state: .displayWelcomeMessage)
+        
+        //THEN
+        assert(subject.tableView.isHidden == true)
+        assert(subject.stateFeedbackLabel.text == Text.welcomMessage.rawValue)
+    }
 
 }

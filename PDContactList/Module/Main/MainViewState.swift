@@ -12,6 +12,7 @@ enum MainViewState {
     case loading
     case loaded(persons: [Person])
     case emptyState
+    case displayWelcomeMessage
 }
 
 extension MainViewState: Equatable {}
