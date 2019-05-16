@@ -28,10 +28,12 @@ Experiment with SwiftGen (if time permits) to explore localisation
 
 Master Scene
   - upon launch, call dataProvider [x ]
-    - if dataProvider returns null
-      - present placeholder image [ ]
+    - if dataProvider returns empty array from network
+      - present placeholder label [ ]
+    - elseif dataProvider returns empty array from local
+      - present placeholder label [ ]
     - else
-      - update master contact list [ ]
+      - update master contact list [x ]
   - upon tapping [ ]
     - pass contact object to detail scene [ ]
 
@@ -42,15 +44,15 @@ Detail Scene
 
 DataProvider
   - expose 2 functions for view models to call to fetch data [ ]
-  - build network requests [ ]
-    - Call network NetworkClient [ ]
-      - if network succeed [ ]
-        - parse response [ ]
+  - build network requests [x ]
+    - Call network NetworkClient [ x]
+      - if network succeed [ x]
+        - parse response [x ]
         - store response [ ]
-      - else return cache data [ ]
+      - else return local data [ ]
 
 NetworkClient - Alamofire
-  - Call ContactList API [ ]
+  - Call ContactList API [ x]
   - Call Gravatar API [ ]
   
 Create POSO Person Object [x ]
