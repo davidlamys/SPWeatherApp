@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum MainViewState {
-    case loading
-    case loaded(persons: [Person])
-    case emptyState
-}
-
 protocol MainViewControllerType: class {
     func setupView(state: MainViewState)
 }
@@ -28,9 +22,14 @@ class MainViewController: UIViewController {
     @IBOutlet weak var stateFeedbackLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     private var persons: [Person] = []
+    var viewModel: MainViewModelType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if viewModel == nil {
+            viewModel = MainViewModel(view: self)
+        }
+        viewModel.viewDidLoad()
         setupTableView()
     }
     

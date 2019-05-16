@@ -27,7 +27,7 @@ Experiment with SwiftGen (if time permits) to explore localisation
 #### Phase 1: Basic app: upon launching, fetch all contacts and populate screen, use userDefaults to store response as JSON and images as NSData ####
 
 Master Scene
-  - upon launch, call dataProvider [ ]
+  - upon launch, call dataProvider [x ]
     - if dataProvider returns null
       - present placeholder image [ ]
     - else

@@ -12,10 +12,18 @@ import XCTest
 class MainViewControllerTests: XCTestCase {
 
     var subject: MainViewController!
+    var viewModelFake: MainViewModelFake!
     
     override func setUp() {
         subject = UIViewController.make(viewController: MainViewController.self)
+        viewModelFake = MainViewModelFake()
+        subject.viewModel = viewModelFake
         _  = subject.view
+    }
+    
+    func testViewModelAwareThatViewHasLoaded() {
+        subject.viewDidLoad()
+        assert(viewModelFake.viewDidLoadCalled)
     }
     
     func testSetupForEmptyState() {
