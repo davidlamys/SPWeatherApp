@@ -15,8 +15,13 @@ let stubPayload = [
 
 class DataProviderStub: DataProviderType {
 
-    private var dataSource: DataSource = .network
+    private var dataSource: DataSource!
     private var payload = [Person]()
+    
+    func reset() {
+        dataSource = nil
+        payload = []
+    }
     
     func setupForGoodNetwork() {
         payload = stubPayload
