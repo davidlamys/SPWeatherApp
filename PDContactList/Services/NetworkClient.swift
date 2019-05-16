@@ -49,5 +49,22 @@ class NetworkClient: NetworkClientType {
                     translator: @escaping (Data) -> (Result<T, Error>),
                     completion: @escaping (Result<T, Error>) -> Void) {
         
+        let queue = DispatchQueue(label: request.parsingQueueLabel,
+                                  qos: .background,
+                                  attributes: .concurrent)
+        
+        AF.request(request.getURLString())
+            .response(queue: queue, completionHandler: { (dataResponse) in
+                if let data = dataResponse.data {
+                    precondition(Thread.isMainThread == false)
+                    let translated = translator(data)
+                    completion((translated))
+                } else if let error = dataResponse.error {
+                    completion(Result.failure(error))
+                } else {
+                    let unknownError = NSError.init(domain: "com.david.pdcontactlist", code: -1, userInfo: ["info": "unknown network error"])
+                    completion(Result.failure(unknownError))
+                }
+            })
     }
 }
