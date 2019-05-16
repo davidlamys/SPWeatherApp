@@ -45,14 +45,6 @@ class MainViewControllerTests: XCTestCase {
     }
 
     func testLoadScreenWithPersons() {
-        // SETUP
-        let stubPayload = [
-            Person(id: 1, name: "David", email: []),
-            Person(id: 2, name: "Mirjam", email: [])
-        ]
-        guard let subject = subject else {
-            fatalError("subject failed to instantiate")
-        }
         // WHEN
         subject.setupView(state: .emptyState)
         subject.setupView(state: .loading)

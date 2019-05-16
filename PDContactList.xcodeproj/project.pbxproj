@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		153F3DBB228328920006D614 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DBA228328920006D614 /* AppDelegate.swift */; };
-		153F3DBD228328920006D614 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DBC228328920006D614 /* ViewController.swift */; };
 		153F3DC0228328920006D614 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DBE228328920006D614 /* Main.storyboard */; };
 		153F3DC3228328920006D614 /* PDContactList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DC1228328920006D614 /* PDContactList.xcdatamodeld */; };
 		153F3DC5228328930006D614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DC4228328930006D614 /* Assets.xcassets */; };
@@ -57,7 +56,6 @@
 		03FB2411F244039228706D33 /* Pods-PDContactListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDContactListTests.release.xcconfig"; path = "Target Support Files/Pods-PDContactListTests/Pods-PDContactListTests.release.xcconfig"; sourceTree = "<group>"; };
 		153F3DB7228328920006D614 /* PDContactList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDContactList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153F3DBA228328920006D614 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		153F3DBC228328920006D614 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		153F3DBF228328920006D614 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		153F3DC2228328920006D614 /* PDContactList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PDContactList.xcdatamodel; sourceTree = "<group>"; };
 		153F3DC4228328930006D614 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,18 +160,17 @@
 		153F3DB9228328920006D614 /* PDContactList */ = {
 			isa = PBXGroup;
 			children = (
-				15AD0BC6228CF0B500D7E037 /* Services */,
-				15AD0BB4228AF4C500D7E037 /* Utility */,
-				15AD0BA82289A53400D7E037 /* Module */,
-				15629B4B22882D3F00821ADD /* Model */,
+				153F3DC9228328930006D614 /* Info.plist */,
 				153F3DBA228328920006D614 /* AppDelegate.swift */,
-				153F3DBC228328920006D614 /* ViewController.swift */,
-				153F3DBE228328920006D614 /* Main.storyboard */,
+				153F3DDF228819290006D614 /* Utilities.swift */,
 				153F3DC4228328930006D614 /* Assets.xcassets */,
 				153F3DC6228328930006D614 /* LaunchScreen.storyboard */,
-				153F3DC9228328930006D614 /* Info.plist */,
+				153F3DBE228328920006D614 /* Main.storyboard */,
+				15629B4B22882D3F00821ADD /* Model */,
+				15AD0BA82289A53400D7E037 /* Module */,
 				153F3DC1228328920006D614 /* PDContactList.xcdatamodeld */,
-				153F3DDF228819290006D614 /* Utilities.swift */,
+				15AD0BC6228CF0B500D7E037 /* Services */,
+				15AD0BB4228AF4C500D7E037 /* Utility */,
 			);
 			path = PDContactList;
 			sourceTree = "<group>";
@@ -466,7 +463,6 @@
 			files = (
 				15AD0BD7228D91E600D7E037 /* ErrorLogger.swift in Sources */,
 				15629B4D22882D5500821ADD /* Person.swift in Sources */,
-				153F3DBD228328920006D614 /* ViewController.swift in Sources */,
 				15629B4F2288300200821ADD /* PersonTranslator.swift in Sources */,
 				15AD0BC3228CEA3400D7E037 /* MainViewState.swift in Sources */,
 				15AD0BB6228AF4D600D7E037 /* ViewControllerFactory.swift in Sources */,
