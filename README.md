@@ -38,7 +38,7 @@ Master Scene
     - pass contact object to detail scene [x ]
 
 Detail Scene
-  - populate labels [ ]
+  - populate labels [ x]
   - upon loading: call dataProvider for avatar [ ]
     - update image when ready [ ]
 
