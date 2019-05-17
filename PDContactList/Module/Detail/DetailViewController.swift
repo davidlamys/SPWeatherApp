@@ -42,7 +42,6 @@ extension DetailViewController: DetailViewControllerType {
             }
         }
         
-        
     }
 
     func setupView(person: Person) {

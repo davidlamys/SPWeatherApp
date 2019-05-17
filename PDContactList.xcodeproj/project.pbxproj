@@ -11,6 +11,8 @@
 		1508CD82228F022700A8B51A /* StubData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD81228F022700A8B51A /* StubData.swift */; };
 		1508CD84228F0E8900A8B51A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD83228F0E8900A8B51A /* DetailViewModel.swift */; };
 		1508CD88228F18C600A8B51A /* DetailViewModelDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD87228F18C600A8B51A /* DetailViewModelDoubles.swift */; };
+		1508CD8A228F1D7F00A8B51A /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD89228F1D7F00A8B51A /* DetailViewModelTests.swift */; };
+		1508CD8C228F1DCD00A8B51A /* DetailViewControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD8B228F1DCD00A8B51A /* DetailViewControllerDoubles.swift */; };
 		153F3DBB228328920006D614 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DBA228328920006D614 /* AppDelegate.swift */; };
 		153F3DC0228328920006D614 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DBE228328920006D614 /* Main.storyboard */; };
 		153F3DC3228328920006D614 /* PDContactList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DC1228328920006D614 /* PDContactList.xcdatamodeld */; };
@@ -64,6 +66,8 @@
 		1508CD81228F022700A8B51A /* StubData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubData.swift; sourceTree = "<group>"; };
 		1508CD83228F0E8900A8B51A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		1508CD87228F18C600A8B51A /* DetailViewModelDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelDoubles.swift; sourceTree = "<group>"; };
+		1508CD89228F1D7F00A8B51A /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
+		1508CD8B228F1DCD00A8B51A /* DetailViewControllerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerDoubles.swift; sourceTree = "<group>"; };
 		153F3DB7228328920006D614 /* PDContactList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDContactList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153F3DBA228328920006D614 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		153F3DBF228328920006D614 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				1508CD7F228EFEC200A8B51A /* DetailViewControllerTests.swift */,
+				1508CD89228F1D7F00A8B51A /* DetailViewModelTests.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				1508CD87228F18C600A8B51A /* DetailViewModelDoubles.swift */,
+				1508CD8B228F1DCD00A8B51A /* DetailViewControllerDoubles.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -540,8 +546,10 @@
 				153F3DD3228328930006D614 /* PDContactListTests.swift in Sources */,
 				15629B592288313D00821ADD /* PersonTranslatorTests.swift in Sources */,
 				1508CD82228F022700A8B51A /* StubData.swift in Sources */,
+				1508CD8C228F1DCD00A8B51A /* DetailViewControllerDoubles.swift in Sources */,
 				15AD0BD5228D862400D7E037 /* LocalStorageProviderDoubles.swift in Sources */,
 				15AD0BBE228CE6C000D7E037 /* MainViewModelTests.swift in Sources */,
+				1508CD8A228F1D7F00A8B51A /* DetailViewModelTests.swift in Sources */,
 				15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */,
 				15AD0BD1228CFCBF00D7E037 /* NetworkClientDoubles.swift in Sources */,
 				15AD0BC1228CE6F300D7E037 /* MainViewControllerDoubles.swift in Sources */,
