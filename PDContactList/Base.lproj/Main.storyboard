@@ -70,9 +70,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OH8-4i-Goh">
-                                <rect key="frame" x="186" y="194" width="42" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OH8-4i-Goh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="170.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="fnX-f2-2gA"/>
+                                </constraints>
+                                <string key="text">Daenerys Stormborn of the House Targaryen,First of Her Name, the Unburnt, Queen of the Andals and the First Men, Khaleesi of the Great Grass Sea,Breaker of Chains, and Mother of Dragons.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -144,8 +148,8 @@
                                     <constraint firstItem="xaa-7N-JST" firstAttribute="trailing" secondItem="nPX-Wf-OHc" secondAttribute="trailing" id="fm5-b2-7ak"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="yXo-il-HZS">
-                                <rect key="frame" x="190" y="300" width="37" height="37"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="yXo-il-HZS">
+                                <rect key="frame" x="188.5" y="298.5" width="37" height="37"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="color" red="0.0" green="0.20861404727778579" blue="0.96620899438858032" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
@@ -157,10 +161,14 @@
                             <constraint firstItem="Wvp-nv-cCK" firstAttribute="top" secondItem="zuZ-9U-JKh" secondAttribute="bottom" constant="20" id="7sL-v7-qqN"/>
                             <constraint firstItem="yXo-il-HZS" firstAttribute="centerX" secondItem="zuZ-9U-JKh" secondAttribute="centerX" id="9h8-BZ-2st"/>
                             <constraint firstItem="zuZ-9U-JKh" firstAttribute="centerY" secondItem="RR6-gO-S4a" secondAttribute="centerY" multiplier="0.7" id="DHm-Gw-kjH"/>
+                            <constraint firstItem="Wvp-nv-cCK" firstAttribute="height" relation="lessThanOrEqual" secondItem="nN1-3e-tUV" secondAttribute="height" multiplier="0.5" id="Eza-bb-Tl0"/>
+                            <constraint firstItem="OH8-4i-Goh" firstAttribute="width" secondItem="nN1-3e-tUV" secondAttribute="width" id="Nhh-6O-Awn"/>
                             <constraint firstItem="zuZ-9U-JKh" firstAttribute="width" secondItem="nN1-3e-tUV" secondAttribute="width" multiplier="0.4" id="Oet-lJ-mSq"/>
+                            <constraint firstItem="OH8-4i-Goh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RR6-gO-S4a" secondAttribute="top" id="QgA-YP-gIJ"/>
                             <constraint firstItem="Wvp-nv-cCK" firstAttribute="centerX" secondItem="RR6-gO-S4a" secondAttribute="centerX" id="WgW-sU-RLY"/>
                             <constraint firstItem="OH8-4i-Goh" firstAttribute="centerX" secondItem="zuZ-9U-JKh" secondAttribute="centerX" id="doa-t0-vK2"/>
                             <constraint firstItem="zuZ-9U-JKh" firstAttribute="centerX" secondItem="RR6-gO-S4a" secondAttribute="centerX" id="hel-BD-ukH"/>
+                            <constraint firstItem="Wvp-nv-cCK" firstAttribute="width" relation="lessThanOrEqual" secondItem="nN1-3e-tUV" secondAttribute="width" multiplier="0.8" id="jlW-Wv-aDt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RR6-gO-S4a"/>
                     </view>
