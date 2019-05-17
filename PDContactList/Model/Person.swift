@@ -36,10 +36,15 @@ struct Person {
 }
 
 extension Person {
-    var primaryEmail: String? {
+    var primaryEmail: Email? {
         return email
             .filter { $0.primary }
-            .map { $0.value }
+            .first
+    }
+    
+    var primaryPhone: Phone? {
+        return phone
+            .filter { $0.primary }
             .first
     }
 }

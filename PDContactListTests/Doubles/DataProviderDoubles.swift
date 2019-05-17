@@ -8,14 +8,6 @@
 
 @testable import PDContactList
 
-let stubOrg = Person.Organization(name: "Drivepipe",
-                                  peopleCount: 1,
-                                  address: "Dr. Atl 123, Santa María La Ribera, Mexico City, CDMX, Mexico")
-let stubPayload = [
-    Person(id: 1, name: "David", orgId: stubOrg, phone:[], email: []),
-    Person(id: 2, name: "Mirjam", orgId: stubOrg, phone:[], email: [])
-]
-
 class DataProviderStub: DataProviderType {
 
     private var dataSource: DataSource!
