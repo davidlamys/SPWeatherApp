@@ -66,6 +66,7 @@ extension MainViewController: MainViewControllerType {
             tableView.isHidden = false
             persons = payload
             tableView.reloadData()
+            title = "\(persons.count) people in list"
         }
     }
 }
