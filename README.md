@@ -34,8 +34,8 @@ Master Scene
       - present placeholder label [x ]
     - else
       - update master contact list [x ]
-  - upon tapping [ ]
-    - pass contact object to detail scene [ ]
+  - upon tapping [x ]
+    - pass contact object to detail scene [x ]
 
 Detail Scene
   - populate labels [ ]

@@ -36,6 +36,7 @@ class MainViewController: UIViewController {
     
     private func setupTableView() {
         tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 
@@ -86,3 +87,14 @@ extension MainViewController: UITableViewDataSource {
     }
 }
 
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //TODO: introduce coordinator if time permits
+        let person = persons[indexPath.row]
+        let viewController = UIViewController.make(viewController: DetailViewController.self)
+        let detailViewModel = DetailViewModel(view: viewController,
+                                              person: person)
+        viewController.viewModel = detailViewModel
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}
