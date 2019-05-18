@@ -11,6 +11,8 @@ import Foundation
 protocol LocalStorageProviderType {
     func getContactListFromLocal(completion: @escaping (([Person]) -> Void))
     func saveContactList(data: [Person])
+    func getImage(hash: String, completion: @escaping((Data?) -> Void))
+    func saveImage(hash: String, data: Data)
 }
 
 class LocalStorageProvider: LocalStorageProviderType {
@@ -46,4 +48,9 @@ class LocalStorageProvider: LocalStorageProviderType {
         }
     }
     
+    // MARK: Image
+    func getImage(hash: String, completion: @escaping ((Data?) -> Void)) {
+    }
+    func saveImage(hash: String, data: Data) {
+    }
 }

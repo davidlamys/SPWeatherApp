@@ -23,6 +23,11 @@ class NetworkClientStub: NetworkClientType {
         error = nil
     }
     
+    func setupForGetImageUnderGoodNetwork() {
+        result = stubImageData
+        error = nil
+    }
+    
     func setupForNetworkError() {
         result = nil
         error = NSError(domain: "some error", code: 1, userInfo: [:])

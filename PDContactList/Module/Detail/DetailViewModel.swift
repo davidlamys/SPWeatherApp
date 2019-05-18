@@ -34,9 +34,9 @@ class DetailViewModel: DetailViewModelType {
         }
         let hash = email.calculateMD5Hex()
         view.setupView(state: .fetching)
-        dataProvider.getImage(imageHash: hash,
-                              localFetchCompletion: localImageFetchCompletion,
-                              networkFetchCompletion: networkImageFetchCompletion)
+        dataProvider.fetchImage(imageHash: hash,
+                                localFetchCompletion: localImageFetchCompletion,
+                                networkFetchCompletion: networkImageFetchCompletion)
     }
     
     func localImageFetchCompletion(data: Data?) {

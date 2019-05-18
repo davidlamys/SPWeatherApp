@@ -41,7 +41,7 @@ class DataProviderStub: DataProviderType {
         completion(payload, dataSource)
     }
     
-    func getImage(imageHash: String,
+    func fetchImage(imageHash: String,
                   localFetchCompletion: @escaping (Data?) -> Void,
                   networkFetchCompletion: @escaping (Data?) -> Void) {
         self.imageLocalFetchCompletion = localFetchCompletion

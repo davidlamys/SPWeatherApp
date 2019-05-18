@@ -43,7 +43,7 @@ Detail Scene
     - update image when ready [ ]
 
 DataProvider
-  - expose 2 functions for view models to call to fetch data [ ]
+  - expose 2 functions for view models to call to fetch data [ x]
   - build network requests [x ]
     - Call network NetworkClient [ x]
       - if network succeed [ x]
