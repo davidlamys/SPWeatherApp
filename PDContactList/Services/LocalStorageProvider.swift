@@ -16,11 +16,13 @@ protocol LocalStorageProviderType {
 }
 
 class LocalStorageProvider: LocalStorageProviderType {
+    
     static let sharedInstance = LocalStorageProvider()
+    let defaults = UserDefaults.standard
     private init(){}
     
+    // MARK: Person
     func getContactListFromLocal(completion: @escaping (([Person]) -> Void)) {
-        let defaults = UserDefaults.standard
         guard let savedData = defaults.object(forKey: "SavedList") as? Data else {
             completion([])
             return
@@ -50,7 +52,11 @@ class LocalStorageProvider: LocalStorageProviderType {
     
     // MARK: Image
     func getImage(hash: String, completion: @escaping ((Data?) -> Void)) {
+        let savedData = defaults.object(forKey: "Image-\(hash)") as? Data
+        completion(savedData)
     }
+    
     func saveImage(hash: String, data: Data) {
+        defaults.set(data, forKey: "Image-\(hash)")
     }
 }
