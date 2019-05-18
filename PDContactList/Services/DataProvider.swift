@@ -15,9 +15,13 @@ enum DataSource {
 
 protocol DataProviderType {
     func fetchContactLists(completion: @escaping(([Person], DataSource) -> Void))
+    func getImage(imageHash: String,
+                  localFetchCompletion: @escaping(Data?) -> Void,
+                  networkFetchCompletion: @escaping(Data?) -> Void)
 }
 
 struct DataProvider: DataProviderType {
+    
     let clientType: NetworkClientType
     let localStorageProvider: LocalStorageProviderType
     
@@ -47,4 +51,11 @@ struct DataProvider: DataProviderType {
             completion(personsFromLocal, .local)
         }
     }
+    
+    func getImage(imageHash:String,
+                  localFetchCompletion: @escaping (Data?) -> Void,
+                  networkFetchCompletion: @escaping (Data?) -> Void) {
+        
+    }
+    
 }

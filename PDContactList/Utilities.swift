@@ -31,6 +31,12 @@ fileprivate func MD5(string: String) -> Data {
     return digestData
 }
 
+extension String {
+    func calculateMD5Hex() -> String {
+        return getMD5Hex(string: self)
+    }
+}
+
 func getMD5Hex(string: String) -> String {
     return MD5(string: string)
         .map { String(format: "%02hhx", $0) }
