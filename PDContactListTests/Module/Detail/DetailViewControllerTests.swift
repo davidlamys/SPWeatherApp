@@ -152,5 +152,15 @@ class DetailViewControllerTests: XCTestCase {
         assert(subject.activityIndicatorView.isHidden == true)
         assert(subject.activityIndicatorView.isAnimating == false)
     }
+    
+    func testShouldNotOverrideNetworkImageWithLocalImage() {
+        subject.profileImageView.image = nil
+        let networkFetchSuccess = ImageViewState.succeeded(data: stubImageData)
+        let delayedLocalStorageResponse = ImageViewState.localData(data: stubImageDataTwo)
+        subject.setupView(state: networkFetchSuccess)
+        subject.setupView(state: delayedLocalStorageResponse)
+        
+        assert(subject.profileImageView.image!.pngData() == stubImageData)
+    }
 
 }

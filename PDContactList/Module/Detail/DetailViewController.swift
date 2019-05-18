@@ -24,11 +24,16 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var phoneStackView: UIStackView!
     @IBOutlet weak var emailStackView: UIStackView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     var viewModel: DetailViewModelType!
+    
+    fileprivate var hasSetImageFromNetwork: Bool = false
+    fileprivate var hasImageFetchHasFailed: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
+        activityIndicatorView.hidesWhenStopped = true
     }
 }
 
@@ -58,25 +63,27 @@ extension DetailViewController: DetailViewControllerType {
         precondition(Thread.isMainThread)
         switch state {
         case .localData(let data):
-            if let image = UIImage(data: data) {
+            if hasSetImageFromNetwork == false,
+                let image = UIImage(data: data) {
                 profileImageView.image = image
             }
-            activityIndicatorView.startAnimating()
-            activityIndicatorView.isHidden = false
-        case .fetching:
-            if activityIndicatorView.isAnimating == false {
+            
+            if hasImageFetchHasFailed == false {
                 activityIndicatorView.startAnimating()
+                activityIndicatorView.isHidden = false
             }
+        case .fetching:
+            activityIndicatorView.startAnimating()
             activityIndicatorView.isHidden = false
         case .succeeded(let data):
             if let image = UIImage(data: data) {
                 profileImageView.image = image
+                hasSetImageFromNetwork = true
             }
             activityIndicatorView.stopAnimating()
-            activityIndicatorView.isHidden = true
         case .failed:
+            hasImageFetchHasFailed = true
             activityIndicatorView.stopAnimating()
-            activityIndicatorView.isHidden = true
         }
     }
     

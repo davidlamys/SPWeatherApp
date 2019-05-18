@@ -24,3 +24,8 @@ let stubPayload = [
 let stubImage: UIImage = #imageLiteral(resourceName: "Profile_avatar_placeholder_large")
 
 let stubImageData = #imageLiteral(resourceName: "Profile_avatar_placeholder_large").pngData()!
+
+let stubImageDataTwo: Data = {
+    let image = #imageLiteral(resourceName: "Profile_avatar_placeholder_large")
+    return image.jpegData(compressionQuality: 0.5)!
+}()
