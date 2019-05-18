@@ -39,8 +39,8 @@ Master Scene
 
 Detail Scene
   - populate labels [ x]
-  - upon loading: call dataProvider for avatar [ ]
-    - update image when ready [ ]
+  - upon loading: call dataProvider for avatar [x ]
+    - update image when ready [x ]
 
 DataProvider
   - expose 2 functions for view models to call to fetch data [ x]
@@ -53,12 +53,10 @@ DataProvider
 
 NetworkClient - Alamofire
   - Call ContactList API [ x]
-  - Call Gravatar API [ ]
+  - Call Gravatar API [ x]
   
 Create POSO Person Object [x ]
 Create POSO Person Translator Object [x ]
-Create POSO Image Object [ ]
-Create POSO Image Translator Object [ ]
 
 #### Phase 2: Implement Pagination UI ####
 Master Scene
