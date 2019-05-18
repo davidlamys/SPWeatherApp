@@ -52,6 +52,7 @@ class DataProviderTests: XCTestCase {
         subject.fetchContactLists { (person, dataSource) in
             assert(person == stubPayload)
             assert(dataSource == .local)
+            assert(self.localStorageProviderMock.getContactListCalled == true)
             assert(self.localStorageProviderMock.saveContactListCalledWithData == nil)
             expectation.fulfill()
         }

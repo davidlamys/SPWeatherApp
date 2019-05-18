@@ -11,6 +11,7 @@
 class LocalStorageProviderMock: LocalStorageProviderType {
     
     var saveContactListCalledWithData: [Person]!
+    var getContactListCalled = false
     private var payload = [Person]()
     
     func reset() {
@@ -27,6 +28,7 @@ class LocalStorageProviderMock: LocalStorageProviderType {
     }
     
     func getContactListFromLocal(completion: @escaping (([Person]) -> Void)) {
+        getContactListCalled = true
         completion(payload)
     }
     
