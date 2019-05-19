@@ -26,13 +26,18 @@ class MainViewModel: MainViewModelType {
     func viewDidLoad() {
         view.setupView(state: .loading)
         dataProvider.fetchContactLists { [weak self] (result, dataSource) in
+            guard let self = self else {
+                return
+            }
             switch (result.isEmpty, dataSource) {
             case (true, .local):
-                self?.view.setupView(state: .emptyState)
+                self.view.setupView(state: .emptyState)
             case (true, .network):
-                self?.view.setupView(state: .displayWelcomeMessage)
-            case (false, _):
-                self?.view.setupView(state: .loaded(persons: result))
+                self.view.setupView(state: .displayWelcomeMessage)
+            case (false, .network):
+                self.view.setupView(state: .loadedFromNetwork(persons: result, hasMoreItems: true))
+            case (false, .local):
+                self.view.setupView(state: .loadedFromLocalStorage(persons: result))
             }
         }
     }

@@ -16,14 +16,21 @@ enum Text: String {
     case welcomMessage = "Hello dear new user, please add/import new contacts on website :)"
     case placeholderText = "Looks like this is the first time you use the app and there is no internet"
     case loadingText = "Loading...please wait for the good stuff"
+    case navigationTitle_DataFromNetwork = "Fetched %d people from portal"
+    case navigationTitle_DataFromLocal = "Fetched %d people from internetz"
 }
 
 class MainViewController: UIViewController {
 
     @IBOutlet weak var stateFeedbackLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var paginationButtonContainer: UIView!
+    
     private var persons: [Person] = []
     var viewModel: MainViewModelType!
+    
+    @IBAction func fetchMoreTapped(sender: Any) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,21 +67,38 @@ extension MainViewController: MainViewControllerType {
     
     private func setupViewOnMainThread(state: MainViewState) {
         precondition(Thread.isMainThread)
+        navigationItem.leftBarButtonItem?.isEnabled = false
         switch state {
         case .displayWelcomeMessage:
             tableView.isHidden = true
             stateFeedbackLabel.text = Text.welcomMessage.rawValue
+            
         case .emptyState:
             tableView.isHidden = true
             stateFeedbackLabel.text = Text.placeholderText.rawValue
+            
         case .loading:
             tableView.isHidden = true
             stateFeedbackLabel.text = Text.loadingText.rawValue
-        case .loaded(let payload):
+            
+        case .loadedFromNetwork(let payload, let hasMoreItems):
+            tableView.isHidden = false
+            persons.append(contentsOf: payload)
+            tableView.reloadData()
+            
+            title = String(format: Text.navigationTitle_DataFromNetwork.rawValue,
+                           persons.count)
+            paginationButtonContainer.isHidden = !hasMoreItems
+            
+        case .loadedFromLocalStorage(let payload):
             tableView.isHidden = false
             persons = payload
             tableView.reloadData()
-            title = "\(persons.count) people in list"
+            
+            title = String(format: Text.navigationTitle_DataFromLocal.rawValue,
+                           persons.count)
+            paginationButtonContainer.isHidden = true
+            navigationItem.leftBarButtonItem?.isEnabled = true
         }
     }
 }

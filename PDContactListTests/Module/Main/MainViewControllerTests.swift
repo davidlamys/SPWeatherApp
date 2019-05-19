@@ -44,11 +44,11 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.stateFeedbackLabel.text == Text.loadingText.rawValue)
     }
 
-    func testLoadScreenWithPersons() {
+    func testLoadScreenWithPersonsFromLocalStorage() {
         // WHEN
         subject.setupView(state: .emptyState)
         subject.setupView(state: .loading)
-        subject.setupView(state: .loaded(persons: stubPayload))
+        subject.setupView(state: .loadedFromLocalStorage(persons: stubPayload))
         
         // THEN
         assert(subject.tableView.isHidden == false)
@@ -58,6 +58,53 @@ class MainViewControllerTests: XCTestCase {
         assert(firstCell.textLabel?.text == "David")
         let secondCell = subject.tableView(subject.tableView, cellForRowAt: IndexPath(row: 1, section: 0))
         assert(secondCell.textLabel?.text == "Mirjam")
+        
+        assert(subject.paginationButtonContainer.isHidden == true)
+        assert(subject.navigationItem.leftBarButtonItem?.isEnabled == true)
+        let expectedTitle = String(format: Text.navigationTitle_DataFromLocal.rawValue, 2)
+        assert(subject.title == expectedTitle)
+    }
+    
+    func testLoadScreenWithPersonsFromNetworkWithMoreItemsInCollection() {
+        // WHEN
+        subject.setupView(state: .emptyState)
+        subject.setupView(state: .loading)
+        subject.setupView(state: .loadedFromNetwork(persons: stubPayload, hasMoreItems: true))
+        
+        // THEN
+        assert(subject.tableView.isHidden == false)
+        let numberOfCells = subject.tableView.numberOfRows(inSection: 0)
+        assert(numberOfCells == 2)
+        let firstCell = subject.tableView(subject.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+        assert(firstCell.textLabel?.text == "David")
+        let secondCell = subject.tableView(subject.tableView, cellForRowAt: IndexPath(row: 1, section: 0))
+        assert(secondCell.textLabel?.text == "Mirjam")
+        
+        assert(subject.paginationButtonContainer.isHidden == false)
+        assert(subject.navigationItem.leftBarButtonItem?.isEnabled == false)
+        let expectedTitle = String(format: Text.navigationTitle_DataFromNetwork.rawValue, 2)
+        assert(subject.title == expectedTitle)
+    }
+    
+    func testLoadScreenWithPersonsFromNetworkWithAllItemsFetched() {
+        // WHEN
+        subject.setupView(state: .emptyState)
+        subject.setupView(state: .loading)
+        subject.setupView(state: .loadedFromNetwork(persons: stubPayload, hasMoreItems: false))
+        
+        // THEN
+        assert(subject.tableView.isHidden == false)
+        let numberOfCells = subject.tableView.numberOfRows(inSection: 0)
+        assert(numberOfCells == 2)
+        let firstCell = subject.tableView(subject.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+        assert(firstCell.textLabel?.text == "David")
+        let secondCell = subject.tableView(subject.tableView, cellForRowAt: IndexPath(row: 1, section: 0))
+        assert(secondCell.textLabel?.text == "Mirjam")
+        
+        assert(subject.paginationButtonContainer.isHidden == true)
+        assert(subject.navigationItem.leftBarButtonItem?.isEnabled == false)
+        let expectedTitle = String(format: Text.navigationTitle_DataFromNetwork.rawValue, 2)
+        assert(subject.title == expectedTitle)
     }
     
     func testLoadScreenWithEmptyContactList() {

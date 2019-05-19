@@ -10,7 +10,8 @@ import Foundation
 
 enum MainViewState {
     case loading
-    case loaded(persons: [Person])
+    case loadedFromNetwork(persons: [Person], hasMoreItems: Bool)
+    case loadedFromLocalStorage(persons: [Person])
     case emptyState
     case displayWelcomeMessage
 }
