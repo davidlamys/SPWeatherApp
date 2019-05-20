@@ -32,6 +32,7 @@ class MainViewControllerTests: XCTestCase {
         
         //THEN
         assert(subject.tableView.isHidden == true)
+        assert(subject.loadingStatusUpdateBanner.isHidden == true)
         assert(subject.stateFeedbackLabel.text == Text.placeholderText.rawValue)
     }
     
@@ -41,7 +42,20 @@ class MainViewControllerTests: XCTestCase {
         
         //THEN
         assert(subject.tableView.isHidden == true)
+        assert(subject.loadingStatusUpdateBanner.isHidden == true)
         assert(subject.stateFeedbackLabel.text == Text.loadingText.rawValue)
+    }
+    
+    func testSetupForLoadingAfterInitialLoadScreen() {
+        // WHEN
+        subject.setupView(state: .loading)
+        subject.setupView(state: .loadedFromNetwork(persons: stubPayload, hasMoreItems: true))
+        subject.setupView(state: .loading)
+        
+        //THEN
+        assert(subject.tableView.isHidden == false)
+        assert(subject.loadingStatusUpdateBanner.isHidden == false)
+        assert(subject.loadingStatusLabel.text == Text.stillLoadingText.rawValue)
     }
 
     func testLoadScreenWithPersonsFromLocalStorage() {
@@ -63,6 +77,9 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.navigationItem.leftBarButtonItem?.isEnabled == true)
         let expectedTitle = String(format: Text.navigationTitle_DataFromLocal.rawValue, 2)
         assert(subject.title == expectedTitle)
+        
+        assert(subject.loadingStatusUpdateBanner.isHidden == false)
+        assert(subject.loadingStatusLabel.text == Text.apiFailedAndFetchedFromLocal.rawValue)
     }
     
     func testLoadScreenWithPersonsFromNetworkWithMoreItemsInCollection() {
@@ -84,6 +101,9 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.navigationItem.leftBarButtonItem?.isEnabled == false)
         let expectedTitle = String(format: Text.navigationTitle_DataFromNetwork.rawValue, 2)
         assert(subject.title == expectedTitle)
+        
+        assert(subject.loadingStatusUpdateBanner.isHidden == false)
+        assert(subject.loadingStatusLabel.text == Text.stillLoadingText.rawValue)
     }
     
     func testLoadScreenWithPersonsFromNetworkWithAllItemsFetched() {
@@ -105,6 +125,9 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.navigationItem.leftBarButtonItem?.isEnabled == false)
         let expectedTitle = String(format: Text.navigationTitle_DataFromNetwork.rawValue, 2)
         assert(subject.title == expectedTitle)
+        
+        assert(subject.loadingStatusUpdateBanner.isHidden == false)
+        assert(subject.loadingStatusLabel.text == Text.completedMessage.rawValue)
     }
     
     func testLoadScreenWithEmptyContactList() {
@@ -116,6 +139,8 @@ class MainViewControllerTests: XCTestCase {
         //THEN
         assert(subject.tableView.isHidden == true)
         assert(subject.stateFeedbackLabel.text == Text.welcomMessage.rawValue)
+        
+        assert(subject.loadingStatusUpdateBanner.isHidden == true)
     }
     
     func testWhenFetchMoreButtonTapped() {

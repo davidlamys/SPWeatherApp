@@ -18,6 +18,9 @@ enum Text: String {
     case loadingText = "Loading...please wait for the good stuff"
     case navigationTitle_DataFromNetwork = "Fetched %d people from portal"
     case navigationTitle_DataFromLocal = "Fetched %d people from internetz"
+    case stillLoadingText = "More to come! Hang in tight!!"
+    case completedMessage = "Congratulations, we have fetched all ;)"
+    case apiFailedAndFetchedFromLocal = "Oops, something went wrong, showing data from local storage. Please retry later."
 }
 
 class MainViewController: UIViewController {
@@ -25,6 +28,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var stateFeedbackLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var paginationButtonContainer: UIView!
+    @IBOutlet weak var loadingStatusUpdateBanner: UIView!
+    @IBOutlet weak var loadingStatusLabel: UILabel!
     
     private var persons: [Person] = []
     var viewModel: MainViewModelType!
@@ -73,6 +78,7 @@ extension MainViewController: MainViewControllerType {
     private func setupViewOnMainThread(state: MainViewState) {
         precondition(Thread.isMainThread)
         navigationItem.leftBarButtonItem?.isEnabled = false
+        loadingStatusUpdateBanner.isHidden = true
         switch state {
         case .displayWelcomeMessage:
             tableView.isHidden = true
@@ -83,8 +89,14 @@ extension MainViewController: MainViewControllerType {
             stateFeedbackLabel.text = Text.placeholderText.rawValue
             
         case .loading:
-            tableView.isHidden = true
-            stateFeedbackLabel.text = Text.loadingText.rawValue
+            if persons.isEmpty {
+                tableView.isHidden = true
+                stateFeedbackLabel.text = Text.loadingText.rawValue
+            } else {
+                tableView.isHidden = false
+                loadingStatusUpdateBanner.isHidden = false
+                loadingStatusLabel.text = Text.stillLoadingText.rawValue
+            }
             
         case .loadedFromNetwork(let payload, let hasMoreItems):
             tableView.isHidden = false
@@ -95,6 +107,14 @@ extension MainViewController: MainViewControllerType {
                            persons.count)
             paginationButtonContainer.isHidden = !hasMoreItems
             
+            loadingStatusUpdateBanner.isHidden = false
+            if hasMoreItems {
+                loadingStatusLabel.text = Text.stillLoadingText.rawValue
+            } else {
+                loadingStatusLabel.text = Text.completedMessage.rawValue
+                animateHideLoadingStatusBanner()
+            }
+            
         case .loadedFromLocalStorage(let payload):
             tableView.isHidden = false
             persons = payload
@@ -104,6 +124,17 @@ extension MainViewController: MainViewControllerType {
                            persons.count)
             paginationButtonContainer.isHidden = true
             navigationItem.leftBarButtonItem?.isEnabled = true
+            
+            loadingStatusUpdateBanner.isHidden = false
+            loadingStatusLabel.text = Text.apiFailedAndFetchedFromLocal.rawValue
+        }
+    }
+    
+    private func animateHideLoadingStatusBanner() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            UIView.animate(withDuration: 1.0) {
+                self.loadingStatusUpdateBanner.isHidden = true
+            }
         }
     }
 }
