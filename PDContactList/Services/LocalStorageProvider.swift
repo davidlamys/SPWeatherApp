@@ -17,13 +17,24 @@ protocol LocalStorageProviderType {
 
 class LocalStorageProvider: LocalStorageProviderType {
     
+    fileprivate struct Keys {
+        static func getKeyForContactList() -> String {
+            return "SavedList"
+        }
+        
+        static func getKeyFor(imageHash: String) -> String {
+            return String(format: "Image-%@",
+                          imageHash)
+        }
+    }
+    
     static let sharedInstance = LocalStorageProvider()
     let defaults = UserDefaults.standard
     private init(){}
     
     // MARK: Person
     func getContactListFromLocal(completion: @escaping (([Person]) -> Void)) {
-        guard let savedData = defaults.object(forKey: "SavedList") as? Data else {
+        guard let savedData = defaults.object(forKey: Keys.getKeyForContactList()) as? Data else {
             completion([])
             return
         }
@@ -44,7 +55,7 @@ class LocalStorageProvider: LocalStorageProviderType {
         switch result {
         case .success(let data):
             let defaults = UserDefaults.standard
-            defaults.set(data, forKey: "SavedList")
+            defaults.set(data, forKey: Keys.getKeyForContactList())
         case .failure(let error):
             logError(error)
         }
@@ -52,11 +63,11 @@ class LocalStorageProvider: LocalStorageProviderType {
     
     // MARK: Image
     func getImage(hash: String, completion: @escaping ((Data?) -> Void)) {
-        let savedData = defaults.object(forKey: "Image-\(hash)") as? Data
+        let savedData = defaults.object(forKey: Keys.getKeyForContactList()) as? Data
         completion(savedData)
     }
     
     func saveImage(hash: String, data: Data) {
-        defaults.set(data, forKey: "Image-\(hash)")
+        defaults.set(data, forKey: Keys.getKeyFor(imageHash: hash))
     }
 }
