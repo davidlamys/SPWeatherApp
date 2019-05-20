@@ -22,7 +22,7 @@ Based on the nature of the theory questions, it is possible that the application
 Using a function (which I don't understand) to create md5 hash seems insecure and scary, but in the interest of time, it might be the best choice.
 
 ### Personal Objectives: ###
-TDD with plain XCTests
+TDD with plain XCTests  [x ]
 Experiment with SwiftGen (if time permits) to explore localisation
 
 ### Initial Design: ###
@@ -91,3 +91,11 @@ DataManager
   - expose API to store CoreData Objects when receiving POSO [ ]
   - expose API to fetch CoreData Object [ ]
   - delete associated image object when user is deleted [ ]
+
+## Retrospective 20 May ##
+- Could have saved alot more time if I had used a library to populate the avatar
+- Spikes are really useful when there is not much existing structure
+- Learnt codable which is powerful and flexible
+- The decision to 'save' time intially by rolling out local persistence with userDefaults instead of a proper DB Layer proves to be costly for the use experience as data size grows. 
+- Could have done a better job breaking down Phase 1 into more steps.
+- XCTest may seem to run faster but it is definitely harder to be descriptive and to maintain readability
