@@ -25,6 +25,7 @@ class MainViewModelTests: XCTestCase {
     func testWhenViewDidLoadIsCalledInGoodNetwork() {
         // GIVEN
         dataProvider.setupForGoodNetwork()
+        let initialIndex = subject.nextIndex
        
         //WHEN
         subject.viewDidLoad()
@@ -32,6 +33,8 @@ class MainViewModelTests: XCTestCase {
         let firstState = MainViewState.loading
         let finalState = MainViewState.loadedFromNetwork(persons: stubPayload, hasMoreItems: false)
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
+        // a succesful fetch should increase the index
+        assert(subject.nextIndex - initialIndex == limit)
     }
     
     func testWhenViewDidLoadIsCalledInGoodNetworkButThereIsNoData() {
