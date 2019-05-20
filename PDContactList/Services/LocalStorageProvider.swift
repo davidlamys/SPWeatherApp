@@ -16,7 +16,9 @@ protocol LocalStorageProviderType {
     func saveImage(hash: String, data: Data)
 }
 
-class LocalStorageProvider: LocalStorageProviderType {
+class LocalStorageProvider {
+    
+    private let defaults: UserDefaults
     
     fileprivate struct Keys {
         static func getKeyForContactList() -> String {
@@ -29,9 +31,12 @@ class LocalStorageProvider: LocalStorageProviderType {
         }
     }
     
-    static let sharedInstance = LocalStorageProvider()
-    let defaults = UserDefaults.standard
-    private init(){}
+    init(userDefaults: UserDefaults = UserDefaults.standard) {
+        self.defaults = userDefaults
+    }
+}
+
+extension LocalStorageProvider: LocalStorageProviderType {
     
     // MARK: Person
     func getContactListFromLocal(completion: @escaping (([Person]) -> Void)) {
@@ -39,7 +44,7 @@ class LocalStorageProvider: LocalStorageProviderType {
             completion([])
             return
         }
-
+        
         let result = PersonTranslator.translateFromUserDefaults(data: savedData)
         
         switch result {

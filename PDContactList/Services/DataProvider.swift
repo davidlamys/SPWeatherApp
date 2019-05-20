@@ -32,7 +32,7 @@ struct DataProvider: DataProviderType {
     let localStorageProvider: LocalStorageProviderType
     
     init(clientType: NetworkClientType = NetworkClient.sharedInstance,
-         localStorageProvider: LocalStorageProviderType = LocalStorageProvider.sharedInstance) {
+         localStorageProvider: LocalStorageProviderType = LocalStorageProvider()) {
         self.clientType = clientType
         self.localStorageProvider = localStorageProvider
     }
