@@ -60,11 +60,15 @@ Create POSO Person Translator Object [x ]
 
 #### Phase 2: Implement Pagination UI ####
 Master Scene
-  - when user reach bottom of page and pull-to-fetch
-    - call data provider [ ]
+  - when user reach bottom of page and tap on fetch more
+    - call data provider [x ]
 DataProvider
-  - modify method to build network request [ ]
+  - modify method to build network request [x ]
   - whenever a new page of contact list is saved locally, delete all stored images [ ]
+  
+  #### Phase 2.5 : Implement Pagination UI ####
+  Automatically fetch next page when last page is received [x]
+  Modify local storage code to implement some sort of upsert[ ]
 
 #### Phase 3: Implement more UI Feedback ####
 DataProvider
