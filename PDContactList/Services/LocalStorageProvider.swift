@@ -68,7 +68,7 @@ extension LocalStorageProvider: LocalStorageProviderType {
     }
     
     func deleteContactList() {
-        defaults.set(nil, forKey: "SavedList")
+        defaults.set(nil, forKey: Keys.getKeyForContactList())
     }
     
     // MARK: Image
