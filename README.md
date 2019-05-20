@@ -11,6 +11,9 @@ Initial Research
 - Gravatar API: https://www.gravatar.com/avatar/{md5 hash of lowercase email }?s=200&r=pg eg: b5f6c2a999a22d0204532a6ede7ba92d
     - potential solution: https://stackoverflow.com/a/32166735
 
+## Instructions ##
+To use your test account, simply replace the field "PipedriveAPIKey" in the info.plist
+
 ## Plan 9 May 2019 ##
 Since Pipedrive follows MVVM-C architecture, this project can be written in similar ways too.
 
