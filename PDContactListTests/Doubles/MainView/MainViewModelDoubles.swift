@@ -11,6 +11,7 @@ import Foundation
 
 class MainViewModelFake: MainViewModel {
     var viewDidLoadCalled = false
+    var fetchMoreCalled = false
     init() {
         // this is a questionable decision. need more future research
         super.init(view: MainViewControllerMock(),
@@ -18,5 +19,9 @@ class MainViewModelFake: MainViewModel {
     }
     override func viewDidLoad() {
         viewDidLoadCalled = true
+    }
+    
+    override func fetchMore() {
+        fetchMoreCalled = true
     }
 }

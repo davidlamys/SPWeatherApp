@@ -117,5 +117,10 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.tableView.isHidden == true)
         assert(subject.stateFeedbackLabel.text == Text.welcomMessage.rawValue)
     }
+    
+    func testWhenFetchMoreButtonTapped() {
+        subject.fetchMoreTapped(sender: self)
+        assert(viewModelFake.fetchMoreCalled == true)
+    }
 
 }

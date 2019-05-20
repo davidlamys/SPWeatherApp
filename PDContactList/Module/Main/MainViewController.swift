@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
     var viewModel: MainViewModelType!
     
     @IBAction func fetchMoreTapped(sender: Any) {
+        viewModel.fetchMore()
     }
     
     override func viewDidLoad() {

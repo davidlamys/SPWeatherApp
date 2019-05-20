@@ -10,6 +10,7 @@ import Foundation
 
 protocol MainViewModelType {
     func viewDidLoad()
+    func fetchMore()
     var view: MainViewControllerType! { get }
 }
 
@@ -27,6 +28,11 @@ class MainViewModel: MainViewModelType {
     func viewDidLoad() {
         fetchContactList()
     }
+
+    func fetchMore() {
+        fetchContactList()
+    }
+    
     private func fetchContactList() {
         view.setupView(state: .loading)
         dataProvider.fetchContactLists(startIndex: nextIndex) { [weak self] result in
