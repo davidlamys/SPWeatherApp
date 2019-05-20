@@ -37,6 +37,28 @@ class MainViewModelTests: XCTestCase {
         assert(subject.nextIndex - initialIndex == limit)
     }
     
+    func testWhenViewDidLoadIsCalledInGoodNetworkWithMultiplePages() {
+        // GIVEN
+        dataProvider.setupForGoodNetworkWithMultipageData()
+        let initialIndex = subject.nextIndex
+        
+        //WHEN
+        subject.viewDidLoad()
+        // THEN
+        let firstState = MainViewState.loading
+        let intimediateState = MainViewState.loadedFromNetwork(persons: stubPayload, hasMoreItems: true)
+        let intimediateStateTwo = MainViewState.loading
+        let finalState = MainViewState.loadedFromNetwork(persons: stubPayload, hasMoreItems: false)
+
+        assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState,
+                                                                 intimediateState,
+                                                                 intimediateStateTwo,
+                                                                     finalState])
+        
+        // a succesful fetch should increase the index
+        assert(subject.nextIndex - initialIndex == (2*limit))
+    }
+    
     func testWhenViewDidLoadIsCalledInGoodNetworkButThereIsNoData() {
         // GIVEN
         dataProvider.setupForGoodNetworkWithNoData()

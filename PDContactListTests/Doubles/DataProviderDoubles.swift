@@ -14,7 +14,7 @@ class DataProviderStub: DataProviderType {
     private var dataSource: DataSource!
     private var payload = [Person]()
     
-    private var resultType: FetchContactListResultType!
+    private var stubResults = [FetchContactListResultType]()
     
     var imageLocalFetchCompletion: ((Data?) -> Void)?
     var imageNetworkFetchCompletion: ((Data?) -> Void)?
@@ -25,19 +25,31 @@ class DataProviderStub: DataProviderType {
     }
     
     func setupForGoodNetwork() {
-        resultType = .successFromNetwork(persons: stubPayload, hasMoreItems: false)
+        stubResults = [.successFromNetwork(persons: stubPayload, hasMoreItems: false)]
+    }
+    
+    func setupForGoodNetworkWithMultipageData() {
+        stubResults = [.successFromNetwork(persons: stubPayload, hasMoreItems: true),
+                      .successFromNetwork(persons: stubPayload, hasMoreItems: false)]
     }
     
     func setupForGoodNetworkWithNoData() {
-        resultType = .successFromNetwork(persons: [], hasMoreItems: false)
+        stubResults = [.successFromNetwork(persons: [], hasMoreItems: false)]
     }
     
     func setupForBadNeworkWithNoLocalData() {
-        resultType = .fallbackFromLocalStorage(persons: [])
+        stubResults = [.fallbackFromLocalStorage(persons: [])]
     }
     
     func fetchContactLists(startIndex: Int, completion: @escaping ((FetchContactListResultType) -> Void)) {
-        completion(resultType)
+        if stubResults.isEmpty {
+            print("end of stub results")
+            return
+        }
+        
+        let result = stubResults.removeFirst()
+        completion(result)
+        
     }
     
     func fetchImage(imageHash: String,

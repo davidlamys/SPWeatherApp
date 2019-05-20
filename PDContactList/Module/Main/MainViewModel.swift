@@ -52,6 +52,9 @@ class MainViewModel: MainViewModelType {
                     self.view.setupView(state: .displayWelcomeMessage)
                 } else {
                     self.view.setupView(state: .loadedFromNetwork(persons: payload, hasMoreItems: hasMoreItems))
+                    if hasMoreItems {
+                        self.fetchContactList()
+                    }
                 }
             case .accountError(let redirecURL):
                 return
