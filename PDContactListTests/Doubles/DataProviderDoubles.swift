@@ -18,6 +18,7 @@ class DataProviderStub: DataProviderType {
     
     var imageLocalFetchCompletion: ((Data?) -> Void)?
     var imageNetworkFetchCompletion: ((Data?) -> Void)?
+    var fetchContactListCalledWithIndex: Int? = nil
     
     func reset() {
         dataSource = nil
@@ -42,6 +43,7 @@ class DataProviderStub: DataProviderType {
     }
     
     func fetchContactLists(startIndex: Int, completion: @escaping ((FetchContactListResultType) -> Void)) {
+        fetchContactListCalledWithIndex = startIndex
         if stubResults.isEmpty {
             print("end of stub results")
             return

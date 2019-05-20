@@ -123,4 +123,8 @@ class MainViewControllerTests: XCTestCase {
         assert(viewModelFake.fetchMoreCalled == true)
     }
 
+    func testWhenRetyButtonTapped() {
+        subject.retryButtonTapped(sender: self)
+        assert(viewModelFake.retryFetchCalled == true)
+    }
 }

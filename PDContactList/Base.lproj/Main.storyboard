@@ -71,7 +71,11 @@
                         <viewLayoutGuide key="safeArea" id="ysr-r6-cGf"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZUO-u3-TC3">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="ihi-kX-dtt"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="ihi-kX-dtt">
+                            <connections>
+                                <action selector="retryButtonTappedWithSender:" destination="da3-Zu-bYk" id="Dhu-Vn-A7S"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="paginationButtonContainer" destination="jai-HO-abz" id="MEW-6J-tFb"/>

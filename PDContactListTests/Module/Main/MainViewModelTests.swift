@@ -84,5 +84,24 @@ class MainViewModelTests: XCTestCase {
         let finalState = MainViewState.emptyState
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
     }
+    
+    func testWhenRetyFetchIsCalled() {
+        // GIVEN
+        subject.nextIndex = Int.max
+        dataProvider.setupForGoodNetwork()
+        
+        // WHEN
+        subject.retryFetch()
+        
+        // THEN
+        assert(dataProvider.fetchContactListCalledWithIndex == 0)
+        // THEN
+        let firstState = MainViewState.loading
+        let finalState = MainViewState.loadedFromNetwork(persons: stubPayload, hasMoreItems: false)
+        assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
+        // a succesful fetch should increase the index
+        assert(subject.nextIndex == limit)
+        
+    }
 
 }

@@ -33,6 +33,10 @@ class MainViewController: UIViewController {
         viewModel.fetchMore()
     }
     
+    @IBAction func retryButtonTapped(sender: Any) {
+        viewModel.retryFetch()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if viewModel == nil {
