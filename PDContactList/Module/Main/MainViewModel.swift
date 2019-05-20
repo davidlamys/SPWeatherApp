@@ -62,8 +62,6 @@ class MainViewModel: MainViewModelType {
                         self.fetchContactList()
                     }
                 }
-            case .accountError(let redirecURL):
-                return
             }
         }
     }

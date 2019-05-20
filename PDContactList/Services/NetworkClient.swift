@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 let limit:Int = 500
-let pipedriveAPIKey = Bundle.main.infoDictionary?["PipedriveAPIKey"] as! String
+fileprivate let pipedriveAPIKey = Bundle.main.infoDictionary?["PipedriveAPIKey"] as! String
 
 enum RequestType {
     case fetchContactList(startIndex: Int)
