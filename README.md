@@ -64,15 +64,14 @@ Master Scene
     - call data provider [x ]
 DataProvider
   - modify method to build network request [x ]
-  - whenever a new page of contact list is saved locally, delete all stored images [ ]
   
   #### Phase 2.5 : Implement Pagination UI ####
   Automatically fetch next page when last page is received [x]
-  Modify local storage code to implement some sort of upsert[ ]
+  Modify local storage code to implement insertion[x ]
 
 #### Phase 3: Implement more UI Feedback ####
 DataProvider
-  - when returning stored objects, notify caller [ ]
+  - when returning stored objects, notify caller [x ]
 
 Master Scene & Detail Scene
   - present loading indicators when making request to data provider [ ]
