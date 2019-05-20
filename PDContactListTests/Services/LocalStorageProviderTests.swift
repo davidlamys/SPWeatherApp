@@ -27,8 +27,8 @@ class LocalStorageProviderTests: XCTestCase {
     }
     
     func testUpsertDoesNotOverride() {
-        subject.upsertContactList(data: [stubPayload[0]])
-        subject.upsertContactList(data: [stubPayload[1]])
+        subject.insertContactList(data: [stubPayload[0]])
+        subject.insertContactList(data: [stubPayload[1]])
         
         let expectation = XCTestExpectation(description: "Fetching from local storage")
         subject.getContactListFromLocal { result in

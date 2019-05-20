@@ -51,7 +51,7 @@ struct DataProvider: DataProviderType {
                     if startIndex == 0 {
                         self.localStorageProvider.deleteContactList()
                     }
-                    self.localStorageProvider.upsertContactList(data: persons)
+                    self.localStorageProvider.insertContactList(data: persons)
                     let hasMoreItems = (response.hasMoreItems)
                     completion(.successFromNetwork(persons: persons, hasMoreItems: hasMoreItems))
                 } else if response.hasReachedRateLimit {

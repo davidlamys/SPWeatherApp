@@ -10,7 +10,7 @@ import Foundation
 
 protocol LocalStorageProviderType {
     func getContactListFromLocal(completion: @escaping (([Person]) -> Void))
-    func upsertContactList(data: [Person])
+    func insertContactList(data: [Person])
     func deleteContactList()
     func getImage(hash: String, completion: @escaping((Data?) -> Void))
     func saveImage(hash: String, data: Data)
@@ -56,7 +56,7 @@ extension LocalStorageProvider: LocalStorageProviderType {
         }
     }
     
-    func upsertContactList(data newList: [Person]) {
+    func insertContactList(data newList: [Person]) {
         getContactListFromLocal { localList in
             self.saveContactList(data: localList + newList)
         }

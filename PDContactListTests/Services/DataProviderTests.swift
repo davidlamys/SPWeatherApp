@@ -34,7 +34,7 @@ class DataProviderTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Calling stub network client")
 
         subject.fetchContactLists(startIndex: 0) { resultType in
-            assert(self.localStorageProviderMock.upsertContactListCalledWithData == stubPayload)
+            assert(self.localStorageProviderMock.insertContactListCalledWithData == stubPayload)
             assert(self.localStorageProviderMock.deleteContactListCalled)
             expectation.fulfill()
         }
@@ -48,7 +48,7 @@ class DataProviderTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Calling stub network client")
         
         subject.fetchContactLists(startIndex: limit) { resultType in
-            assert(self.localStorageProviderMock.upsertContactListCalledWithData == stubPayload)
+            assert(self.localStorageProviderMock.insertContactListCalledWithData == stubPayload)
             assert(self.localStorageProviderMock.deleteContactListCalled == false)
             expectation.fulfill()
         }
@@ -63,7 +63,7 @@ class DataProviderTests: XCTestCase {
         
         subject.fetchContactLists(startIndex: 0) { resultType in
             assert(self.localStorageProviderMock.getContactListCalled == true)
-            assert(self.localStorageProviderMock.upsertContactListCalledWithData == nil)
+            assert(self.localStorageProviderMock.insertContactListCalledWithData == nil)
             expectation.fulfill()
         }
         

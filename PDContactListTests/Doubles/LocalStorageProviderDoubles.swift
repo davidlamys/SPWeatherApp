@@ -10,14 +10,14 @@ import Foundation
 
 class LocalStorageProviderMock: LocalStorageProviderType {
     
-    var upsertContactListCalledWithData: [Person]!
+    var insertContactListCalledWithData: [Person]!
     var saveImageCalledWith: (hash: String, data: Data)!
     var getContactListCalled = false
     var deleteContactListCalled = false
     private var payload = [Person]()
     
     func reset() {
-        upsertContactListCalledWithData = nil
+        insertContactListCalledWithData = nil
         payload = []
     }
     
@@ -38,8 +38,8 @@ class LocalStorageProviderMock: LocalStorageProviderType {
         completion(payload)
     }
     
-    func upsertContactList(data: [Person]) {
-        upsertContactListCalledWithData = data
+    func insertContactList(data: [Person]) {
+        insertContactListCalledWithData = data
     }
     
     func getImage(hash: String, completion: @escaping ((Data?) -> Void)) {
