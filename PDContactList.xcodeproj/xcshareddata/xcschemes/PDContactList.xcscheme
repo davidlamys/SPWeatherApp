@@ -20,6 +20,20 @@
                ReferencedContainer = "container:PDContactList.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "153F3DCD228328930006D614"
+               BuildableName = "PDContactListTests.xctest"
+               BlueprintName = "PDContactListTests"
+               ReferencedContainer = "container:PDContactList.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
