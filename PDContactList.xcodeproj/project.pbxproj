@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		150448AE22917404000D6216 /* PDNetworkResponseTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150448AD22917404000D6216 /* PDNetworkResponseTranslator.swift */; };
+		150448B222928596000D6216 /* LocalStorageProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150448B122928596000D6216 /* LocalStorageProviderTests.swift */; };
+		150448B522928AF2000D6216 /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150448B422928AF2000D6216 /* UserDefaultsDoubles.swift */; };
 		1508CD80228EFEC200A8B51A /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD7F228EFEC200A8B51A /* DetailViewControllerTests.swift */; };
 		1508CD82228F022700A8B51A /* StubData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD81228F022700A8B51A /* StubData.swift */; };
 		1508CD84228F0E8900A8B51A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD83228F0E8900A8B51A /* DetailViewModel.swift */; };
@@ -64,6 +66,8 @@
 /* Begin PBXFileReference section */
 		03FB2411F244039228706D33 /* Pods-PDContactListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDContactListTests.release.xcconfig"; path = "Target Support Files/Pods-PDContactListTests/Pods-PDContactListTests.release.xcconfig"; sourceTree = "<group>"; };
 		150448AD22917404000D6216 /* PDNetworkResponseTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDNetworkResponseTranslator.swift; sourceTree = "<group>"; };
+		150448B122928596000D6216 /* LocalStorageProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageProviderTests.swift; sourceTree = "<group>"; };
+		150448B422928AF2000D6216 /* UserDefaultsDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsDoubles.swift; sourceTree = "<group>"; };
 		1508CD7F228EFEC200A8B51A /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		1508CD81228F022700A8B51A /* StubData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubData.swift; sourceTree = "<group>"; };
 		1508CD83228F0E8900A8B51A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -327,6 +331,7 @@
 				15AD0BD4228D862400D7E037 /* LocalStorageProviderDoubles.swift */,
 				15AD0BD0228CFCBF00D7E037 /* NetworkClientDoubles.swift */,
 				1508CD81228F022700A8B51A /* StubData.swift */,
+				150448B422928AF2000D6216 /* UserDefaultsDoubles.swift */,
 			);
 			path = Doubles;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				15AD0BCE228CFC8800D7E037 /* DataProviderTests.swift */,
+				150448B122928596000D6216 /* LocalStorageProviderTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -552,9 +558,11 @@
 				1508CD82228F022700A8B51A /* StubData.swift in Sources */,
 				1508CD8C228F1DCD00A8B51A /* DetailViewControllerDoubles.swift in Sources */,
 				15AD0BD5228D862400D7E037 /* LocalStorageProviderDoubles.swift in Sources */,
+				150448B522928AF2000D6216 /* UserDefaultsDoubles.swift in Sources */,
 				15AD0BBE228CE6C000D7E037 /* MainViewModelTests.swift in Sources */,
 				1508CD8A228F1D7F00A8B51A /* DetailViewModelTests.swift in Sources */,
 				15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */,
+				150448B222928596000D6216 /* LocalStorageProviderTests.swift in Sources */,
 				15AD0BD1228CFCBF00D7E037 /* NetworkClientDoubles.swift in Sources */,
 				15AD0BC1228CE6F300D7E037 /* MainViewControllerDoubles.swift in Sources */,
 				15AD0BB3228AF41300D7E037 /* MainViewControllerTests.swift in Sources */,

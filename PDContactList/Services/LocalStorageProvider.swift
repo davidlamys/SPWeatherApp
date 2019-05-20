@@ -56,11 +56,16 @@ extension LocalStorageProvider: LocalStorageProviderType {
         }
     }
     
-    func upsertContactList(data list: [Person]) {
+    func upsertContactList(data newList: [Person]) {
+        getContactListFromLocal { localList in
+            self.saveContactList(data: localList + newList)
+        }
+    }
+    
+    private func saveContactList(data list: [Person]) {
         let result = PersonTranslator.translateToData(from: list)
         switch result {
         case .success(let data):
-            let defaults = UserDefaults.standard
             defaults.set(data, forKey: Keys.getKeyForContactList())
         case .failure(let error):
             logError(error)
