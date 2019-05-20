@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150448AE22917404000D6216 /* PDNetworkResponseTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150448AD22917404000D6216 /* PDNetworkResponseTranslator.swift */; };
 		1508CD80228EFEC200A8B51A /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD7F228EFEC200A8B51A /* DetailViewControllerTests.swift */; };
 		1508CD82228F022700A8B51A /* StubData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD81228F022700A8B51A /* StubData.swift */; };
 		1508CD84228F0E8900A8B51A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD83228F0E8900A8B51A /* DetailViewModel.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		03FB2411F244039228706D33 /* Pods-PDContactListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDContactListTests.release.xcconfig"; path = "Target Support Files/Pods-PDContactListTests/Pods-PDContactListTests.release.xcconfig"; sourceTree = "<group>"; };
+		150448AD22917404000D6216 /* PDNetworkResponseTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDNetworkResponseTranslator.swift; sourceTree = "<group>"; };
 		1508CD7F228EFEC200A8B51A /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		1508CD81228F022700A8B51A /* StubData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubData.swift; sourceTree = "<group>"; };
 		1508CD83228F0E8900A8B51A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				15629B4C22882D5500821ADD /* Person.swift */,
 				15629B4E2288300200821ADD /* PersonTranslator.swift */,
+				150448AD22917404000D6216 /* PDNetworkResponseTranslator.swift */,
 				15AD0BA62288583C00D7E037 /* PDNetworkResponse.swift */,
 			);
 			path = Model;
@@ -518,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1508CD84228F0E8900A8B51A /* DetailViewModel.swift in Sources */,
+				150448AE22917404000D6216 /* PDNetworkResponseTranslator.swift in Sources */,
 				15AD0BD7228D91E600D7E037 /* ErrorLogger.swift in Sources */,
 				15629B4D22882D5500821ADD /* Person.swift in Sources */,
 				15629B4F2288300200821ADD /* PersonTranslator.swift in Sources */,

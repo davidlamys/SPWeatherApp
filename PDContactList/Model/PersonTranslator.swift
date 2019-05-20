@@ -10,16 +10,11 @@ import Foundation
 
 struct PersonTranslator {
     static func translateFromNetworkResponse(data: Data) -> Result<[Person], Error> {
-        do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let response = try decoder.decode(PDNetworkResponse.self, from: data)
-            let persons = response.data
-            return Result.success(persons)
-            
-        } catch let err {
-            return Result.failure(err)
-        }
+        return PDNetworkResponseTranslator
+            .translateFromNetworkResponse(data: data)
+            .map({
+                $0.data ?? []
+            })
     }
     
     static func translateFromUserDefaults(data: Data) -> Result<[Person], Error> {
