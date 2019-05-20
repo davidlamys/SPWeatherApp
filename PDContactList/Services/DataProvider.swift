@@ -48,7 +48,10 @@ struct DataProvider: DataProviderType {
                 self.getContactListFromLocal(completion: completion)
             case .success(let response):
                 if let persons = response.data {
-                    self.localStorageProvider.saveContactList(data: persons)
+                    if startIndex == 0 {
+                        self.localStorageProvider.deleteContactList()
+                    }
+                    self.localStorageProvider.upsertContactList(data: persons)
                     let hasMoreItems = (response.hasMoreItems)
                     completion(.successFromNetwork(persons: persons, hasMoreItems: hasMoreItems))
                 } else if response.hasReachedRateLimit {

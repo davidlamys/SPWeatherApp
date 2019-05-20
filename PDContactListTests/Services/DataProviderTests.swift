@@ -29,12 +29,13 @@ class DataProviderTests: XCTestCase {
         localStorageProviderMock.reset()
     }
     
-    func testWhenFetchingContactListUnderGoodNetwork() {
+    func testWhenFetchingFirstPageContactListUnderGoodNetwork() {
         networkClientStub.setupForGetContactListUnderGoodNetwork()
         let expectation = XCTestExpectation(description: "Calling stub network client")
 
         subject.fetchContactLists(startIndex: 0) { resultType in
-            assert(self.localStorageProviderMock.saveContactListCalledWithData == stubPayload)
+            assert(self.localStorageProviderMock.upsertContactListCalledWithData == stubPayload)
+            assert(self.localStorageProviderMock.deleteContactListCalled)
             expectation.fulfill()
         }
         
@@ -42,6 +43,19 @@ class DataProviderTests: XCTestCase {
         
     }
     
+    func testWhenFetchingSecondPageContactListUnderGoodNetwork() {
+        networkClientStub.setupForGetContactListUnderGoodNetwork()
+        let expectation = XCTestExpectation(description: "Calling stub network client")
+        
+        subject.fetchContactLists(startIndex: limit) { resultType in
+            assert(self.localStorageProviderMock.upsertContactListCalledWithData == stubPayload)
+            assert(self.localStorageProviderMock.deleteContactListCalled == false)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5.0)
+        
+    }
     func testWhenFetchingContactListWithNetworkError() {
         networkClientStub.setupForNetworkError()
         localStorageProviderMock.setupStorageWithStubList()
@@ -49,7 +63,7 @@ class DataProviderTests: XCTestCase {
         
         subject.fetchContactLists(startIndex: 0) { resultType in
             assert(self.localStorageProviderMock.getContactListCalled == true)
-            assert(self.localStorageProviderMock.saveContactListCalledWithData == nil)
+            assert(self.localStorageProviderMock.upsertContactListCalledWithData == nil)
             expectation.fulfill()
         }
         

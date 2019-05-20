@@ -10,7 +10,8 @@ import Foundation
 
 protocol LocalStorageProviderType {
     func getContactListFromLocal(completion: @escaping (([Person]) -> Void))
-    func saveContactList(data: [Person])
+    func upsertContactList(data: [Person])
+    func deleteContactList()
     func getImage(hash: String, completion: @escaping((Data?) -> Void))
     func saveImage(hash: String, data: Data)
 }
@@ -50,7 +51,7 @@ class LocalStorageProvider: LocalStorageProviderType {
         }
     }
     
-    func saveContactList(data list: [Person]) {
+    func upsertContactList(data list: [Person]) {
         let result = PersonTranslator.translateToData(from: list)
         switch result {
         case .success(let data):
@@ -59,6 +60,10 @@ class LocalStorageProvider: LocalStorageProviderType {
         case .failure(let error):
             logError(error)
         }
+    }
+    
+    func deleteContactList() {
+        defaults.set(nil, forKey: "SavedList")
     }
     
     // MARK: Image
