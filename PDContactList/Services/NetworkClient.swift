@@ -9,16 +9,17 @@
 import Foundation
 import Alamofire
 
+let limit:Int = 500
 let pipedriveAPIKey = Bundle.main.infoDictionary?["PipedriveAPIKey"] as! String
 
 enum RequestType {
-    case fetchContactList
+    case fetchContactList(startIndex: Int)
     case fetchGravatar(hash: String)
     
     var baseURL: String {
         switch self {
-        case .fetchContactList:
-            return "https://api.pipedrive.com/v1/persons?api_token="
+        case .fetchContactList(let startIndex):
+            return "https://api.pipedrive.com/v1/persons?start=\(startIndex)&sort=name&limit=\(limit)&api_token="
         case .fetchGravatar:
             return "https://www.gravatar.com/avatar/%@?s=200&r=pg"
         }

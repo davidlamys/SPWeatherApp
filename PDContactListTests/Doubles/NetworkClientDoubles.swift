@@ -19,7 +19,13 @@ class NetworkClientStub: NetworkClientType {
     }
     
     func setupForGetContactListUnderGoodNetwork() {
-        result = stubPayload
+        let response = PDNetworkResponse(success: true,
+                                         data: stubPayload,
+                                         additionalData: nil,
+                                         error: nil,
+                                         errorCode: nil,
+                                         redirectUrl: nil)
+        result = response
         error = nil
     }
     

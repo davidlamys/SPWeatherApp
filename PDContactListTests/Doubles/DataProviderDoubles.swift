@@ -14,6 +14,8 @@ class DataProviderStub: DataProviderType {
     private var dataSource: DataSource!
     private var payload = [Person]()
     
+    private var resultType: FetchContactListResultType!
+    
     var imageLocalFetchCompletion: ((Data?) -> Void)?
     var imageNetworkFetchCompletion: ((Data?) -> Void)?
     
@@ -23,22 +25,19 @@ class DataProviderStub: DataProviderType {
     }
     
     func setupForGoodNetwork() {
-        payload = stubPayload
-        dataSource = .network
+        resultType = .successFromNetwork(persons: stubPayload, hasMoreItems: false)
     }
     
     func setupForGoodNetworkWithNoData() {
-        payload = [Person]()
-        dataSource = .network
+        resultType = .successFromNetwork(persons: [], hasMoreItems: false)
     }
     
     func setupForBadNeworkWithNoLocalData() {
-        payload = [Person]()
-        dataSource = .local
+        resultType = .fallbackFromLocalStorage(persons: [])
     }
     
-    func fetchContactLists(completion: @escaping(([Person], DataSource) -> Void)) {
-        completion(payload, dataSource)
+    func fetchContactLists(startIndex: Int, completion: @escaping ((FetchContactListResultType) -> Void)) {
+        completion(resultType)
     }
     
     func fetchImage(imageHash: String,

@@ -16,6 +16,7 @@ protocol MainViewModelType {
 class MainViewModel: MainViewModelType {
     weak var view: MainViewControllerType!
     var dataProvider: DataProviderType!
+    var nextIndex: Int = 0
     
     init(view: MainViewControllerType,
          dataProvider: DataProviderType = DataProvider()) {
@@ -24,21 +25,32 @@ class MainViewModel: MainViewModelType {
     }
     
     func viewDidLoad() {
+        fetchContactList()
+    }
+    private func fetchContactList() {
         view.setupView(state: .loading)
-        dataProvider.fetchContactLists { [weak self] (result, dataSource) in
+        dataProvider.fetchContactLists(startIndex: nextIndex) { [weak self] result in
             guard let self = self else {
                 return
             }
-            switch (result.isEmpty, dataSource) {
-            case (true, .local):
-                self.view.setupView(state: .emptyState)
-            case (true, .network):
-                self.view.setupView(state: .displayWelcomeMessage)
-            case (false, .network):
-                self.view.setupView(state: .loadedFromNetwork(persons: result, hasMoreItems: true))
-            case (false, .local):
-                self.view.setupView(state: .loadedFromLocalStorage(persons: result))
+            switch result {
+            case .fallbackFromLocalStorage(let payload):
+                if payload.isEmpty {
+                    self.view.setupView(state: .emptyState)
+                } else {
+                    self.view.setupView(state: .loadedFromLocalStorage(persons: payload))
+                }
+            case .successFromNetwork(let payload, let hasMoreItems):
+                self.nextIndex += limit
+                if payload.isEmpty {
+                    self.view.setupView(state: .displayWelcomeMessage)
+                } else {
+                    self.view.setupView(state: .loadedFromNetwork(persons: payload, hasMoreItems: hasMoreItems))
+                }
+            case .accountError(let redirecURL):
+                return
             }
         }
     }
+
 }

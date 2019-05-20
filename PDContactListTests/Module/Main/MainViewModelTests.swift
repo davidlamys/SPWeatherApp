@@ -28,11 +28,9 @@ class MainViewModelTests: XCTestCase {
        
         //WHEN
         subject.viewDidLoad()
-        
-        XCTFail("pending refactoring to accommodate more states")
         // THEN
         let firstState = MainViewState.loading
-        let finalState = MainViewState.loadedFromNetwork(persons: stubPayload, hasMoreItems: true)
+        let finalState = MainViewState.loadedFromNetwork(persons: stubPayload, hasMoreItems: false)
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
     }
     

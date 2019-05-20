@@ -33,9 +33,7 @@ class DataProviderTests: XCTestCase {
         networkClientStub.setupForGetContactListUnderGoodNetwork()
         let expectation = XCTestExpectation(description: "Calling stub network client")
 
-        subject.fetchContactLists { (person, dataSource) in
-            assert(person == stubPayload)
-            assert(dataSource == .network)
+        subject.fetchContactLists(startIndex: 0) { resultType in
             assert(self.localStorageProviderMock.saveContactListCalledWithData == stubPayload)
             expectation.fulfill()
         }
@@ -49,9 +47,7 @@ class DataProviderTests: XCTestCase {
         localStorageProviderMock.setupStorageWithStubList()
         let expectation = XCTestExpectation(description: "Calling stub network client")
         
-        subject.fetchContactLists { (person, dataSource) in
-            assert(person == stubPayload)
-            assert(dataSource == .local)
+        subject.fetchContactLists(startIndex: 0) { resultType in
             assert(self.localStorageProviderMock.getContactListCalled == true)
             assert(self.localStorageProviderMock.saveContactListCalledWithData == nil)
             expectation.fulfill()
