@@ -28,6 +28,8 @@ protocol DataProviderType {
 
 struct DataProvider: DataProviderType {
     
+    typealias fetchContactListHandler = ((FetchContactListResultType) -> Void)
+    
     let clientType: NetworkClientType
     let localStorageProvider: LocalStorageProviderType
     
@@ -37,8 +39,25 @@ struct DataProvider: DataProviderType {
         self.localStorageProvider = localStorageProvider
     }
     
+    fileprivate func handleSuccessResponse(_ response: (PDNetworkResponse),
+                                           startIndex: Int,
+                                           completion: @escaping fetchContactListHandler) {
+        if let persons = response.data {
+            if startIndex == 0 {
+                self.localStorageProvider.deleteContactList()
+            }
+            self.localStorageProvider.insertContactList(data: persons)
+            let hasMoreItems = (response.hasMoreItems)
+            completion(.successFromNetwork(persons: persons, hasMoreItems: hasMoreItems))
+        } else if response.hasReachedRateLimit {
+            print("has reached rate limit")
+        } else {
+            print(response)
+        }
+    }
+    
     func fetchContactLists(startIndex: Int = 0,
-                           completion: @escaping ((FetchContactListResultType) -> Void)) {
+                           completion: @escaping fetchContactListHandler) {
         clientType.request(request: .fetchContactList(startIndex: startIndex),
                        translator: PDNetworkResponseTranslator.translateFromNetworkResponse) { result in
             precondition(Thread.isMainThread == false)
@@ -47,18 +66,9 @@ struct DataProvider: DataProviderType {
                 logError(error)
                 self.getContactListFromLocal(completion: completion)
             case .success(let response):
-                if let persons = response.data {
-                    if startIndex == 0 {
-                        self.localStorageProvider.deleteContactList()
-                    }
-                    self.localStorageProvider.insertContactList(data: persons)
-                    let hasMoreItems = (response.hasMoreItems)
-                    completion(.successFromNetwork(persons: persons, hasMoreItems: hasMoreItems))
-                } else if response.hasReachedRateLimit {
-                    print("has reached rate limit")
-                } else {
-                    print(response)
-                }
+                self.handleSuccessResponse(response,
+                                           startIndex: startIndex,
+                                           completion: completion)
             }
         }
     }
