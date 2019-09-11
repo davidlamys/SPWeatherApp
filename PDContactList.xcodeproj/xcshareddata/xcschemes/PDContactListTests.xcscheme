@@ -40,6 +40,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "153F3DCD228328930006D614"
+            BuildableName = "PDContactListTests.xctest"
+            BlueprintName = "PDContactListTests"
+            ReferencedContainer = "container:PDContactList.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
