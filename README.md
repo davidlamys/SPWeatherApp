@@ -1,80 +1,85 @@
 # Scenario #
-Build a simple master-detail application listing people in your Pipedrive account (using the /persons endpoint)
+You need to implement an app that:
+● Reads JSON from a publicly available REST API endpoint
+● Parses it and shows the contents in a table view or collection view
+● Tapping on a table or collection view item shows a detailed view of that item
+● Persists the contents of the JSON data locally, so if the app is used without an
+Internet connection, it will show previously downloaded content. If there is no internet
+and no previously available data, please display an error in a user friendly way.
+● Compiles and runs using the latest App Store version of Xcode.
+● Written in Swift only
 
-- perform the http requests, map the received structure to model objects;
-- optionally persist model objects locally and use them when you can't fetch data from the API;
-- display people one person per row, use names as titles;
-- tapping on a person should open the detail view, which has an avatar (use Gravatar as a source) and a few additional attributes of your own choosing;
-- bonus points for adding paginated fetching.
+What we don’t want to see:
+● Overengineering your code
+● Massive view controller
+● Lack of unit testing
+● Over-reliance on third party libraries
+● Persisting data in UserDefaults
 
 Initial Research
-- Gravatar API: https://www.gravatar.com/avatar/{md5 hash of lowercase email }?s=200&r=pg eg: b5f6c2a999a22d0204532a6ede7ba92d
-    - potential solution: https://stackoverflow.com/a/32166735
+- Based on the API suggested, the simplest way to  illustrate this is to build a simple news reader app. The master list shall display list of story titles, and the detail page can then display the body of the message. We can consider displaying the posts if time permits.
 
-## Instructions ##
-To use your test account, simply replace the field "PipedriveAPIKey" in the info.plist
-
-## Plan 9 May 2019 ##
-Since Pipedrive follows MVVM-C architecture, this project can be written in similar ways too.
+## Plan 26 Sep 2019 ##
 
 ### Consideration: ###
-Based on the nature of the theory questions, it is possible that the application built will be stressed test under an account with a lot of contacts.
-Using a function (which I don't understand) to create md5 hash seems insecure and scary, but in the interest of time, it might be the best choice.
+As I'm a believer of a repository pattern, and I'm not a adept CoreData developer, I'd continue using the repository pattern despite the fact that it negates the advantages of CoreData as an object graph.
 
 ### Personal Objectives: ###
-TDD with plain XCTests  [x ]
-Experiment with SwiftGen (if time permits) to explore localisation
+Experiment with Integration test with plain ol' XCUITest [ ]
+Replace Alamofire with URLSessionn if time permits [ ]
 
-### Initial Design: ###
-
-#### Phase 1: Basic app: upon launching, fetch all contacts and populate screen, use userDefaults to store response as JSON and images as NSData ####
+#### Phase 1: Basic app: upon launching, fetch all posts and populate screen ####
 
 Master Scene
-  - upon launch, call dataProvider [x ]
+  - upon launch, call dataProvider [ ]
     - if dataProvider returns empty array from network
-      - present placeholder label [x ]
-    - elseif dataProvider returns empty array from local
-      - present placeholder label [x ]
+      - present placeholder label [ ]
     - else
-      - update master contact list [x ]
-  - upon tapping [x ]
-    - pass contact object to detail scene [x ]
+      - update master list of posts [ ]
+  - upon tapping [ ]
+    - pass post object to detail scene [ ]
 
 Detail Scene
-  - populate labels [ x]
-  - upon loading: call dataProvider for avatar [x ]
-    - update image when ready [x ]
+  - populate story [ ]
 
 DataProvider
-  - expose 2 functions for view models to call to fetch data [ x]
-  - build network requests [x ]
-    - Call network NetworkClient [ x]
-      - if network succeed [ x]
-        - parse response [x ]
-        - store response [ x ]
-      - else return local data [ x ]
+  - expose function for view models to call to fetch data [ ]
+  - build network requests [ ]
+    - Call network NetworkClient [ ]
+      - if network succeed [ ]
+        - parse response [ ]
 
 NetworkClient - Alamofire
-  - Call ContactList API [ x]
-  - Call Gravatar API [ x]
+  - Call GetPost API [ ]
   
-Create POSO Person Object [x ]
-Create POSO Person Translator Object [x ]
+Create POSO Post Object [  ]
+Create POSO Post Translator Object [  ]
 
-#### Phase 2: Implement Pagination UI ####
+#### Phase 2: Store posts upon successful request ####
+DataProvider
+    - given network call is successful, invoke localStorageProvider to save object [ ]
+
+LocalStorageProvider
+    - given POSO Post Object, insert CoreDataObjects into DB [ ]
+
+#### Phase 3: Display posts from stored posts  ####
+DataProvider
+    - given network call is unsuccessful, invoke localStorageProvider to retrieve object [ ]
+
+LocalStorageProvider
+    - retrieve core data object [ ]
+    - convert core data object to POSO object [ ]
+
 Master Scene
-  - when user reach bottom of page and tap on fetch more
-    - call data provider [x ]
-DataProvider
-  - modify method to build network request [x ]
-  
-  #### Phase 2.5 : Implement Pagination UI ####
-  Automatically fetch next page when last page is received [x]
-  Modify local storage code to implement insertion[x ]
+- upon launch, call dataProvider [ ]
+  - if dataProvider returns empty array from local storage [ ]
+    - present placeholder label [ ]
+  - else
+    - update master list of posts [ ]
 
-#### Phase 3: Implement more UI Feedback ####
+#### Phase 4: Implement more UI Feedback ####
 DataProvider
-  - when returning stored objects, notify caller [x ]
+  - when returning stored objects, notify caller [ ]
 
 Master Scene & Detail Scene
   - present loading indicators when making request to data provider [ ]
@@ -84,18 +89,4 @@ Master Scene & Detail Scene
   
   possibly explore: https://github.com/ashleymills/Reachability.swift
 
-#### Phase 4: Implement CoreData ObjectModels ####
-DataManager
-  - create date models and relationships [ ]
-  - transform CoreData Objects to POSO and vice versa [ ]
-  - expose API to store CoreData Objects when receiving POSO [ ]
-  - expose API to fetch CoreData Object [ ]
-  - delete associated image object when user is deleted [ ]
-
-## Retrospective 20 May ##
-- Could have saved alot more time if I had used a library to populate the avatar
-- Spikes are really useful when there is not much existing structure
-- Learnt codable which is powerful and flexible
-- The decision to 'save' time intially by rolling out local persistence with userDefaults instead of a proper DB Layer proves to be costly for the use experience as data size grows. 
-- Could have done a better job breaking down Phase 1 into more steps.
-- XCTest may seem to run faster but it is definitely harder to be descriptive and to maintain readability
+## Retrospective 27 Sep 2019 ##
