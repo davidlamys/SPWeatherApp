@@ -47,6 +47,10 @@
 		15AD0BD3228D838D00D7E037 /* LocalStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BD2228D838D00D7E037 /* LocalStorageProvider.swift */; };
 		15AD0BD5228D862400D7E037 /* LocalStorageProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BD4228D862400D7E037 /* LocalStorageProviderDoubles.swift */; };
 		15AD0BD7228D91E600D7E037 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BD6228D91E600D7E037 /* ErrorLogger.swift */; };
+		15E5AB57233CC2EC00FF16F4 /* StubPostsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */; };
+		15E5AB59233CC6E600FF16F4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5AB58233CC6E600FF16F4 /* Post.swift */; };
+		15E5AB5B233CC73F00FF16F4 /* PostTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5AB5A233CC73F00FF16F4 /* PostTranslator.swift */; };
+		15E5AB5D233CC87F00FF16F4 /* PostTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5AB5C233CC87F00FF16F4 /* PostTranslatorTests.swift */; };
 		A89D86CD38D035C41484DA80 /* Pods_TWNewsReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE3EA1A6023B0B07B450F576 /* Pods_TWNewsReader.framework */; };
 		C7E626F76E631F10958B84D8 /* Pods_TWNewsReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E807DD24BF140761C05526C /* Pods_TWNewsReaderTests.framework */; };
 /* End PBXBuildFile section */
@@ -108,6 +112,10 @@
 		15AD0BD2228D838D00D7E037 /* LocalStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageProvider.swift; sourceTree = "<group>"; };
 		15AD0BD4228D862400D7E037 /* LocalStorageProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageProviderDoubles.swift; sourceTree = "<group>"; };
 		15AD0BD6228D91E600D7E037 /* ErrorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
+		15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StubPostsResponse.json; sourceTree = "<group>"; };
+		15E5AB58233CC6E600FF16F4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		15E5AB5A233CC73F00FF16F4 /* PostTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTranslator.swift; sourceTree = "<group>"; };
+		15E5AB5C233CC87F00FF16F4 /* PostTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTranslatorTests.swift; sourceTree = "<group>"; };
 		23AECF58D0AB82E9B16AD866 /* Pods-PDContactList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PDContactList.release.xcconfig"; path = "Target Support Files/Pods-PDContactList/Pods-PDContactList.release.xcconfig"; sourceTree = "<group>"; };
 		2E807DD24BF140761C05526C /* Pods_TWNewsReaderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TWNewsReaderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7DA39BC57FFDBFA63C0998 /* Pods-TWNewsReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TWNewsReader.release.xcconfig"; path = "Target Support Files/Pods-TWNewsReader/Pods-TWNewsReader.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				15629B502288305400821ADD /* StubPDResponse.json */,
+				15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */,
 				153F3DD4228328930006D614 /* Info.plist */,
 				15AD0BBF228CE6DF00D7E037 /* Doubles */,
 				15629B532288306C00821ADD /* Helper */,
@@ -259,6 +268,8 @@
 				15629B4E2288300200821ADD /* PersonTranslator.swift */,
 				150448AD22917404000D6216 /* TWNetworkResponseTranslator.swift */,
 				15AD0BA62288583C00D7E037 /* NetworkResponse.swift */,
+				15E5AB58233CC6E600FF16F4 /* Post.swift */,
+				15E5AB5A233CC73F00FF16F4 /* PostTranslator.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				15629B582288313D00821ADD /* PersonTranslatorTests.swift */,
+				15E5AB5C233CC87F00FF16F4 /* PostTranslatorTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -453,6 +465,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E5AB57233CC2EC00FF16F4 /* StubPostsResponse.json in Resources */,
 				15629B512288305400821ADD /* StubPDResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,7 +556,9 @@
 				15AD0BA72288583C00D7E037 /* NetworkResponse.swift in Sources */,
 				1551B39C228EE8A8004EE659 /* DetailViewController.swift in Sources */,
 				15975E9D23293BF200D7F65B /* main.swift in Sources */,
+				15E5AB5B233CC73F00FF16F4 /* PostTranslator.swift in Sources */,
 				153F3DBB228328920006D614 /* AppDelegate.swift in Sources */,
+				15E5AB59233CC6E600FF16F4 /* Post.swift in Sources */,
 				15AD0BAA2289A55200D7E037 /* MainViewController.swift in Sources */,
 				1551B3A2228EE912004EE659 /* ImageViewState.swift in Sources */,
 			);
@@ -554,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1508CD88228F18C600A8B51A /* DetailViewModelDoubles.swift in Sources */,
+				15E5AB5D233CC87F00FF16F4 /* PostTranslatorTests.swift in Sources */,
 				15629B592288313D00821ADD /* PersonTranslatorTests.swift in Sources */,
 				1508CD82228F022700A8B51A /* StubData.swift in Sources */,
 				1508CD8C228F1DCD00A8B51A /* DetailViewControllerDoubles.swift in Sources */,

@@ -10,7 +10,8 @@ import Foundation
 
 public class ResponseLoader {
     static func loadLocalResponse(file: String) -> Data {
-        guard let url = Bundle.init(identifier: "davidlam.TWNewsReaderTests")!.url(forResource: file, withExtension: "json"),
+        let bundle = Bundle(for: ResponseLoader.self)
+        guard let url = bundle.url(forResource: file, withExtension: "json"),
             let data = try? Data(contentsOf: url) else {
                 return Data()
         }
