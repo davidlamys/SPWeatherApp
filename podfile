@@ -1,12 +1,12 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'PDContactList' do
+target 'TWNewsReader' do
   use_frameworks!
 
-  # Pods for PDContactList
+  # Pods for TWNewsReader
 	pod 'Alamofire', '~> 5.0.0-beta.5'
-  target 'PDContactListTests' do
+  target 'TWNewsReaderTests' do
     inherit! :search_paths
     # Pods for testing
   end

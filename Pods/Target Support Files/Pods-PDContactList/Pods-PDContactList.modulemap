@@ -1,6 +1,0 @@
-framework module Pods_PDContactList {
-  umbrella header "Pods-PDContactList-umbrella.h"
-
-  export *
-  module * { export * }
-}
