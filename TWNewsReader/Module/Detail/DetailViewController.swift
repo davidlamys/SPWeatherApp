@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DetailViewControllerType: class {
-    func setupView(person: Person)
+    func setupView(item: Item)
 }
 
 final class DetailViewController: UIViewController {
@@ -38,26 +38,26 @@ final class DetailViewController: UIViewController {
 
 extension DetailViewController: DetailViewControllerType {
 
-    func setupView(person: Person) {
+    func setupView(item: Item) {
         if Thread.isMainThread {
-            setupViewOnMainThread(person: person)
+            setupViewOnMainThread(item: item)
         } else {
             DispatchQueue.main.async {
-                self.setupViewOnMainThread(person: person)
+                self.setupViewOnMainThread(item: item)
             }
         }
     }
 
-    private func setupViewOnMainThread(person: Person) {
+    private func setupViewOnMainThread(item: Item) {
         precondition(Thread.isMainThread)
-        nameLabel.text = person.name
-        organizationLabel.text = person.orgId?.name
-        phoneLabel.text = person.primaryPhone?.value
-        emailLabel.text = person.primaryEmail?.value
+        nameLabel.text = item.name
+        organizationLabel.text = item.orgId?.name
+        phoneLabel.text = item.primaryPhone?.value
+        emailLabel.text = item.primaryEmail?.value
 
-        organizationStackView.isHidden = (person.orgId == nil)
-        phoneStackView.isHidden = (person.primaryPhone?.value == nil)
-        emailStackView.isHidden = (person.primaryEmail?.value == nil)
+        organizationStackView.isHidden = (item.orgId == nil)
+        phoneStackView.isHidden = (item.primaryPhone?.value == nil)
+        emailStackView.isHidden = (item.primaryEmail?.value == nil)
     }
 
 }

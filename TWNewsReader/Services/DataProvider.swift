@@ -14,8 +14,8 @@ enum DataSource {
 }
 
 enum FetchContactListResultType {
-    case successFromNetwork(persons: [Person], hasMoreItems: Bool)
-    case fallbackFromLocalStorage(persons: [Person])
+    case successFromNetwork(items: Items, hasMoreItems: Bool)
+    case fallbackFromLocalStorage(items: Items)
 }
 
 protocol DataProviderType {
@@ -45,7 +45,7 @@ struct DataProvider: DataProviderType {
             }
             self.localStorageProvider.insertContactList(data: persons)
             let hasMoreItems = (response.hasMoreItems)
-            completion(.successFromNetwork(persons: persons, hasMoreItems: hasMoreItems))
+            completion(.successFromNetwork(items: persons, hasMoreItems: hasMoreItems))
         } else if response.hasReachedRateLimit {
             print("has reached rate limit")
         } else {
@@ -72,7 +72,7 @@ struct DataProvider: DataProviderType {
 
     private func getContactListFromLocal(completion: @escaping ((FetchContactListResultType) -> Void)) {
         localStorageProvider.getContactListFromLocal { (personsFromLocal) in
-            completion(.fallbackFromLocalStorage(persons: personsFromLocal))
+            completion(.fallbackFromLocalStorage(items: personsFromLocal))
         }
     }
 

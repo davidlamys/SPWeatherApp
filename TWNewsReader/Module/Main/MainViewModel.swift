@@ -50,14 +50,14 @@ class MainViewModel: MainViewModelType {
                 if payload.isEmpty {
                     self.view.setupView(state: .emptyState)
                 } else {
-                    self.view.setupView(state: .loadedFromLocalStorage(persons: payload))
+                    self.view.setupView(state: .loadedFromLocalStorage(items: payload))
                 }
             case .successFromNetwork(let payload, let hasMoreItems):
                 self.nextIndex += limit
                 if payload.isEmpty {
                     self.view.setupView(state: .displayWelcomeMessage)
                 } else {
-                    self.view.setupView(state: .loadedFromNetwork(persons: payload, hasMoreItems: hasMoreItems))
+                    self.view.setupView(state: .loadedFromNetwork(items: payload, hasMoreItems: hasMoreItems))
                     if hasMoreItems {
                         self.fetchContactList()
                     }

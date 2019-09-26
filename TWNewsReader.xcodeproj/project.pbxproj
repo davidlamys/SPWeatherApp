@@ -29,6 +29,7 @@
 		15629B512288305400821ADD /* StubPDResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 15629B502288305400821ADD /* StubPDResponse.json */; };
 		15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B542288307B00821ADD /* CannedResponseLoader.swift */; };
 		15629B592288313D00821ADD /* PersonTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B582288313D00821ADD /* PersonTranslatorTests.swift */; };
+		157516F9233D245C00EF7E3B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157516F8233D245C00EF7E3B /* Global.swift */; };
 		15975E9D23293BF200D7F65B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15975E9C23293BF200D7F65B /* main.swift */; };
 		15AD0BA72288583C00D7E037 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BA62288583C00D7E037 /* NetworkResponse.swift */; };
 		15AD0BAA2289A55200D7E037 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BA92289A55200D7E037 /* MainViewController.swift */; };
@@ -94,6 +95,7 @@
 		15629B502288305400821ADD /* StubPDResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StubPDResponse.json; sourceTree = "<group>"; };
 		15629B542288307B00821ADD /* CannedResponseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannedResponseLoader.swift; sourceTree = "<group>"; };
 		15629B582288313D00821ADD /* PersonTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTranslatorTests.swift; sourceTree = "<group>"; };
+		157516F8233D245C00EF7E3B /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		15975E9C23293BF200D7F65B /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		15AD0BA62288583C00D7E037 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		15AD0BA92289A55200D7E037 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				153F3DC9228328930006D614 /* Info.plist */,
 				15975E9C23293BF200D7F65B /* main.swift */,
+				157516F8233D245C00EF7E3B /* Global.swift */,
 				153F3DBA228328920006D614 /* AppDelegate.swift */,
 				153F3DC4228328930006D614 /* Assets.xcassets */,
 				153F3DC6228328930006D614 /* LaunchScreen.storyboard */,
@@ -561,6 +564,7 @@
 				15E5AB59233CC6E600FF16F4 /* Post.swift in Sources */,
 				15AD0BAA2289A55200D7E037 /* MainViewController.swift in Sources */,
 				1551B3A2228EE912004EE659 /* ImageViewState.swift in Sources */,
+				157516F9233D245C00EF7E3B /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

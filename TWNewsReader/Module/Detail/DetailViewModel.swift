@@ -16,18 +16,18 @@ protocol DetailViewModelType {
 class DetailViewModel: DetailViewModelType {
     weak var view: DetailViewControllerType!
     let dataProvider: DataProviderType!
-    let person: Person
+    let item: Item
 
     init(view: DetailViewControllerType,
          dataProvider: DataProviderType = DataProvider(),
-         person: Person) {
+         item: Item) {
         self.view = view
         self.dataProvider = dataProvider
-        self.person = person
+        self.item = item
     }
 
     func viewDidLoad() {
-        view.setupView(person: person)
+        view.setupView(item: item)
     }
 
 }

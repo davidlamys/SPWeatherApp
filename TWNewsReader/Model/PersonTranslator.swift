@@ -9,7 +9,7 @@
 import Foundation
 
 struct PersonTranslator {
-    static func translateFromNetworkResponse(data: Data) -> Result<[Person], Error> {
+    static func translateFromNetworkResponse(data: Data) -> Result<Items, Error> {
         return TWNetworkResponseTranslator
             .translateFromNetworkResponse(data: data)
             .map({
@@ -17,11 +17,11 @@ struct PersonTranslator {
             })
     }
 
-    static func translateFromUserDefaults(data: Data) -> Result<[Person], Error> {
+    static func translateFromUserDefaults(data: Data) -> Result<Items, Error> {
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let persons = try decoder.decode([Person].self, from: data)
+            let persons = try decoder.decode(Items.self, from: data)
             return Result.success(persons)
 
         } catch let err {
@@ -29,7 +29,7 @@ struct PersonTranslator {
         }
     }
 
-    static func translateToData(from array: [Person]) -> Result<Data, Error> {
+    static func translateToData(from array: Items) -> Result<Data, Error> {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
         do {

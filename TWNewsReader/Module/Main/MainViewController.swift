@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var loadingStatusUpdateBanner: UIView!
     @IBOutlet weak var loadingStatusLabel: UILabel!
 
-    private var persons: [Person] = []
+    private var items: Items = []
     var viewModel: MainViewModelType!
 
     @IBAction func fetchMoreTapped(sender: Any) {
@@ -89,7 +89,7 @@ extension MainViewController: MainViewControllerType {
             stateFeedbackLabel.text = Text.placeholderText.rawValue
 
         case .loading:
-            if persons.isEmpty {
+            if items.isEmpty {
                 tableView.isHidden = true
                 stateFeedbackLabel.text = Text.loadingText.rawValue
             } else {
@@ -100,11 +100,11 @@ extension MainViewController: MainViewControllerType {
 
         case .loadedFromNetwork(let payload, let hasMoreItems):
             tableView.isHidden = false
-            persons.append(contentsOf: payload)
+            items.append(contentsOf: payload)
             tableView.reloadData()
 
             title = String(format: Text.navigationTitle_DataFromNetwork.rawValue,
-                           persons.count)
+                           items.count)
             paginationButtonContainer.isHidden = !hasMoreItems
 
             loadingStatusUpdateBanner.isHidden = false
@@ -117,11 +117,11 @@ extension MainViewController: MainViewControllerType {
 
         case .loadedFromLocalStorage(let payload):
             tableView.isHidden = false
-            persons = payload
+            items = payload
             tableView.reloadData()
 
             title = String(format: Text.navigationTitle_DataFromLocal.rawValue,
-                           persons.count)
+                           items.count)
             paginationButtonContainer.isHidden = true
             navigationItem.leftBarButtonItem?.isEnabled = true
 
@@ -141,14 +141,14 @@ extension MainViewController: MainViewControllerType {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return persons.count
+        return items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {
             fatalError("cell is not configured")
         }
-        let person = persons[indexPath.row]
+        let person = items[indexPath.row]
         cell.textLabel?.text = person.name
         return cell
     }
@@ -157,10 +157,10 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //TODO: introduce coordinator if time permits
-        let person = persons[indexPath.row]
+        let person = items[indexPath.row]
         let viewController = UIViewController.make(viewController: DetailViewController.self)
         let detailViewModel = DetailViewModel(view: viewController,
-                                              person: person)
+                                              item: person)
         viewController.viewModel = detailViewModel
         navigationController?.pushViewController(viewController, animated: true)
     }

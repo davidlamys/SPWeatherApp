@@ -31,7 +31,7 @@ class MainViewModelTests: XCTestCase {
         subject.viewDidLoad()
         // THEN
         let firstState = MainViewState.loading
-        let finalState = MainViewState.loadedFromNetwork(persons: stubPayload, hasMoreItems: false)
+        let finalState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: false)
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
         // a succesful fetch should increase the index
         assert(subject.nextIndex - initialIndex == limit)
@@ -46,9 +46,9 @@ class MainViewModelTests: XCTestCase {
         subject.viewDidLoad()
         // THEN
         let firstState = MainViewState.loading
-        let intimediateState = MainViewState.loadedFromNetwork(persons: stubPayload, hasMoreItems: true)
+        let intimediateState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: true)
         let intimediateStateTwo = MainViewState.loading
-        let finalState = MainViewState.loadedFromNetwork(persons: stubPayload, hasMoreItems: false)
+        let finalState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: false)
 
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState,
                                                                  intimediateState,
@@ -97,7 +97,7 @@ class MainViewModelTests: XCTestCase {
         assert(dataProvider.fetchContactListCalledWithIndex == 0)
         // THEN
         let firstState = MainViewState.loading
-        let finalState = MainViewState.loadedFromNetwork(persons: stubPayload, hasMoreItems: false)
+        let finalState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: false)
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
         // a succesful fetch should increase the index
         assert(subject.nextIndex == limit)

@@ -10,7 +10,7 @@ import Foundation
 
 struct NetworkResponse: Codable {
     let success: Bool
-    let data: [Person]?
+    let data: Items?
     let additionalData: AdditionalData?
     let error: String?
     let errorCode: Int?

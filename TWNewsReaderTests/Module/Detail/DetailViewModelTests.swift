@@ -22,12 +22,12 @@ class DetailViewModelTests: XCTestCase {
         dataProvider = DataProviderStub()
         subject = DetailViewModel(view: detailViewControllerMock,
                                   dataProvider: dataProvider,
-                                  person: david)
+                                  item: david)
     }
 
     func testWhenViewDidLoadIsCalled_ShouldCallInvokeSetupWithPersonInViewController() {
         subject.viewDidLoad()
-        assert(detailViewControllerMock.setupViewCalledWithPerson == david)
+        assert(detailViewControllerMock.setupViewCalledWithItem == david)
     }
 
 }

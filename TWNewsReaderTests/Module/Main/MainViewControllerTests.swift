@@ -49,7 +49,7 @@ class MainViewControllerTests: XCTestCase {
     func testSetupForLoadingAfterInitialLoadScreen() {
         // WHEN
         subject.setupView(state: .loading)
-        subject.setupView(state: .loadedFromNetwork(persons: stubPayload, hasMoreItems: true))
+        subject.setupView(state: .loadedFromNetwork(items: stubPayload, hasMoreItems: true))
         subject.setupView(state: .loading)
 
         //THEN
@@ -62,7 +62,7 @@ class MainViewControllerTests: XCTestCase {
         // WHEN
         subject.setupView(state: .emptyState)
         subject.setupView(state: .loading)
-        subject.setupView(state: .loadedFromLocalStorage(persons: stubPayload))
+        subject.setupView(state: .loadedFromLocalStorage(items: stubPayload))
 
         // THEN
         assert(subject.tableView.isHidden == false)
@@ -86,7 +86,7 @@ class MainViewControllerTests: XCTestCase {
         // WHEN
         subject.setupView(state: .emptyState)
         subject.setupView(state: .loading)
-        subject.setupView(state: .loadedFromNetwork(persons: stubPayload, hasMoreItems: true))
+        subject.setupView(state: .loadedFromNetwork(items: stubPayload, hasMoreItems: true))
 
         // THEN
         assert(subject.tableView.isHidden == false)
@@ -110,7 +110,7 @@ class MainViewControllerTests: XCTestCase {
         // WHEN
         subject.setupView(state: .emptyState)
         subject.setupView(state: .loading)
-        subject.setupView(state: .loadedFromNetwork(persons: stubPayload, hasMoreItems: false))
+        subject.setupView(state: .loadedFromNetwork(items: stubPayload, hasMoreItems: false))
 
         // THEN
         assert(subject.tableView.isHidden == false)

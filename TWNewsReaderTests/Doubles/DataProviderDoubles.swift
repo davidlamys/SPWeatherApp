@@ -12,7 +12,7 @@ import Foundation
 class DataProviderStub: DataProviderType {
 
     private var dataSource: DataSource!
-    private var payload = [Person]()
+    private var payload = Items()
 
     private var stubResults = [FetchContactListResultType]()
 
@@ -26,20 +26,20 @@ class DataProviderStub: DataProviderType {
     }
 
     func setupForGoodNetwork() {
-        stubResults = [.successFromNetwork(persons: stubPayload, hasMoreItems: false)]
+        stubResults = [.successFromNetwork(items: stubPayload, hasMoreItems: false)]
     }
 
     func setupForGoodNetworkWithMultipageData() {
-        stubResults = [.successFromNetwork(persons: stubPayload, hasMoreItems: true),
-                      .successFromNetwork(persons: stubPayload, hasMoreItems: false)]
+        stubResults = [.successFromNetwork(items: stubPayload, hasMoreItems: true),
+                      .successFromNetwork(items: stubPayload, hasMoreItems: false)]
     }
 
     func setupForGoodNetworkWithNoData() {
-        stubResults = [.successFromNetwork(persons: [], hasMoreItems: false)]
+        stubResults = [.successFromNetwork(items: [], hasMoreItems: false)]
     }
 
     func setupForBadNeworkWithNoLocalData() {
-        stubResults = [.fallbackFromLocalStorage(persons: [])]
+        stubResults = [.fallbackFromLocalStorage(items: [])]
     }
 
     func fetchContactLists(startIndex: Int, completion: @escaping ((FetchContactListResultType) -> Void)) {

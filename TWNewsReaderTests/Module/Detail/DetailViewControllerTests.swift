@@ -35,7 +35,7 @@ class DetailViewControllerTests: XCTestCase {
                             phone: [stubPhone],
                             email: [stubEmail])
 
-        subject.setupView(person: person)
+        subject.setupView(item: person)
 
         assert(subject.nameLabel.text == "some name")
 
@@ -56,7 +56,7 @@ class DetailViewControllerTests: XCTestCase {
                             phone: [stubPhone],
                             email: [stubEmail])
 
-        subject.setupView(person: person)
+        subject.setupView(item: person)
 
         assert(subject.nameLabel.text == "some name")
 
@@ -77,7 +77,7 @@ class DetailViewControllerTests: XCTestCase {
                             phone: [],
                             email: [stubEmail])
 
-        subject.setupView(person: person)
+        subject.setupView(item: person)
 
         assert(subject.nameLabel.text == "some name")
 
@@ -98,7 +98,7 @@ class DetailViewControllerTests: XCTestCase {
                             phone: [stubPhone],
                             email: [])
 
-        subject.setupView(person: person)
+        subject.setupView(item: person)
 
         assert(subject.nameLabel.text == "some name")
 

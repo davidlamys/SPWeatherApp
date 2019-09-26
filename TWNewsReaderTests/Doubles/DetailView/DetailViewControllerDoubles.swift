@@ -11,14 +11,14 @@ import Foundation
 
 class DetailViewControllerMock: DetailViewControllerType {
     var setupViewCalledWithStates: [ImageViewState] = []
-    var setupViewCalledWithPerson: Person!
+    var setupViewCalledWithItem: Item!
 
     func setupView(state: ImageViewState) {
         setupViewCalledWithStates.append(state)
     }
 
-    func setupView(person: Person) {
-        setupViewCalledWithPerson = person
+    func setupView(item: Item) {
+        setupViewCalledWithItem = item
     }
 
 }
