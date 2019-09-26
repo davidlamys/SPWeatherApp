@@ -12,8 +12,6 @@ protocol LocalStorageProviderType {
     func getContactListFromLocal(completion: @escaping (([Person]) -> Void))
     func insertContactList(data: [Person])
     func deleteContactList()
-    func getImage(hash: String, completion: @escaping((Data?) -> Void))
-    func saveImage(hash: String, data: Data)
 }
 
 class LocalStorageProvider {
@@ -74,15 +72,5 @@ extension LocalStorageProvider: LocalStorageProviderType {
 
     func deleteContactList() {
         defaults.set(nil, forKey: Keys.getKeyForContactList())
-    }
-
-    // MARK: Image
-    func getImage(hash: String, completion: @escaping ((Data?) -> Void)) {
-        let savedData = defaults.object(forKey: Keys.getKeyForContactList()) as? Data
-        completion(savedData)
-    }
-
-    func saveImage(hash: String, data: Data) {
-        defaults.set(data, forKey: Keys.getKeyFor(imageHash: hash))
     }
 }

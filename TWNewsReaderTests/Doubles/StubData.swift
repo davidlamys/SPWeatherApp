@@ -20,12 +20,3 @@ let stubPayload = [
     Person(id: 1, name: "David", orgId: stubOrg, phone:[stubPhone], email: [stubEmail]),
     Person(id: 2, name: "Mirjam", orgId: stubOrg, phone:[], email: [])
 ]
-
-let stubImage: UIImage = #imageLiteral(resourceName: "Profile_avatar_placeholder_large")
-
-let stubImageData = #imageLiteral(resourceName: "Profile_avatar_placeholder_large").pngData()!
-
-let stubImageDataTwo: Data = {
-    let image = #imageLiteral(resourceName: "Profile_avatar_placeholder_large")
-    return image.jpegData(compressionQuality: 0.5)!
-}()

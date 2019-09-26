@@ -71,17 +71,4 @@ class DataProviderTests: XCTestCase {
 
     }
 
-    func testWhenFetchingImageUnderGoodNetwor() {
-        networkClientStub.setupForGetImageUnderGoodNetwork()
-        let expectation = XCTestExpectation(description: "Calling stub network client")
-
-        subject.fetchImage(imageHash: "somehash", localFetchCompletion: { _ in
-        }, networkFetchCompletion: { (data) in
-            assert(self.localStorageProviderMock.saveImageCalledWith == (hash: "somehash", data: stubImageData))
-            expectation.fulfill()
-        })
-
-        wait(for: [expectation], timeout: 5.0)
-    }
-
 }

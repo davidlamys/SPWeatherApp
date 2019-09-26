@@ -28,26 +28,6 @@ class DetailViewModel: DetailViewModelType {
 
     func viewDidLoad() {
         view.setupView(person: person)
-
-        guard let email = person.primaryEmail?.value else {
-            return
-        }
-        let hash = "some string"
-        view.setupView(state: .fetching)
     }
 
-    func localImageFetchCompletion(data: Data?) {
-        guard let data = data else {
-            return
-        }
-        view.setupView(state: .localData(data: data))
-    }
-
-    func networkImageFetchCompletion(data: Data?) {
-        if let data = data  {
-            view.setupView(state: .succeeded(data: data))
-        } else {
-            view.setupView(state: .failed)
-        }
-    }
 }

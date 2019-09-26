@@ -233,7 +233,6 @@
 			children = (
 				15629B502288305400821ADD /* StubPDResponse.json */,
 				153F3DD4228328930006D614 /* Info.plist */,
-				153F3DE12288194E0006D614 /* UtilitiesTests.swift */,
 				15AD0BBF228CE6DF00D7E037 /* Doubles */,
 				15629B532288306C00821ADD /* Helper */,
 				15629B522288306600821ADD /* Model */,
@@ -554,7 +553,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				153F3DE22288194E0006D614 /* UtilitiesTests.swift in Sources */,
 				1508CD88228F18C600A8B51A /* DetailViewModelDoubles.swift in Sources */,
 				15629B592288313D00821ADD /* PersonTranslatorTests.swift in Sources */,
 				1508CD82228F022700A8B51A /* StubData.swift in Sources */,

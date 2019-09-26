@@ -9,7 +9,6 @@
 import UIKit
 
 protocol DetailViewControllerType: class {
-    func setupView(state: ImageViewState)
     func setupView(person: Person)
 }
 
@@ -38,16 +37,6 @@ final class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: DetailViewControllerType {
-    func setupView(state: ImageViewState) {
-        if Thread.isMainThread {
-            setupViewOnMainThread(state: state)
-        } else {
-            DispatchQueue.main.async {
-                self.setupViewOnMainThread(state: state)
-            }
-        }
-
-    }
 
     func setupView(person: Person) {
         if Thread.isMainThread {
@@ -56,34 +45,6 @@ extension DetailViewController: DetailViewControllerType {
             DispatchQueue.main.async {
                 self.setupViewOnMainThread(person: person)
             }
-        }
-    }
-
-    private func setupViewOnMainThread(state: ImageViewState) {
-        precondition(Thread.isMainThread)
-        switch state {
-        case .localData(let data):
-            if hasSetImageFromNetwork == false,
-                let image = UIImage(data: data) {
-                profileImageView.image = image
-            }
-
-            if hasImageFetchHasFailed == false {
-                activityIndicatorView.startAnimating()
-                activityIndicatorView.isHidden = false
-            }
-        case .fetching:
-            activityIndicatorView.startAnimating()
-            activityIndicatorView.isHidden = false
-        case .succeeded(let data):
-            if let image = UIImage(data: data) {
-                profileImageView.image = image
-                hasSetImageFromNetwork = true
-            }
-            activityIndicatorView.stopAnimating()
-        case .failed:
-            hasImageFetchHasFailed = true
-            activityIndicatorView.stopAnimating()
         }
     }
 

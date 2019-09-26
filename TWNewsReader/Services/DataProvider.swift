@@ -21,9 +21,6 @@ enum FetchContactListResultType {
 protocol DataProviderType {
     func fetchContactLists(startIndex: Int,
                            completion: @escaping((FetchContactListResultType) -> Void))
-    func fetchImage(imageHash: String,
-                    localFetchCompletion: @escaping(Data?) -> Void,
-                    networkFetchCompletion: @escaping(Data?) -> Void)
 }
 
 struct DataProvider: DataProviderType {
@@ -77,27 +74,6 @@ struct DataProvider: DataProviderType {
         localStorageProvider.getContactListFromLocal { (personsFromLocal) in
             completion(.fallbackFromLocalStorage(persons: personsFromLocal))
         }
-    }
-
-    func fetchImage(imageHash:String,
-                    localFetchCompletion: @escaping (Data?) -> Void,
-                    networkFetchCompletion: @escaping (Data?) -> Void) {
-
-        localStorageProvider.getImage(hash: imageHash, completion: localFetchCompletion)
-        clientType.request(request: .fetchGravatar(hash: imageHash),
-                           translator: { Result.success($0) },
-                           completion:
-            { result in
-                switch result {
-                case .success(let data):
-                    self.localStorageProvider.saveImage(hash: imageHash, data: data)
-                    networkFetchCompletion(data)
-                case .failure(let error):
-                    logError(error)
-                    networkFetchCompletion(nil)
-                }
-        })
-
     }
 
 }

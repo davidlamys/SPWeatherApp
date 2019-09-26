@@ -14,14 +14,11 @@ fileprivate let pipedriveAPIKey = Bundle.main.infoDictionary?["PipedriveAPIKey"]
 
 enum RequestType {
     case fetchContactList(startIndex: Int)
-    case fetchGravatar(hash: String)
 
     var baseURL: String {
         switch self {
         case .fetchContactList(let startIndex):
             return "https://api.pipedrive.com/v1/persons?start=\(startIndex)&sort=name&limit=\(limit)&api_token="
-        case .fetchGravatar:
-            return "https://www.gravatar.com/avatar/%@?s=200&r=pg"
         }
     }
 
@@ -29,8 +26,6 @@ enum RequestType {
         switch self {
         case .fetchContactList:
             return "fetchContactList"
-        case .fetchGravatar:
-            return "fetchGravatar"
         }
     }
 
@@ -38,8 +33,6 @@ enum RequestType {
         switch self {
         case .fetchContactList:
             return baseURL + pipedriveAPIKey
-        case .fetchGravatar(let hash):
-            return String(format: baseURL, hash)
         }
     }
 }
