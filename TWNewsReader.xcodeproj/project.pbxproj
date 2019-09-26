@@ -22,8 +22,6 @@
 		153F3DC5228328930006D614 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DC4228328930006D614 /* Assets.xcassets */; };
 		153F3DC8228328930006D614 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DC6228328930006D614 /* LaunchScreen.storyboard */; };
 		153F3DDE228458680006D614 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DDD228458670006D614 /* README.md */; };
-		153F3DE0228819290006D614 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DDF228819290006D614 /* Utilities.swift */; };
-		153F3DE22288194E0006D614 /* UtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DE12288194E0006D614 /* UtilitiesTests.swift */; };
 		1551B39C228EE8A8004EE659 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1551B39B228EE8A8004EE659 /* DetailViewController.swift */; };
 		1551B3A2228EE912004EE659 /* ImageViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1551B3A1228EE912004EE659 /* ImageViewState.swift */; };
 		15629B4D22882D5500821ADD /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B4C22882D5500821ADD /* Person.swift */; };
@@ -85,8 +83,6 @@
 		153F3DCE228328930006D614 /* TWNewsReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TWNewsReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		153F3DD4228328930006D614 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		153F3DDD228458670006D614 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		153F3DDF228819290006D614 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		153F3DE12288194E0006D614 /* UtilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesTests.swift; sourceTree = "<group>"; };
 		1551B39B228EE8A8004EE659 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1551B3A1228EE912004EE659 /* ImageViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewState.swift; sourceTree = "<group>"; };
 		15629B4C22882D5500821ADD /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -220,7 +216,6 @@
 				153F3DC9228328930006D614 /* Info.plist */,
 				15975E9C23293BF200D7F65B /* main.swift */,
 				153F3DBA228328920006D614 /* AppDelegate.swift */,
-				153F3DDF228819290006D614 /* Utilities.swift */,
 				153F3DC4228328930006D614 /* Assets.xcassets */,
 				153F3DC6228328930006D614 /* LaunchScreen.storyboard */,
 				153F3DBE228328920006D614 /* Main.storyboard */,
@@ -546,7 +541,6 @@
 				15AD0BC8228CF0CB00D7E037 /* DataProvider.swift in Sources */,
 				15AD0BB8228CE0AC00D7E037 /* MainViewModel.swift in Sources */,
 				15AD0BCC228CF5E200D7E037 /* NetworkClient.swift in Sources */,
-				153F3DE0228819290006D614 /* Utilities.swift in Sources */,
 				15AD0BA72288583C00D7E037 /* NetworkResponse.swift in Sources */,
 				1551B39C228EE8A8004EE659 /* DetailViewController.swift in Sources */,
 				15975E9D23293BF200D7F65B /* main.swift in Sources */,

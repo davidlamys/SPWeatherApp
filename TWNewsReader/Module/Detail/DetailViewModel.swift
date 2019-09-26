@@ -32,11 +32,8 @@ class DetailViewModel: DetailViewModelType {
         guard let email = person.primaryEmail?.value else {
             return
         }
-        let hash = email.calculateMD5Hex()
+        let hash = "some string"
         view.setupView(state: .fetching)
-        dataProvider.fetchImage(imageHash: hash,
-                                localFetchCompletion: localImageFetchCompletion,
-                                networkFetchCompletion: networkImageFetchCompletion)
     }
 
     func localImageFetchCompletion(data: Data?) {
