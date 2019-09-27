@@ -9,14 +9,16 @@ import UIKit
 
 @testable import TWNewsReader
 
-let stubOrg = Person.Organization(name: "Drivepipe",
-                                  peopleCount: 1,
-                                  address: "Dr. Atl 123, Santa María La Ribera, Mexico City, CDMX, Mexico")
 
-let stubPhone = Person.Phone(label: "Work", value: "122-333-5577", primary: true)
-let stubEmail = Person.Email(label: "Work", value: "david.lam@drivepipe.com", primary: true)
 
 let stubPayload = [
-    Person(id: 1, name: "David", orgId: stubOrg, phone:[stubPhone], email: [stubEmail]),
-    Person(id: 2, name: "Mirjam", orgId: stubOrg, phone:[], email: [])
+    Post(userId: 1,
+         id: 1,
+         title: "Title 1",
+        body: "Some Long text 1"),
+    Post(userId: 10,
+         id: 100,
+         title: "Title 2",
+         body: "Some Long text 2")
+
 ]

@@ -8,5 +8,5 @@
 
 import Foundation
 
-typealias Items = [Person]
-typealias Item = Person
+typealias Items = [Post]
+typealias Item = Post

@@ -148,8 +148,8 @@ extension MainViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {
             fatalError("cell is not configured")
         }
-        let person = items[indexPath.row]
-        cell.textLabel?.text = person.name
+        let post = items[indexPath.row]
+        cell.textLabel?.text = post.title
         return cell
     }
 }
