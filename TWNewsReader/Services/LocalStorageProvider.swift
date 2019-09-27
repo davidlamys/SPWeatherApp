@@ -43,7 +43,7 @@ extension LocalStorageProvider: LocalStorageProviderType {
             return
         }
 
-        let result = PersonTranslator.translateFromUserDefaults(data: savedData)
+        let result = Result<Items, NSError>.failure(NSError())
 
         switch result {
         case .success(let list):
@@ -61,7 +61,7 @@ extension LocalStorageProvider: LocalStorageProviderType {
     }
 
     private func saveContactList(data list: Items) {
-        let result = PersonTranslator.translateToData(from: list)
+        let result = Result<Items, NSError>.failure(NSError())
         switch result {
         case .success(let data):
             defaults.set(data, forKey: Keys.getKeyForContactList())

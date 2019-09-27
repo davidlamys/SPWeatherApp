@@ -25,10 +25,8 @@
 		1551B39C228EE8A8004EE659 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1551B39B228EE8A8004EE659 /* DetailViewController.swift */; };
 		1551B3A2228EE912004EE659 /* ImageViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1551B3A1228EE912004EE659 /* ImageViewState.swift */; };
 		15629B4D22882D5500821ADD /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B4C22882D5500821ADD /* Person.swift */; };
-		15629B4F2288300200821ADD /* PersonTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B4E2288300200821ADD /* PersonTranslator.swift */; };
 		15629B512288305400821ADD /* StubPDResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 15629B502288305400821ADD /* StubPDResponse.json */; };
 		15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B542288307B00821ADD /* CannedResponseLoader.swift */; };
-		15629B592288313D00821ADD /* PersonTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B582288313D00821ADD /* PersonTranslatorTests.swift */; };
 		157516F9233D245C00EF7E3B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157516F8233D245C00EF7E3B /* Global.swift */; };
 		15975E9D23293BF200D7F65B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15975E9C23293BF200D7F65B /* main.swift */; };
 		15AD0BA72288583C00D7E037 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BA62288583C00D7E037 /* NetworkResponse.swift */; };
@@ -91,10 +89,8 @@
 		1551B39B228EE8A8004EE659 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1551B3A1228EE912004EE659 /* ImageViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewState.swift; sourceTree = "<group>"; };
 		15629B4C22882D5500821ADD /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		15629B4E2288300200821ADD /* PersonTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTranslator.swift; sourceTree = "<group>"; };
 		15629B502288305400821ADD /* StubPDResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StubPDResponse.json; sourceTree = "<group>"; };
 		15629B542288307B00821ADD /* CannedResponseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannedResponseLoader.swift; sourceTree = "<group>"; };
-		15629B582288313D00821ADD /* PersonTranslatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTranslatorTests.swift; sourceTree = "<group>"; };
 		157516F8233D245C00EF7E3B /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		15975E9C23293BF200D7F65B /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		15AD0BA62288583C00D7E037 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
@@ -268,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				15629B4C22882D5500821ADD /* Person.swift */,
-				15629B4E2288300200821ADD /* PersonTranslator.swift */,
 				150448AD22917404000D6216 /* TWNetworkResponseTranslator.swift */,
 				15AD0BA62288583C00D7E037 /* NetworkResponse.swift */,
 				15E5AB58233CC6E600FF16F4 /* Post.swift */,
@@ -280,7 +275,6 @@
 		15629B522288306600821ADD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				15629B582288313D00821ADD /* PersonTranslatorTests.swift */,
 				15E5AB5C233CC87F00FF16F4 /* PostTranslatorTests.swift */,
 			);
 			path = Model;
@@ -548,7 +542,6 @@
 				150448AE22917404000D6216 /* TWNetworkResponseTranslator.swift in Sources */,
 				15AD0BD7228D91E600D7E037 /* ErrorLogger.swift in Sources */,
 				15629B4D22882D5500821ADD /* Person.swift in Sources */,
-				15629B4F2288300200821ADD /* PersonTranslator.swift in Sources */,
 				15AD0BC3228CEA3400D7E037 /* MainViewState.swift in Sources */,
 				15AD0BB6228AF4D600D7E037 /* ViewControllerFactory.swift in Sources */,
 				153F3DC3228328920006D614 /* PDContactList.xcdatamodeld in Sources */,
@@ -574,7 +567,6 @@
 			files = (
 				1508CD88228F18C600A8B51A /* DetailViewModelDoubles.swift in Sources */,
 				15E5AB5D233CC87F00FF16F4 /* PostTranslatorTests.swift in Sources */,
-				15629B592288313D00821ADD /* PersonTranslatorTests.swift in Sources */,
 				1508CD82228F022700A8B51A /* StubData.swift in Sources */,
 				1508CD8C228F1DCD00A8B51A /* DetailViewControllerDoubles.swift in Sources */,
 				15AD0BD5228D862400D7E037 /* LocalStorageProviderDoubles.swift in Sources */,
