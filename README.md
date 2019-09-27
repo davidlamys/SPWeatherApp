@@ -31,29 +31,29 @@ Replace Alamofire with URLSessionn if time permits [ ]
 #### Phase 1: Basic app: upon launching, fetch all posts and populate screen ####
 
 Master Scene
-  - upon launch, call dataProvider [ ]
+  - upon launch, call dataProvider [ x]
     - if dataProvider returns empty array from network
-      - present placeholder label [ ]
+      - present placeholder label [x ]
     - else
-      - update master list of posts [ ]
-  - upon tapping [ ]
-    - pass post object to detail scene [ ]
+      - update master list of posts [ x]
+  - upon tapping [ x]
+    - pass post object to detail scene [x ]
 
 Detail Scene
   - populate story [ ]
 
 DataProvider
-  - expose function for view models to call to fetch data [ ]
-  - build network requests [ ]
-    - Call network NetworkClient [ ]
-      - if network succeed [ ]
-        - parse response [ ]
+  - expose function for view models to call to fetch data [ x]
+  - build network requests [x ]
+    - Call network NetworkClient [x ]
+      - if network succeed [x ]
+        - parse response [x ]
 
 NetworkClient - Alamofire
-  - Call GetPost API [ ]
+  - Call GetPost API [x ]
   
-Create POSO Post Object [  ]
-Create POSO Post Translator Object [  ]
+Create POSO Post Object [ x ]
+Create POSO Post Translator Object [ x ]
 
 #### Phase 2: Store posts upon successful request ####
 DataProvider
