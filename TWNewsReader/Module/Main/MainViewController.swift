@@ -13,11 +13,11 @@ protocol MainViewControllerType: class {
 }
 
 enum Text: String {
-    case welcomMessage = "Hello dear new user, please add/import new contacts on website :)"
-    case placeholderText = "Looks like this is the first time you use the app and there is no internet"
+    case welcomMessage = "Hello dear new user, looks like there is no news article :)"
+    case noInternetTextForNewUser = "Looks like this is the first time you use the app and there is no internet"
     case loadingText = "Loading...please wait for the good stuff"
-    case navigationTitle_DataFromNetwork = "Fetched %d people from portal"
-    case navigationTitle_DataFromLocal = "Fetched %d people from internetz"
+    case navigationTitle_DataFromNetwork = "Fetched %d posts from internetz"
+    case navigationTitle_DataFromLocal = "Fetched %d cached posts"
     case stillLoadingText = "More to come! Hang in tight!!"
     case completedMessage = "Congratulations, we have fetched all ;)"
     case apiFailedAndFetchedFromLocal = "Oops, something went wrong, showing data from local storage. Please retry later."
@@ -86,7 +86,7 @@ extension MainViewController: MainViewControllerType {
 
         case .emptyState:
             tableView.isHidden = true
-            stateFeedbackLabel.text = Text.placeholderText.rawValue
+            stateFeedbackLabel.text = Text.noInternetTextForNewUser.rawValue
 
         case .loading:
             if items.isEmpty {

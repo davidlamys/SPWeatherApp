@@ -33,7 +33,7 @@ class MainViewControllerTests: XCTestCase {
         //THEN
         assert(subject.tableView.isHidden == true)
         assert(subject.loadingStatusUpdateBanner.isHidden == true)
-        assert(subject.stateFeedbackLabel.text == Text.placeholderText.rawValue)
+        assert(subject.stateFeedbackLabel.text == Text.noInternetTextForNewUser.rawValue)
     }
 
     func testSetupForLoadingScreen() {
