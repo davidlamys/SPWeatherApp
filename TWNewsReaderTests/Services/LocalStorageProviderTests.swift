@@ -52,18 +52,18 @@ class LocalStorageProviderTests: XCTestCase {
         assert(numberOfItemsInPersistentStore() == 2)
     }
     
-//    func testGetListItemShouldReturnCorrectItems() {
-//        subject.insertListItems(data: stubPayload)
-//        
-//        let expectation = XCTestExpectation(description: "Fetching from local storage")
-//        subject.getListItemsFromLocal { result in
-//            assert(result == stubPayload)
-//            expectation.fulfill()
-//        }
-//
-//        wait(for: [expectation], timeout: 5.0)
-//    }
-//    
+    func testGetListItemShouldReturnCorrectItems() {
+        subject.insertListItems(data: stubPayload)
+
+        let expectation = XCTestExpectation(description: "Fetching from local storage")
+        subject.getListItemsFromLocal { result in
+            assert(result == stubPayload)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 5.0)
+    }
+    
     //Convenient method for getting the number of data in store now
     func numberOfItemsInPersistentStore() -> Int {
         let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "PostObject")

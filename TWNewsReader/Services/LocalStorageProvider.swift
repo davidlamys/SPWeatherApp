@@ -36,15 +36,17 @@ class LocalStorageProvider {
 
 extension LocalStorageProvider: LocalStorageProviderType {
 
-    // MARK: Person
     func getListItemsFromLocal(completion: @escaping ((Items) -> Void)) {
-        
-        let result = Result<Items, NSError>.failure(NSError())
-
-        switch result {
-        case .success(let list):
-            completion(list)
-        case .failure(let error):
+        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "PostObject")
+        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
+        let backgroundContext = persistentContainer.newBackgroundContext()
+        do {
+            guard let result = try backgroundContext.fetch(request) as? [PostObject] else {
+                fatalError("core data is not configured properly")
+            }
+            
+            completion(PostTranslator.translateFromCoreDataObject(objects: result))
+        } catch let error {
             logError(error)
             completion([])
         }
