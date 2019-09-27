@@ -44,12 +44,9 @@ class LocalStorageProviderTests: XCTestCase {
     }()
     
     var subject: LocalStorageProvider!
-    var testUserDefaults: UserDefaults!
 
     override func setUp() {
         super.setUp()
-
-        testUserDefaults = UserDefaultsMock()
         subject = LocalStorageProvider(container: mockInMemoryPersistantContainer)
     }
 
