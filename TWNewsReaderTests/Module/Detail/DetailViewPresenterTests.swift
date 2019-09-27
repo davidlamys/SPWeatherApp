@@ -13,16 +13,13 @@ class DetailViewPresenterTests: XCTestCase {
 
     var subject: DetailViewPresenter!
     var detailViewControllerMock: DetailViewControllerMock!
-    var dataProvider: DataProviderStub!
     let firstPost = stubPayload.first!
 
     override func setUp() {
         super.setUp()
         detailViewControllerMock = DetailViewControllerMock()
-        dataProvider = DataProviderStub()
         subject = DetailViewPresenter(view: detailViewControllerMock,
-                                  dataProvider: dataProvider,
-                                  item: firstPost)
+                                      item: firstPost)
     }
 
     func testWhenViewDidLoadIsCalled_ShouldCallInvokeSetupWithPersonInViewController() {

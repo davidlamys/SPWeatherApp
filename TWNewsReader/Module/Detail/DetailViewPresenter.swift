@@ -15,14 +15,11 @@ protocol DetailViewPresenterType {
 
 class DetailViewPresenter: DetailViewPresenterType {
     weak var view: DetailViewControllerType!
-    let dataProvider: DataProviderType!
     let item: Item
 
     init(view: DetailViewControllerType,
-         dataProvider: DataProviderType = DataProvider(),
          item: Item) {
         self.view = view
-        self.dataProvider = dataProvider
         self.item = item
     }
 
