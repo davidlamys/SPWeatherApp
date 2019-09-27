@@ -37,14 +37,12 @@ struct DataProvider: DataProviderType {
 
     fileprivate func handleSuccessResponse(_ items: Items,
                                            completion: @escaping FetchListItemsHandler) {
-    
+
         self.localStorageProvider.deleteListItems()
         self.localStorageProvider.insertListItems(data: items)
         completion(.successFromNetwork(items: items, hasMoreItems: false))
-        
+
     }
-    
-    
 
     func fetchListItems(completion: @escaping FetchListItemsHandler) {
         clientType.request(request: .fetchListItems,

@@ -13,7 +13,7 @@ class FakeAppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+                     didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.window?.rootViewController = UIViewController()
         return true
     }

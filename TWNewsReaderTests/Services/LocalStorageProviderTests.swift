@@ -6,7 +6,6 @@
 //  Copyright © 2019 David_Lam. All rights reserved.
 //
 
-
 import XCTest
 import CoreData
 
@@ -19,12 +18,12 @@ class LocalStorageProviderTests: XCTestCase {
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false // Make it simpler in test env
-        
+
         container.persistentStoreDescriptions = [description]
         container.loadPersistentStores { (description, error) in
             // Check if the data store is in memory
             precondition( description.type == NSInMemoryStoreType )
-            
+
             // Check if creating container wrong
             if let error = error {
                 fatalError("Create an in-mem coordinator failed \(error)")
@@ -32,17 +31,17 @@ class LocalStorageProviderTests: XCTestCase {
         }
         return container
     }()
-    
+
     // source: https://stackoverflow.com/questions/45134431/is-nsinmemorystoretype-incompatible-with-nsbatchdeleterequest
     var devContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TWNewsReader")
         container.persistentStoreDescriptions[0].url = URL(fileURLWithPath: "/dev/null")
-        container.loadPersistentStores { (description, error) in
+        container.loadPersistentStores { (_, error) in
             XCTAssertNil(error)
         }
         return container
     }()
-    
+
     var subject: LocalStorageProvider!
 
     override func setUp() {
@@ -58,7 +57,7 @@ class LocalStorageProviderTests: XCTestCase {
         subject.insertListItems(data: stubPayload)
         assert(numberOfItemsInPersistentStore() == 2)
     }
-    
+
     func testGetListItemShouldReturnCorrectItems() {
         subject.insertListItems(data: stubPayload)
 
@@ -70,16 +69,16 @@ class LocalStorageProviderTests: XCTestCase {
 
         wait(for: [expectation], timeout: 5.0)
     }
-    
+
     func testDeleteItemsShouldDeleteItems() {
         // MARK: this creates a coupling between test and implementation. :( apparently batch delete only works on SQLLite stores 
         subject = LocalStorageProvider(container: devContainer)
         subject.insertListItems(data: stubPayload)
         subject.deleteListItems()
-        
+
         assert(numberOfItemsInPersistentStore() == 0)
     }
-    
+
     //Convenient method for getting the number of data in store now
     func numberOfItemsInPersistentStore() -> Int {
         let request: NSFetchRequest<NSFetchRequestResult> = PostObject.fetchRequest

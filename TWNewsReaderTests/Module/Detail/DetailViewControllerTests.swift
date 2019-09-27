@@ -25,11 +25,11 @@ class DetailViewControllerTests: XCTestCase {
         subject.viewDidLoad()
         assert(viewModelMock.viewDidLoadCalled)
     }
-    
+
     func testWhenSetupViewIsCalled() {
         let firstPost = stubPayload.first!
         subject.setupView(item: firstPost)
-        
+
         assert(subject.titleLabel.text == firstPost.title)
         assert(subject.bodyTextView.text == firstPost.body)
     }

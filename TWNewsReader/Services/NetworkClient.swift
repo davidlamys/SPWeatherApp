@@ -41,8 +41,8 @@ protocol NetworkClientType {
 
 class NetworkClient: NetworkClientType {
     fileprivate let session: SessionType
-    
-    init(session: SessionType = URLSession.shared){
+
+    init(session: SessionType = URLSession.shared) {
         self.session = session
     }
 
@@ -53,8 +53,8 @@ class NetworkClient: NetworkClientType {
         guard let url = URL(string: request.getURLString()) else {
             fatalError("failed to create url")
         }
-        
-        let task = session.dataTask(with: url) { (data, response, error) in
+
+        let task = session.dataTask(with: url) { (data, _, error) in
             if let data = data {
                 precondition(Thread.isMainThread == false)
                 let translated = translator(data)
@@ -66,7 +66,7 @@ class NetworkClient: NetworkClientType {
                 completion(Result.failure(unknownError))
             }
         }
-        
+
         task.resume()
 
     }

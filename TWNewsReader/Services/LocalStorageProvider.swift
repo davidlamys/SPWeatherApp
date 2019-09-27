@@ -18,13 +18,13 @@ protocol LocalStorageProviderType {
 class LocalStorageProvider {
 
     let persistentContainer: NSPersistentContainer!
-       
-    //MARK: Init with dependency
+
+    // MARK: Init with dependency
     init(container: NSPersistentContainer) {
         self.persistentContainer = container
         self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
     }
-    
+
     convenience init() {
         //Use the default container for production environment
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -44,7 +44,7 @@ extension LocalStorageProvider: LocalStorageProviderType {
             guard let result = try backgroundContext.fetch(request) as? [PostObject] else {
                 fatalError("core data is not configured properly")
             }
-            
+
             completion(Translator.translateFromCoreDataObject(objects: result))
         } catch let error {
             logError(error)
@@ -64,7 +64,7 @@ extension LocalStorageProvider: LocalStorageProviderType {
 
     func deleteListItems() {
         let fetch = PostObject.fetchRequest
-        
+
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
         let backgroundContext = persistentContainer.newBackgroundContext()
         do {

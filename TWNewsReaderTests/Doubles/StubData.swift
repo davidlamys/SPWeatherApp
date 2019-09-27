@@ -9,8 +9,6 @@ import UIKit
 
 @testable import TWNewsReader
 
-
-
 let stubPayload = [
     Post(userId: 1,
          id: 1,

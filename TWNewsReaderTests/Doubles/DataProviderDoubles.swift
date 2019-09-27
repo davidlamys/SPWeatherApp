@@ -16,7 +16,7 @@ class DataProviderStub: DataProviderType {
 
     private var stubResults = [FetchListItemsResultType]()
 
-    var fetchListItemsCalledWithIndex: Int? = nil
+    var fetchListItemsCalledWithIndex: Int?
 
     func reset() {
         dataSource = nil

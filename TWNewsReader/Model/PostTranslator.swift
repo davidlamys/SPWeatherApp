@@ -20,7 +20,7 @@ struct PostTranslator {
             return Result.failure(error)
         }
     }
-    
+
     static func translateFromCoreDataObject(objects: [PostObject]) -> [Post] {
         return objects.map({
             Post(userId: $0.userId.intValue,

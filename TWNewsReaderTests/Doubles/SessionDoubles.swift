@@ -10,7 +10,7 @@ import Foundation
 @testable import TWNewsReader
 
 class SessionStub: SessionType {
-    
+
     private var result: Data?
     private var error: Error?
 

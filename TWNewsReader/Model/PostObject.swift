@@ -24,7 +24,7 @@ final class PostObject: NSManagedObject {
         postObj.id = NSNumber(value: post.id)
         postObj.title = post.title
         postObj.body = post.body
-        
+
         return postObj
     }
 }

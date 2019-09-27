@@ -34,7 +34,7 @@ class MainViewModel: MainViewModelType {
 
     private func fetchListItems() {
         view.setupView(state: .loading)
-        dataProvider.fetchListItems() { [weak self] result in
+        dataProvider.fetchListItems { [weak self] result in
             guard let self = self else {
                 return
             }
