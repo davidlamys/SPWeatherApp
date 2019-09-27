@@ -83,10 +83,12 @@ extension MainViewController: MainViewControllerType {
         case .displayWelcomeMessage:
             tableView.isHidden = true
             stateFeedbackLabel.text = Text.welcomMessage.rawValue
+            navigationItem.leftBarButtonItem?.isEnabled = true
 
         case .emptyState:
             tableView.isHidden = true
             stateFeedbackLabel.text = Text.noInternetTextForNewUser.rawValue
+            navigationItem.leftBarButtonItem?.isEnabled = true
 
         case .loading:
             if items.isEmpty {

@@ -91,9 +91,22 @@ class MainViewControllerTests: XCTestCase {
         //THEN
         assert(subject.tableView.isHidden == true)
         assert(subject.stateFeedbackLabel.text == Text.welcomMessage.rawValue)
-
+        assert(subject.navigationItem.leftBarButtonItem?.isEnabled == true)
         assert(subject.loadingStatusUpdateBanner.isHidden == true)
     }
+    
+    func testLoadScreenWithEmptyListItemsAndNoInternet() {
+        // WHEN
+        subject.setupView(state: .emptyState)
+        subject.setupView(state: .loading)
+        subject.setupView(state: .emptyState)
+        //THEN
+        assert(subject.tableView.isHidden == true)
+        assert(subject.stateFeedbackLabel.text == Text.noInternetTextForNewUser.rawValue)
+        assert(subject.navigationItem.leftBarButtonItem?.isEnabled == true)
+        assert(subject.loadingStatusUpdateBanner.isHidden == true)
+    }
+        
 
     func testWhenFetchMoreButtonTapped() {
         subject.fetchMoreTapped(sender: self)
