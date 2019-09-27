@@ -50,14 +50,6 @@ extension DetailViewController: DetailViewControllerType {
 
     private func setupViewOnMainThread(item: Item) {
         precondition(Thread.isMainThread)
-        nameLabel.text = item.name
-        organizationLabel.text = item.orgId?.name
-        phoneLabel.text = item.primaryPhone?.value
-        emailLabel.text = item.primaryEmail?.value
-
-        organizationStackView.isHidden = (item.orgId == nil)
-        phoneStackView.isHidden = (item.primaryPhone?.value == nil)
-        emailStackView.isHidden = (item.primaryEmail?.value == nil)
     }
 
 }
