@@ -91,6 +91,33 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.loadingStatusUpdateBanner.isHidden == false)
         assert(subject.loadingStatusLabel.text == Text.completedMessage.rawValue)
     }
+    
+    func testLoadScreenWithPostFromLocalStorageAndThenFromNetwork() {
+        // WHEN
+        
+        subject.setupView(state: .emptyState)
+        subject.setupView(state: .loading)
+        subject.setupView(state: .loadedFromLocalStorage(items: stubPayload))
+        subject.retryButtonTapped(sender: subject!)
+        subject.setupView(state: .loading)
+        subject.setupView(state: .loadedFromNetwork(items: stubPayload, hasMoreItems: false))
+        
+        // THEN
+        assert(subject.tableView.isHidden == false)
+        let numberOfCells = subject.tableView.numberOfRows(inSection: 0)
+        assert(numberOfCells == 2)
+        let firstCell = subject.tableView(subject.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+        assert(firstCell.textLabel?.text == "Title 1")
+        let secondCell = subject.tableView(subject.tableView, cellForRowAt: IndexPath(row: 1, section: 0))
+        assert(secondCell.textLabel?.text == "Title 2")
+
+        assert(subject.navigationItem.leftBarButtonItem?.isEnabled == false)
+        let expectedTitle = String(format: Text.navigationTitle_DataFromNetwork.rawValue, 2)
+        assert(subject.title == expectedTitle)
+        
+        assert(subject.loadingStatusUpdateBanner.isHidden == false)
+        assert(subject.loadingStatusLabel.text == Text.completedMessage.rawValue)
+    }
 
     func testLoadScreenWithEmptyListItems() {
         // WHEN

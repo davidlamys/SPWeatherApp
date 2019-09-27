@@ -76,6 +76,6 @@ Master Scene (without network)
     - [x] update master list of posts
     
 Master Scene (after recovering from network loss)
-    -[] show master list of posts from network
+    -[x] show master list of posts from network
 
 ## Retrospective 27 Sep 2019 ##

@@ -35,6 +35,7 @@ class MainViewController: UIViewController {
 
     @IBAction func retryButtonTapped(sender: Any) {
         viewModel.retryFetch()
+        items = []
     }
 
     override func viewDidLoad() {
