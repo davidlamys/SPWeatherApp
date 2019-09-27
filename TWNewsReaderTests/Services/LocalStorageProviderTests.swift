@@ -85,7 +85,7 @@ class LocalStorageProviderTests: XCTestCase {
     
     //Convenient method for getting the number of data in store now
     func numberOfItemsInPersistentStore() -> Int {
-        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "PostObject")
+        let request: NSFetchRequest<NSFetchRequestResult> = PostObject.fetchRequest
         let results = try! mockInMemoryPersistantContainer.viewContext.fetch(request)
         return results.count
     }

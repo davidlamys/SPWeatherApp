@@ -37,7 +37,7 @@ class LocalStorageProvider {
 extension LocalStorageProvider: LocalStorageProviderType {
 
     func getListItemsFromLocal(completion: @escaping ((Items) -> Void)) {
-        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "PostObject")
+        let request = PostObject.fetchRequest
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         let backgroundContext = persistentContainer.newBackgroundContext()
         do {
@@ -63,7 +63,7 @@ extension LocalStorageProvider: LocalStorageProviderType {
     }
 
     func deleteListItems() {
-        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PostObject")
+        let fetch = PostObject.fetchRequest
         
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
         let backgroundContext = persistentContainer.newBackgroundContext()

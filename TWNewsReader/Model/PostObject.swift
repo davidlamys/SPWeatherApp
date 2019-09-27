@@ -28,3 +28,9 @@ final class PostObject: NSManagedObject {
         return postObj
     }
 }
+
+extension PostObject: Managed {
+    static var entityName: String {
+        return "PostObject"
+    }
+}
