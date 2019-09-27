@@ -45,7 +45,7 @@ extension LocalStorageProvider: LocalStorageProviderType {
                 fatalError("core data is not configured properly")
             }
             
-            completion(PostTranslator.translateFromCoreDataObject(objects: result))
+            completion(Translator.translateFromCoreDataObject(objects: result))
         } catch let error {
             logError(error)
             completion([])

@@ -48,7 +48,7 @@ struct DataProvider: DataProviderType {
 
     func fetchListItems(completion: @escaping FetchListItemsHandler) {
         clientType.request(request: .fetchListItems,
-                           translator: PostTranslator.translateFromNetworkResponse) { result in
+                           translator: Translator.translateFromNetworkResponse) { result in
             precondition(Thread.isMainThread == false)
             switch result {
             case .failure(let error):
