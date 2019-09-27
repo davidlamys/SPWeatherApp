@@ -20,7 +20,6 @@
 		153F3DC8228328930006D614 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DC6228328930006D614 /* LaunchScreen.storyboard */; };
 		153F3DDE228458680006D614 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DDD228458670006D614 /* README.md */; };
 		1551B39C228EE8A8004EE659 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1551B39B228EE8A8004EE659 /* DetailViewController.swift */; };
-		15629B512288305400821ADD /* StubPDResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 15629B502288305400821ADD /* StubPDResponse.json */; };
 		15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B542288307B00821ADD /* CannedResponseLoader.swift */; };
 		157516F9233D245C00EF7E3B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157516F8233D245C00EF7E3B /* Global.swift */; };
 		15975E9D23293BF200D7F65B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15975E9C23293BF200D7F65B /* main.swift */; };
@@ -89,7 +88,6 @@
 		153F3DD4228328930006D614 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		153F3DDD228458670006D614 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1551B39B228EE8A8004EE659 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		15629B502288305400821ADD /* StubPDResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StubPDResponse.json; sourceTree = "<group>"; };
 		15629B542288307B00821ADD /* CannedResponseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannedResponseLoader.swift; sourceTree = "<group>"; };
 		157516F8233D245C00EF7E3B /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		15975E9C23293BF200D7F65B /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 		153F3DD1228328930006D614 /* TWNewsReaderTests */ = {
 			isa = PBXGroup;
 			children = (
-				15629B502288305400821ADD /* StubPDResponse.json */,
 				15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */,
 				153F3DD4228328930006D614 /* Info.plist */,
 				15AD0BBF228CE6DF00D7E037 /* Doubles */,
@@ -473,7 +470,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				15E5AB57233CC2EC00FF16F4 /* StubPostsResponse.json in Resources */,
-				15629B512288305400821ADD /* StubPDResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
