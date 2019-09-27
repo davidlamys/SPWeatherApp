@@ -27,16 +27,11 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var stateFeedbackLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var paginationButtonContainer: UIView!
     @IBOutlet weak var loadingStatusUpdateBanner: UIView!
     @IBOutlet weak var loadingStatusLabel: UILabel!
 
     private var items: Items = []
     var viewModel: MainViewModelType!
-
-    @IBAction func fetchMoreTapped(sender: Any) {
-        viewModel.fetchMore()
-    }
 
     @IBAction func retryButtonTapped(sender: Any) {
         viewModel.retryFetch()
@@ -91,14 +86,9 @@ extension MainViewController: MainViewControllerType {
             navigationItem.leftBarButtonItem?.isEnabled = true
 
         case .loading:
-            if items.isEmpty {
-                tableView.isHidden = true
-                stateFeedbackLabel.text = Text.loadingText.rawValue
-            } else {
-                tableView.isHidden = false
-                loadingStatusUpdateBanner.isHidden = false
-                loadingStatusLabel.text = Text.stillLoadingText.rawValue
-            }
+            tableView.isHidden = true
+            stateFeedbackLabel.text = Text.loadingText.rawValue
+            
 
         case .loadedFromNetwork(let payload, let hasMoreItems):
             tableView.isHidden = false
@@ -107,7 +97,6 @@ extension MainViewController: MainViewControllerType {
 
             title = String(format: Text.navigationTitle_DataFromNetwork.rawValue,
                            items.count)
-            paginationButtonContainer.isHidden = !hasMoreItems
 
             loadingStatusUpdateBanner.isHidden = false
             if hasMoreItems {
@@ -124,7 +113,6 @@ extension MainViewController: MainViewControllerType {
 
             title = String(format: Text.navigationTitle_DataFromLocal.rawValue,
                            items.count)
-            paginationButtonContainer.isHidden = true
             navigationItem.leftBarButtonItem?.isEnabled = true
 
             loadingStatusUpdateBanner.isHidden = false

@@ -10,7 +10,6 @@ import Foundation
 
 protocol MainViewModelType {
     func viewDidLoad()
-    func fetchMore()
     func retryFetch()
     var view: MainViewControllerType! { get }
 }
@@ -26,10 +25,6 @@ class MainViewModel: MainViewModelType {
     }
 
     func viewDidLoad() {
-        fetchListItems()
-    }
-
-    func fetchMore() {
         fetchListItems()
     }
 

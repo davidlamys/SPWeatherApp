@@ -22,10 +22,6 @@ class MainViewModelFake: MainViewModel {
         viewDidLoadCalled = true
     }
 
-    override func fetchMore() {
-        fetchMoreCalled = true
-    }
-
     override func retryFetch() {
         retryFetchCalled = true
     }
