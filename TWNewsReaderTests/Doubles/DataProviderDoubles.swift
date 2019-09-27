@@ -16,8 +16,6 @@ class DataProviderStub: DataProviderType {
 
     private var stubResults = [FetchListItemsResultType]()
 
-    var imageLocalFetchCompletion: ((Data?) -> Void)?
-    var imageNetworkFetchCompletion: ((Data?) -> Void)?
     var fetchListItemsCalledWithIndex: Int? = nil
 
     func reset() {

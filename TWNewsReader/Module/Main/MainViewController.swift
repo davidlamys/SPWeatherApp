@@ -88,7 +88,6 @@ extension MainViewController: MainViewControllerType {
         case .loading:
             tableView.isHidden = true
             stateFeedbackLabel.text = Text.loadingText.rawValue
-            
 
         case .loadedFromNetwork(let payload, let hasMoreItems):
             tableView.isHidden = false

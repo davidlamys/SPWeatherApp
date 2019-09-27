@@ -62,16 +62,6 @@ extension LocalStorageProvider: LocalStorageProviderType {
         }
     }
 
-    private func saveListItems(data list: Items) {
-        let result = Result<Items, NSError>.failure(NSError())
-        switch result {
-        case .success(let data): break
-
-        case .failure(let error):
-            logError(error)
-        }
-    }
-
     func deleteListItems() {
         
     }
