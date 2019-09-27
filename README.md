@@ -55,24 +55,27 @@ NetworkClient - Alamofire
 
 #### Phase 2: Store posts upon successful request ####
 DataProvider
-- [ ] given network call is successful, invoke localStorageProvider to save object
+- [x] given network call is successful, invoke localStorageProvider to save object
 
 LocalStorageProvider
-- [ ] given POSO Post Object, insert CoreDataObjects into DB
+- [x] given POSO Post Object, insert CoreDataObjects into DB
 
 #### Phase 3: Display posts from stored posts  ####
 DataProvider
-    - [ ] given network call is unsuccessful, invoke localStorageProvider to retrieve object
+    - [x] given network call is unsuccessful, invoke localStorageProvider to retrieve object
 
 LocalStorageProvider
-    - [ ] retrieve core data object
-    - [ ] convert core data object to POSO object
+    - [x] retrieve core data object
+    - [x] convert core data object to POSO object
 
 Master Scene (without network)
   - upon launch, call dataProvider
   - if dataProvider returns empty array from local storage
-    - [ ] present placeholder label
+    - [x] present placeholder label
   - else
-    - [ ] update master list of posts
+    - [x] update master list of posts
+    
+Master Scene (after recovering from network loss)
+    -[] show master list of posts from network
 
 ## Retrospective 27 Sep 2019 ##
