@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 enum RequestType {
     case fetchListItems
@@ -41,29 +40,34 @@ protocol NetworkClientType {
 }
 
 class NetworkClient: NetworkClientType {
-    static let sharedInstance = NetworkClient()
-    private init(){}
+    fileprivate let session: SessionType
+    
+    init(session: SessionType = URLSession.shared){
+        self.session = session
+    }
 
     func request<T>(request: RequestType,
                     translator: @escaping (Data) -> (Result<T, Error>),
                     completion: @escaping (Result<T, Error>) -> Void) {
 
-        let queue = DispatchQueue(label: request.parsingQueueLabel,
-                                  qos: .background,
-                                  attributes: .concurrent)
+        guard let url = URL(string: request.getURLString()) else {
+            fatalError("failed to create url")
+        }
+        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let data = data {
+                precondition(Thread.isMainThread == false)
+                let translated = translator(data)
+                completion((translated))
+            } else if let error = error {
+                completion(Result.failure(error))
+            } else {
+                let unknownError = NSError.init(domain: "com.david.TWNewsReader", code: -1, userInfo: ["info": "unknown network error"])
+                completion(Result.failure(unknownError))
+            }
+        }
+        
+        task.resume()
 
-        AF.request(request.getURLString())
-            .response(queue: queue, completionHandler: { (dataResponse) in
-                if let data = dataResponse.data {
-                    precondition(Thread.isMainThread == false)
-                    let translated = translator(data)
-                    completion((translated))
-                } else if let error = dataResponse.error {
-                    completion(Result.failure(error))
-                } else {
-                    let unknownError = NSError.init(domain: "com.david.TWNewsReader", code: -1, userInfo: ["info": "unknown network error"])
-                    completion(Result.failure(unknownError))
-                }
-            })
     }
 }

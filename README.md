@@ -26,7 +26,7 @@ As I'm a believer of a repository pattern, and I'm not a adept CoreData develope
 
 ### Personal Objectives: ###
 - []Experiment with Integration test with plain ol' XCUITest
-- []Replace Alamofire with URLSessionn if time permits
+- [x]Replace Alamofire with URLSessionn if time permits
 
 #### Phase 1: Basic app: upon launching, fetch all posts and populate screen ####
 

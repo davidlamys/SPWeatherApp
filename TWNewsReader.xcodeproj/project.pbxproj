@@ -41,6 +41,9 @@
 		15AD0BD5228D862400D7E037 /* LocalStorageProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BD4228D862400D7E037 /* LocalStorageProviderDoubles.swift */; };
 		15AD0BD7228D91E600D7E037 /* ErrorLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BD6228D91E600D7E037 /* ErrorLogger.swift */; };
 		15B2560D233E203000406058 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B2560C233E203000406058 /* Managed.swift */; };
+		15B2560F233E307800406058 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B2560E233E307800406058 /* Session.swift */; };
+		15B25611233E314400406058 /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B25610233E314400406058 /* NetworkClientTests.swift */; };
+		15B25613233E333000406058 /* SessionDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B25612233E333000406058 /* SessionDoubles.swift */; };
 		15E5AB57233CC2EC00FF16F4 /* StubPostsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */; };
 		15E5AB59233CC6E600FF16F4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5AB58233CC6E600FF16F4 /* Post.swift */; };
 		15E5AB5B233CC73F00FF16F4 /* PostTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5AB5A233CC73F00FF16F4 /* PostTranslator.swift */; };
@@ -103,6 +106,9 @@
 		15AD0BD4228D862400D7E037 /* LocalStorageProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageProviderDoubles.swift; sourceTree = "<group>"; };
 		15AD0BD6228D91E600D7E037 /* ErrorLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogger.swift; sourceTree = "<group>"; };
 		15B2560C233E203000406058 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
+		15B2560E233E307800406058 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		15B25610233E314400406058 /* NetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
+		15B25612233E333000406058 /* SessionDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDoubles.swift; sourceTree = "<group>"; };
 		15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StubPostsResponse.json; sourceTree = "<group>"; };
 		15E5AB58233CC6E600FF16F4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		15E5AB5A233CC73F00FF16F4 /* PostTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTranslator.swift; sourceTree = "<group>"; };
@@ -335,6 +341,7 @@
 				15AD0BD4228D862400D7E037 /* LocalStorageProviderDoubles.swift */,
 				15AD0BD0228CFCBF00D7E037 /* NetworkClientDoubles.swift */,
 				1508CD81228F022700A8B51A /* StubData.swift */,
+				15B25612233E333000406058 /* SessionDoubles.swift */,
 			);
 			path = Doubles;
 			sourceTree = "<group>";
@@ -346,6 +353,7 @@
 				15AD0BCB228CF5E200D7E037 /* NetworkClient.swift */,
 				15AD0BD2228D838D00D7E037 /* LocalStorageProvider.swift */,
 				15AD0BD6228D91E600D7E037 /* ErrorLogger.swift */,
+				15B2560E233E307800406058 /* Session.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -355,6 +363,7 @@
 			children = (
 				15AD0BCE228CFC8800D7E037 /* DataProviderTests.swift */,
 				150448B122928596000D6216 /* LocalStorageProviderTests.swift */,
+				15B25610233E314400406058 /* NetworkClientTests.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -541,6 +550,7 @@
 				15AD0BB8228CE0AC00D7E037 /* MainViewModel.swift in Sources */,
 				15AD0BCC228CF5E200D7E037 /* NetworkClient.swift in Sources */,
 				1551B39C228EE8A8004EE659 /* DetailViewController.swift in Sources */,
+				15B2560F233E307800406058 /* Session.swift in Sources */,
 				15975E9D23293BF200D7F65B /* main.swift in Sources */,
 				15E7B7D3233E107600ACE63A /* TWNewsReader.xcdatamodeld in Sources */,
 				15E5AB5B233CC73F00FF16F4 /* PostTranslator.swift in Sources */,
@@ -564,8 +574,10 @@
 				15AD0BBE228CE6C000D7E037 /* MainViewModelTests.swift in Sources */,
 				1508CD8A228F1D7F00A8B51A /* DetailViewModelTests.swift in Sources */,
 				15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */,
+				15B25611233E314400406058 /* NetworkClientTests.swift in Sources */,
 				150448B222928596000D6216 /* LocalStorageProviderTests.swift in Sources */,
 				15AD0BD1228CFCBF00D7E037 /* NetworkClientDoubles.swift in Sources */,
+				15B25613233E333000406058 /* SessionDoubles.swift in Sources */,
 				15AD0BC1228CE6F300D7E037 /* MainViewControllerDoubles.swift in Sources */,
 				15AD0BB3228AF41300D7E037 /* MainViewControllerTests.swift in Sources */,
 				15AD0BC5228CEAC700D7E037 /* DataProviderDoubles.swift in Sources */,
