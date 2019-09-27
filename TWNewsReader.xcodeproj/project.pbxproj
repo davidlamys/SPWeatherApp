@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -44,6 +44,7 @@
 		15B2560F233E307800406058 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B2560E233E307800406058 /* Session.swift */; };
 		15B25611233E314400406058 /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B25610233E314400406058 /* NetworkClientTests.swift */; };
 		15B25613233E333000406058 /* SessionDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B25612233E333000406058 /* SessionDoubles.swift */; };
+		15B2561B233E3FB100406058 /* TWNewsReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B2561A233E3FB100406058 /* TWNewsReaderUITests.swift */; };
 		15E5AB57233CC2EC00FF16F4 /* StubPostsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */; };
 		15E5AB59233CC6E600FF16F4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5AB58233CC6E600FF16F4 /* Post.swift */; };
 		15E5AB5B233CC73F00FF16F4 /* PostTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E5AB5A233CC73F00FF16F4 /* PostTranslator.swift */; };
@@ -60,6 +61,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 153F3DB6228328920006D614;
 			remoteInfo = PDContactList;
+		};
+		15B2561D233E3FB100406058 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 153F3DAF228328920006D614 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 153F3DB6228328920006D614;
+			remoteInfo = TWNewsReader;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -105,6 +113,9 @@
 		15B2560E233E307800406058 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		15B25610233E314400406058 /* NetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
 		15B25612233E333000406058 /* SessionDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDoubles.swift; sourceTree = "<group>"; };
+		15B25618233E3FB100406058 /* TWNewsReaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TWNewsReaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15B2561A233E3FB100406058 /* TWNewsReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWNewsReaderUITests.swift; sourceTree = "<group>"; };
+		15B2561C233E3FB100406058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StubPostsResponse.json; sourceTree = "<group>"; };
 		15E5AB58233CC6E600FF16F4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		15E5AB5A233CC73F00FF16F4 /* PostTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTranslator.swift; sourceTree = "<group>"; };
@@ -122,6 +133,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		153F3DCB228328930006D614 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15B25615233E3FB100406058 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -171,6 +189,7 @@
 				153F3DDD228458670006D614 /* README.md */,
 				153F3DB9228328920006D614 /* TWNewsReader */,
 				153F3DD1228328930006D614 /* TWNewsReaderTests */,
+				15B25619233E3FB100406058 /* TWNewsReaderUITests */,
 				153F3DB8228328920006D614 /* Products */,
 				1435722A29D0237E26E41AB5 /* Pods */,
 			);
@@ -181,6 +200,7 @@
 			children = (
 				153F3DB7228328920006D614 /* TWNewsReader.app */,
 				153F3DCE228328930006D614 /* TWNewsReaderTests.xctest */,
+				15B25618233E3FB100406058 /* TWNewsReaderUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -336,6 +356,15 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		15B25619233E3FB100406058 /* TWNewsReaderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				15B2561A233E3FB100406058 /* TWNewsReaderUITests.swift */,
+				15B2561C233E3FB100406058 /* Info.plist */,
+			);
+			path = TWNewsReaderUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -374,13 +403,31 @@
 			productReference = 153F3DCE228328930006D614 /* TWNewsReaderTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		15B25617233E3FB100406058 /* TWNewsReaderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15B25621233E3FB100406058 /* Build configuration list for PBXNativeTarget "TWNewsReaderUITests" */;
+			buildPhases = (
+				15B25614233E3FB100406058 /* Sources */,
+				15B25615233E3FB100406058 /* Frameworks */,
+				15B25616233E3FB100406058 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15B2561E233E3FB100406058 /* PBXTargetDependency */,
+			);
+			name = TWNewsReaderUITests;
+			productName = TWNewsReaderUITests;
+			productReference = 15B25618233E3FB100406058 /* TWNewsReaderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		153F3DAF228328920006D614 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = David_Lam;
 				TargetAttributes = {
@@ -389,6 +436,10 @@
 					};
 					153F3DCD228328930006D614 = {
 						CreatedOnToolsVersion = 10.2;
+						TestTargetID = 153F3DB6228328920006D614;
+					};
+					15B25617233E3FB100406058 = {
+						CreatedOnToolsVersion = 11.0;
 						TestTargetID = 153F3DB6228328920006D614;
 					};
 				};
@@ -408,6 +459,7 @@
 			targets = (
 				153F3DB6228328920006D614 /* TWNewsReader */,
 				153F3DCD228328930006D614 /* TWNewsReaderTests */,
+				15B25617233E3FB100406058 /* TWNewsReaderUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -430,6 +482,13 @@
 			files = (
 				15E5AB57233CC2EC00FF16F4 /* StubPostsResponse.json in Resources */,
 				15629B512288305400821ADD /* StubPDResponse.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15B25616233E3FB100406058 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +547,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		15B25614233E3FB100406058 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15B2561B233E3FB100406058 /* TWNewsReaderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -495,6 +562,11 @@
 			isa = PBXTargetDependency;
 			target = 153F3DB6228328920006D614 /* TWNewsReader */;
 			targetProxy = 153F3DCF228328930006D614 /* PBXContainerItemProxy */;
+		};
+		15B2561E233E3FB100406058 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 153F3DB6228328920006D614 /* TWNewsReader */;
+			targetProxy = 15B2561D233E3FB100406058 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -708,6 +780,44 @@
 			};
 			name = Release;
 		};
+		15B2561F233E3FB100406058 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TWNewsReaderUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = davidlam.TWNewsReaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TWNewsReader;
+			};
+			name = Debug;
+		};
+		15B25620233E3FB100406058 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = TWNewsReaderUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = davidlam.TWNewsReaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TWNewsReader;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -734,6 +844,15 @@
 			buildConfigurations = (
 				153F3DDB228328930006D614 /* Debug */,
 				153F3DDC228328930006D614 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15B25621233E3FB100406058 /* Build configuration list for PBXNativeTarget "TWNewsReaderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15B2561F233E3FB100406058 /* Debug */,
+				15B25620233E3FB100406058 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

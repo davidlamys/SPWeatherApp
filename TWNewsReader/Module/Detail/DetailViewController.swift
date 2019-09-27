@@ -21,6 +21,8 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
+        titleLabel.accessibilityLabel = "Item Title"
+        bodyTextView.accessibilityLabel = "Item Body"
     }
 }
 

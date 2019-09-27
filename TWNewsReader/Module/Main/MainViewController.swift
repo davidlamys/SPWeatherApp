@@ -50,6 +50,7 @@ class MainViewController: UIViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.accessibilityLabel = "MainTable"
     }
 
     override func viewDidAppear(_ animated: Bool) {

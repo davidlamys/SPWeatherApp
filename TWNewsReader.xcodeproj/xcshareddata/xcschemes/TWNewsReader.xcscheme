@@ -51,6 +51,16 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "15B25617233E3FB100406058"
+               BuildableName = "TWNewsReaderUITests.xctest"
+               BlueprintName = "TWNewsReaderUITests"
+               ReferencedContainer = "container:TWNewsReader.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
