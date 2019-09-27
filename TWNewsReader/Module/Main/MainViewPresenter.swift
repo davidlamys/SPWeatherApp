@@ -1,5 +1,5 @@
 //
-//  MainViewModel.swift
+//  MainViewPresenter.swift
 //  TWNewsReader
 //
 //  Created by David_Lam on 16/5/19.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol MainViewModelType {
+protocol MainViewPresenterType {
     func viewDidLoad()
     func retryFetch()
     var view: MainViewControllerType! { get }
 }
 
-class MainViewModel: MainViewModelType {
+class MainViewPresenter: MainViewPresenterType {
     weak var view: MainViewControllerType!
     var dataProvider: DataProviderType!
 

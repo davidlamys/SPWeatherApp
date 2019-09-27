@@ -1,5 +1,5 @@
 //
-//  DetailViewModel.swift
+//  DetailViewPresenter.swift
 //  TWNewsReader
 //
 //  Created by David_Lam on 17/5/19.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-protocol DetailViewModelType {
+protocol DetailViewPresenterType {
     func viewDidLoad()
     var view: DetailViewControllerType! { get }
 }
 
-class DetailViewModel: DetailViewModelType {
+class DetailViewPresenter: DetailViewPresenterType {
     weak var view: DetailViewControllerType!
     let dataProvider: DataProviderType!
     let item: Item

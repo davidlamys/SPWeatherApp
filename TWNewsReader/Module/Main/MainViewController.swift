@@ -31,19 +31,19 @@ class MainViewController: UIViewController {
     @IBOutlet weak var loadingStatusLabel: UILabel!
 
     private var items: Items = []
-    var viewModel: MainViewModelType!
+    var viewPresenter: MainViewPresenterType!
 
     @IBAction func retryButtonTapped(sender: Any) {
-        viewModel.retryFetch()
+        viewPresenter.retryFetch()
         items = []
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if viewModel == nil {
-            viewModel = MainViewModel(view: self)
+        if viewPresenter == nil {
+            viewPresenter = MainViewPresenter(view: self)
         }
-        viewModel.viewDidLoad()
+        viewPresenter.viewDidLoad()
         setupTableView()
     }
 
@@ -147,9 +147,9 @@ extension MainViewController: UITableViewDelegate {
         //TODO: introduce coordinator if time permits
         let person = items[indexPath.row]
         let viewController = UIViewController.make(viewController: DetailViewController.self)
-        let detailViewModel = DetailViewModel(view: viewController,
+        let detailViewPresenter = DetailViewPresenter(view: viewController,
                                               item: person)
-        viewController.viewModel = detailViewModel
+        viewController.viewPresenter = detailViewPresenter
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

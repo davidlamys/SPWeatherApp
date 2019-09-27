@@ -1,5 +1,5 @@
 //
-//  MainViewModelTests.swift
+//  MainViewPresenterTests.swift
 //  TWNewsReaderTests
 //
 //  Created by David_Lam on 14/5/19.
@@ -9,16 +9,16 @@
 import XCTest
 @testable import TWNewsReader
 
-class MainViewModelTests: XCTestCase {
+class MainViewPresenterTests: XCTestCase {
 
-    var subject: MainViewModel!
+    var subject: MainViewPresenter!
     var mainViewControllerMock: MainViewControllerMock!
     var dataProvider: DataProviderStub!
 
     override func setUp() {
         mainViewControllerMock = MainViewControllerMock()
         dataProvider = DataProviderStub()
-        subject = MainViewModel(view: mainViewControllerMock,
+        subject = MainViewPresenter(view: mainViewControllerMock,
                                 dataProvider: dataProvider)
     }
 

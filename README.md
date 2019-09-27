@@ -92,4 +92,3 @@ What went well:
 
 Wondering about:
 - Having a data provider keeps the view layer clean, but it seem to neglect core data and its prowess as an object graph. this may work for this tiny application, but I wonder how it scales.
-- May be it's really time to rename all viewmodels to presenter. ViewModels seem to be highly associated with two way bindings, and i'm most definitely not doing this here. 

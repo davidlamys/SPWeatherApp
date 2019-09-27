@@ -16,11 +16,11 @@ final class DetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var bodyTextView: UITextView!
 
-    var viewModel: DetailViewModelType!
+    var viewPresenter: DetailViewPresenterType!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.viewDidLoad()
+        viewPresenter.viewDidLoad()
         titleLabel.accessibilityLabel = "Item Title"
         bodyTextView.accessibilityLabel = "Item Body"
     }

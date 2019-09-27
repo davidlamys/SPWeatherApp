@@ -10,9 +10,9 @@
 		150448B222928596000D6216 /* LocalStorageProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150448B122928596000D6216 /* LocalStorageProviderTests.swift */; };
 		1508CD80228EFEC200A8B51A /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD7F228EFEC200A8B51A /* DetailViewControllerTests.swift */; };
 		1508CD82228F022700A8B51A /* StubData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD81228F022700A8B51A /* StubData.swift */; };
-		1508CD84228F0E8900A8B51A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD83228F0E8900A8B51A /* DetailViewModel.swift */; };
-		1508CD88228F18C600A8B51A /* DetailViewModelDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD87228F18C600A8B51A /* DetailViewModelDoubles.swift */; };
-		1508CD8A228F1D7F00A8B51A /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD89228F1D7F00A8B51A /* DetailViewModelTests.swift */; };
+		1508CD84228F0E8900A8B51A /* DetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD83228F0E8900A8B51A /* DetailViewPresenter.swift */; };
+		1508CD88228F18C600A8B51A /* DetailViewPresenterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD87228F18C600A8B51A /* DetailViewPresenterDoubles.swift */; };
+		1508CD8A228F1D7F00A8B51A /* DetailViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD89228F1D7F00A8B51A /* DetailViewPresenterTests.swift */; };
 		1508CD8C228F1DCD00A8B51A /* DetailViewControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD8B228F1DCD00A8B51A /* DetailViewControllerDoubles.swift */; };
 		153F3DBB228328920006D614 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153F3DBA228328920006D614 /* AppDelegate.swift */; };
 		153F3DC0228328920006D614 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DBE228328920006D614 /* Main.storyboard */; };
@@ -26,13 +26,13 @@
 		15AD0BAA2289A55200D7E037 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BA92289A55200D7E037 /* MainViewController.swift */; };
 		15AD0BB3228AF41300D7E037 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BB2228AF41300D7E037 /* MainViewControllerTests.swift */; };
 		15AD0BB6228AF4D600D7E037 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BB5228AF4D600D7E037 /* ViewControllerFactory.swift */; };
-		15AD0BB8228CE0AC00D7E037 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BB7228CE0AC00D7E037 /* MainViewModel.swift */; };
-		15AD0BBE228CE6C000D7E037 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BBD228CE6C000D7E037 /* MainViewModelTests.swift */; };
+		15AD0BB8228CE0AC00D7E037 /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BB7228CE0AC00D7E037 /* MainViewPresenter.swift */; };
+		15AD0BBE228CE6C000D7E037 /* MainViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BBD228CE6C000D7E037 /* MainViewPresenterTests.swift */; };
 		15AD0BC1228CE6F300D7E037 /* MainViewControllerDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BC0228CE6F300D7E037 /* MainViewControllerDoubles.swift */; };
 		15AD0BC3228CEA3400D7E037 /* MainViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BC2228CEA3400D7E037 /* MainViewState.swift */; };
 		15AD0BC5228CEAC700D7E037 /* DataProviderDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BC4228CEAC700D7E037 /* DataProviderDoubles.swift */; };
 		15AD0BC8228CF0CB00D7E037 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BC7228CF0CB00D7E037 /* DataProvider.swift */; };
-		15AD0BCA228CF21000D7E037 /* MainViewModelDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BC9228CF21000D7E037 /* MainViewModelDoubles.swift */; };
+		15AD0BCA228CF21000D7E037 /* MainViewPresenterDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BC9228CF21000D7E037 /* MainViewPresenterDoubles.swift */; };
 		15AD0BCC228CF5E200D7E037 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BCB228CF5E200D7E037 /* NetworkClient.swift */; };
 		15AD0BCF228CFC8800D7E037 /* DataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BCE228CFC8800D7E037 /* DataProviderTests.swift */; };
 		15AD0BD1228CFCBF00D7E037 /* NetworkClientDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BD0228CFCBF00D7E037 /* NetworkClientDoubles.swift */; };
@@ -74,9 +74,9 @@
 		150448B122928596000D6216 /* LocalStorageProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageProviderTests.swift; sourceTree = "<group>"; };
 		1508CD7F228EFEC200A8B51A /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		1508CD81228F022700A8B51A /* StubData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubData.swift; sourceTree = "<group>"; };
-		1508CD83228F0E8900A8B51A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
-		1508CD87228F18C600A8B51A /* DetailViewModelDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelDoubles.swift; sourceTree = "<group>"; };
-		1508CD89228F1D7F00A8B51A /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
+		1508CD83228F0E8900A8B51A /* DetailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPresenter.swift; sourceTree = "<group>"; };
+		1508CD87228F18C600A8B51A /* DetailViewPresenterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPresenterDoubles.swift; sourceTree = "<group>"; };
+		1508CD89228F1D7F00A8B51A /* DetailViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPresenterTests.swift; sourceTree = "<group>"; };
 		1508CD8B228F1DCD00A8B51A /* DetailViewControllerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerDoubles.swift; sourceTree = "<group>"; };
 		153F3DB7228328920006D614 /* TWNewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TWNewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		153F3DBA228328920006D614 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,13 +94,13 @@
 		15AD0BA92289A55200D7E037 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		15AD0BB2228AF41300D7E037 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		15AD0BB5228AF4D600D7E037 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
-		15AD0BB7228CE0AC00D7E037 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		15AD0BBD228CE6C000D7E037 /* MainViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
+		15AD0BB7228CE0AC00D7E037 /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
+		15AD0BBD228CE6C000D7E037 /* MainViewPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewPresenterTests.swift; sourceTree = "<group>"; };
 		15AD0BC0228CE6F300D7E037 /* MainViewControllerDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerDoubles.swift; sourceTree = "<group>"; };
 		15AD0BC2228CEA3400D7E037 /* MainViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewState.swift; sourceTree = "<group>"; };
 		15AD0BC4228CEAC700D7E037 /* DataProviderDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderDoubles.swift; sourceTree = "<group>"; };
 		15AD0BC7228CF0CB00D7E037 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
-		15AD0BC9228CF21000D7E037 /* MainViewModelDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelDoubles.swift; sourceTree = "<group>"; };
+		15AD0BC9228CF21000D7E037 /* MainViewPresenterDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenterDoubles.swift; sourceTree = "<group>"; };
 		15AD0BCB228CF5E200D7E037 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		15AD0BCE228CFC8800D7E037 /* DataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderTests.swift; sourceTree = "<group>"; };
 		15AD0BD0228CFCBF00D7E037 /* NetworkClientDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientDoubles.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				1508CD7F228EFEC200A8B51A /* DetailViewControllerTests.swift */,
-				1508CD89228F1D7F00A8B51A /* DetailViewModelTests.swift */,
+				1508CD89228F1D7F00A8B51A /* DetailViewPresenterTests.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -160,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				15AD0BC0228CE6F300D7E037 /* MainViewControllerDoubles.swift */,
-				15AD0BC9228CF21000D7E037 /* MainViewModelDoubles.swift */,
+				15AD0BC9228CF21000D7E037 /* MainViewPresenterDoubles.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 		1508CD86228F18AD00A8B51A /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
-				1508CD87228F18C600A8B51A /* DetailViewModelDoubles.swift */,
+				1508CD87228F18C600A8B51A /* DetailViewPresenterDoubles.swift */,
 				1508CD8B228F1DCD00A8B51A /* DetailViewControllerDoubles.swift */,
 			);
 			path = DetailView;
@@ -231,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				1551B39B228EE8A8004EE659 /* DetailViewController.swift */,
-				1508CD83228F0E8900A8B51A /* DetailViewModel.swift */,
+				1508CD83228F0E8900A8B51A /* DetailViewPresenter.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				15AD0BA92289A55200D7E037 /* MainViewController.swift */,
-				15AD0BB7228CE0AC00D7E037 /* MainViewModel.swift */,
+				15AD0BB7228CE0AC00D7E037 /* MainViewPresenter.swift */,
 				15AD0BC2228CEA3400D7E037 /* MainViewState.swift */,
 			);
 			path = Main;
@@ -296,7 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				15AD0BB2228AF41300D7E037 /* MainViewControllerTests.swift */,
-				15AD0BBD228CE6C000D7E037 /* MainViewModelTests.swift */,
+				15AD0BBD228CE6C000D7E037 /* MainViewPresenterTests.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -487,7 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1508CD84228F0E8900A8B51A /* DetailViewModel.swift in Sources */,
+				1508CD84228F0E8900A8B51A /* DetailViewPresenter.swift in Sources */,
 				15AD0BD7228D91E600D7E037 /* ErrorLogger.swift in Sources */,
 				15AD0BC3228CEA3400D7E037 /* MainViewState.swift in Sources */,
 				15AD0BB6228AF4D600D7E037 /* ViewControllerFactory.swift in Sources */,
@@ -495,7 +495,7 @@
 				15AD0BD3228D838D00D7E037 /* LocalStorageProvider.swift in Sources */,
 				15AD0BC8228CF0CB00D7E037 /* DataProvider.swift in Sources */,
 				15B2560D233E203000406058 /* Managed.swift in Sources */,
-				15AD0BB8228CE0AC00D7E037 /* MainViewModel.swift in Sources */,
+				15AD0BB8228CE0AC00D7E037 /* MainViewPresenter.swift in Sources */,
 				15AD0BCC228CF5E200D7E037 /* NetworkClient.swift in Sources */,
 				1551B39C228EE8A8004EE659 /* DetailViewController.swift in Sources */,
 				15B2560F233E307800406058 /* Session.swift in Sources */,
@@ -513,14 +513,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1508CD88228F18C600A8B51A /* DetailViewModelDoubles.swift in Sources */,
+				1508CD88228F18C600A8B51A /* DetailViewPresenterDoubles.swift in Sources */,
 				15E5AB5D233CC87F00FF16F4 /* PostTranslatorTests.swift in Sources */,
 				1508CD82228F022700A8B51A /* StubData.swift in Sources */,
 				1508CD8C228F1DCD00A8B51A /* DetailViewControllerDoubles.swift in Sources */,
 				15AD0BD5228D862400D7E037 /* LocalStorageProviderDoubles.swift in Sources */,
 				15E7B7D5233E112200ACE63A /* TWNewsReader.xcdatamodeld in Sources */,
-				15AD0BBE228CE6C000D7E037 /* MainViewModelTests.swift in Sources */,
-				1508CD8A228F1D7F00A8B51A /* DetailViewModelTests.swift in Sources */,
+				15AD0BBE228CE6C000D7E037 /* MainViewPresenterTests.swift in Sources */,
+				1508CD8A228F1D7F00A8B51A /* DetailViewPresenterTests.swift in Sources */,
 				15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */,
 				15B25611233E314400406058 /* NetworkClientTests.swift in Sources */,
 				150448B222928596000D6216 /* LocalStorageProviderTests.swift in Sources */,
@@ -531,7 +531,7 @@
 				15AD0BC5228CEAC700D7E037 /* DataProviderDoubles.swift in Sources */,
 				15AD0BCF228CFC8800D7E037 /* DataProviderTests.swift in Sources */,
 				1508CD80228EFEC200A8B51A /* DetailViewControllerTests.swift in Sources */,
-				15AD0BCA228CF21000D7E037 /* MainViewModelDoubles.swift in Sources */,
+				15AD0BCA228CF21000D7E037 /* MainViewPresenterDoubles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

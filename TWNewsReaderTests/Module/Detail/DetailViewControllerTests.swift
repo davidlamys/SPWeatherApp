@@ -12,18 +12,18 @@ import XCTest
 class DetailViewControllerTests: XCTestCase {
 
     var subject: DetailViewController!
-    var viewModelMock = DetailViewModelMock()
+    var viewPresenterMock = DetailViewPresenterMock()
 
     override func setUp() {
         subject = UIViewController.make(viewController: DetailViewController.self)
-        subject.viewModel = viewModelMock
-        viewModelMock.view = subject
+        subject.viewPresenter = viewPresenterMock
+        viewPresenterMock.view = subject
         _  = subject.view
     }
 
-    func testViewModelAwareThatViewHasLoaded() {
+    func testViewPresenterAwareThatViewHasLoaded() {
         subject.viewDidLoad()
-        assert(viewModelMock.viewDidLoadCalled)
+        assert(viewPresenterMock.viewDidLoadCalled)
     }
 
     func testWhenSetupViewIsCalled() {

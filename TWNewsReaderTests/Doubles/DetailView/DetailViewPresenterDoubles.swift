@@ -1,5 +1,5 @@
 //
-//  DetailViewModelDoubles.swift
+//  DetailViewPresenterDoubles.swift
 //  TWNewsReaderTests
 //
 //  Created by David_Lam on 18/5/19.
@@ -9,7 +9,7 @@
 import Foundation
 @testable import TWNewsReader
 
-class DetailViewModelMock: DetailViewModelType {
+class DetailViewPresenterMock: DetailViewPresenterType {
     weak var view: DetailViewControllerType!
     var viewDidLoadCalled = false
 

@@ -1,5 +1,5 @@
 //
-//  DetailViewModelTests.swift
+//  DetailViewPresenterTests.swift
 //  TWNewsReaderTests
 //
 //  Created by David_Lam on 18/5/19.
@@ -9,9 +9,9 @@
 import XCTest
 @testable import TWNewsReader
 
-class DetailViewModelTests: XCTestCase {
+class DetailViewPresenterTests: XCTestCase {
 
-    var subject: DetailViewModel!
+    var subject: DetailViewPresenter!
     var detailViewControllerMock: DetailViewControllerMock!
     var dataProvider: DataProviderStub!
     let firstPost = stubPayload.first!
@@ -20,7 +20,7 @@ class DetailViewModelTests: XCTestCase {
         super.setUp()
         detailViewControllerMock = DetailViewControllerMock()
         dataProvider = DataProviderStub()
-        subject = DetailViewModel(view: detailViewControllerMock,
+        subject = DetailViewPresenter(view: detailViewControllerMock,
                                   dataProvider: dataProvider,
                                   item: firstPost)
     }

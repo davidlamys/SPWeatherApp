@@ -12,18 +12,18 @@ import XCTest
 class MainViewControllerTests: XCTestCase {
 
     var subject: MainViewController!
-    var viewModelFake: MainViewModelFake!
+    var viewPresenterFake: MainViewPresenterFake!
 
     override func setUp() {
         subject = UIViewController.make(viewController: MainViewController.self)
-        viewModelFake = MainViewModelFake()
-        subject.viewModel = viewModelFake
+        viewPresenterFake = MainViewPresenterFake()
+        subject.viewPresenter = viewPresenterFake
         _  = subject.view
     }
 
-    func testViewModelAwareThatViewHasLoaded() {
+    func testViewPresenterAwareThatViewHasLoaded() {
         subject.viewDidLoad()
-        assert(viewModelFake.viewDidLoadCalled)
+        assert(viewPresenterFake.viewDidLoadCalled)
     }
 
     func testSetupForEmptyState() {
@@ -146,6 +146,6 @@ class MainViewControllerTests: XCTestCase {
 
     func testWhenRetyButtonTapped() {
         subject.retryButtonTapped(sender: self)
-        assert(viewModelFake.retryFetchCalled == true)
+        assert(viewPresenterFake.retryFetchCalled == true)
     }
 }

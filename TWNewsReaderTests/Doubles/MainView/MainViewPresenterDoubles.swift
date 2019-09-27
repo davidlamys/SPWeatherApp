@@ -1,5 +1,5 @@
 //
-//  MainViewModelDoubles.swift
+//  MainViewPresenterDoubles.swift
 //  TWNewsReaderTests
 //
 //  Created by David_Lam on 16/5/19.
@@ -9,7 +9,7 @@
 import Foundation
 @testable import TWNewsReader
 
-class MainViewModelFake: MainViewModel {
+class MainViewPresenterFake: MainViewPresenter {
     var viewDidLoadCalled = false
     var fetchMoreCalled = false
     var retryFetchCalled = false
