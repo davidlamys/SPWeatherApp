@@ -6,7 +6,8 @@
 //  Copyright © 2019 David_Lam. All rights reserved.
 //
 
-import Foundation
+import CoreData
+import UIKit
 
 protocol LocalStorageProviderType {
     func getListItemsFromLocal(completion: @escaping ((Items) -> Void))
@@ -16,21 +17,20 @@ protocol LocalStorageProviderType {
 
 class LocalStorageProvider {
 
-    private let defaults: UserDefaults
-
-    fileprivate struct Keys {
-        static func getKeyForListItems() -> String {
-            return "SavedList"
-        }
-
-        static func getKeyFor(imageHash: String) -> String {
-            return String(format: "Image-%@",
-                          imageHash)
-        }
+    let persistentContainer: NSPersistentContainer!
+       
+    //MARK: Init with dependency
+    init(container: NSPersistentContainer) {
+        self.persistentContainer = container
+        self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
     }
-
-    init(userDefaults: UserDefaults = UserDefaults.standard) {
-        self.defaults = userDefaults
+    
+    convenience init() {
+        //Use the default container for production environment
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Can not get shared app delegate")
+        }
+        self.init(container: appDelegate.persistentContainer)
     }
 }
 
@@ -38,11 +38,7 @@ extension LocalStorageProvider: LocalStorageProviderType {
 
     // MARK: Person
     func getListItemsFromLocal(completion: @escaping ((Items) -> Void)) {
-        guard let savedData = defaults.object(forKey: Keys.getKeyForListItems()) as? Data else {
-            completion([])
-            return
-        }
-
+        
         let result = Result<Items, NSError>.failure(NSError())
 
         switch result {
@@ -55,22 +51,19 @@ extension LocalStorageProvider: LocalStorageProviderType {
     }
 
     func insertListItems(data newList: Items) {
-        getListItemsFromLocal { localList in
-            self.saveListItems(data: localList + newList)
-        }
     }
 
     private func saveListItems(data list: Items) {
         let result = Result<Items, NSError>.failure(NSError())
         switch result {
-        case .success(let data):
-            defaults.set(data, forKey: Keys.getKeyForListItems())
+        case .success(let data): break
+
         case .failure(let error):
             logError(error)
         }
     }
 
     func deleteListItems() {
-        defaults.set(nil, forKey: Keys.getKeyForListItems())
+        
     }
 }
