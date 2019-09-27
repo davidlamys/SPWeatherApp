@@ -16,7 +16,7 @@ final class PostObject: NSManagedObject {
     @NSManaged fileprivate(set) var body: String
 
     static func insert(into context: NSManagedObjectContext, post: Post) -> PostObject {
-        guard let postObj = NSEntityDescription.insertNewObject(forEntityName: "PostObject", into: context) as? PostObject else {
+        guard let postObj = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as? PostObject else {
             fatalError("core data is not set up properly")
         }
 
