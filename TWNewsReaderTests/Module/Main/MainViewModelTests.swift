@@ -59,6 +59,19 @@ class MainViewModelTests: XCTestCase {
         let finalState = MainViewState.emptyState
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
     }
+    
+    func testWhenViewDidLoadIsCalledInBadNetworkAndThereIsSomeLocalData() {
+        // GIVEN
+        dataProvider.setupForBadNeworkWithSomeLocalData()
+
+        //WHEN
+        subject.viewDidLoad()
+
+        // THEN
+        let firstState = MainViewState.loading
+        let finalState = MainViewState.loadedFromLocalStorage(items: stubPayload)
+        assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
+    }
 
     func testWhenRetyFetchIsCalled() {
         // GIVEN

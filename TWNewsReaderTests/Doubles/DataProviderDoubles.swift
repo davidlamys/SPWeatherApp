@@ -34,6 +34,10 @@ class DataProviderStub: DataProviderType {
     func setupForBadNeworkWithNoLocalData() {
         stubResults = [.fallbackFromLocalStorage(items: [])]
     }
+    
+    func setupForBadNeworkWithSomeLocalData() {
+        stubResults = [.fallbackFromLocalStorage(items: stubPayload)]
+    }
 
     func fetchListItems(completion: @escaping ((FetchListItemsResultType) -> Void)) {
         fetchListItemsCalledWithIndex = 0
