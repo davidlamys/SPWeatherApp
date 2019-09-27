@@ -45,14 +45,11 @@ class MainViewModel: MainViewModelType {
                 } else {
                     self.view.setupView(state: .loadedFromLocalStorage(items: payload))
                 }
-            case .successFromNetwork(let payload, let hasMoreItems):
+            case .successFromNetwork(let payload):
                 if payload.isEmpty {
                     self.view.setupView(state: .displayWelcomeMessage)
                 } else {
-                    self.view.setupView(state: .loadedFromNetwork(items: payload, hasMoreItems: hasMoreItems))
-                    if hasMoreItems {
-                        self.fetchListItems()
-                    }
+                    self.view.setupView(state: .loadedFromNetwork(items: payload))
                 }
             }
         }

@@ -30,27 +30,8 @@ class MainViewModelTests: XCTestCase {
         subject.viewDidLoad()
         // THEN
         let firstState = MainViewState.loading
-        let finalState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: false)
+        let finalState = MainViewState.loadedFromNetwork(items: stubPayload)
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
-    }
-
-    func testWhenViewDidLoadIsCalledInGoodNetworkWithMultiplePages() {
-        // GIVEN
-        dataProvider.setupForGoodNetworkWithMultipageData()
-
-        //WHEN
-        subject.viewDidLoad()
-        // THEN
-        let firstState = MainViewState.loading
-        let intimediateState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: true)
-        let intimediateStateTwo = MainViewState.loading
-        let finalState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: false)
-
-        assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState,
-                                                                 intimediateState,
-                                                                 intimediateStateTwo,
-                                                                     finalState])
-
     }
 
     func testWhenViewDidLoadIsCalledInGoodNetworkButThereIsNoData() {
@@ -90,7 +71,7 @@ class MainViewModelTests: XCTestCase {
         assert(dataProvider.fetchListItemsCalledWithIndex == 0)
         // THEN
         let firstState = MainViewState.loading
-        let finalState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: false)
+        let finalState = MainViewState.loadedFromNetwork(items: stubPayload)
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
 
     }

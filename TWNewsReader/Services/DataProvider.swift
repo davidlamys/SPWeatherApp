@@ -14,7 +14,7 @@ enum DataSource {
 }
 
 enum FetchListItemsResultType {
-    case successFromNetwork(items: Items, hasMoreItems: Bool)
+    case successFromNetwork(items: Items)
     case fallbackFromLocalStorage(items: Items)
 }
 
@@ -40,7 +40,7 @@ struct DataProvider: DataProviderType {
 
         self.localStorageProvider.deleteListItems()
         self.localStorageProvider.insertListItems(data: items)
-        completion(.successFromNetwork(items: items, hasMoreItems: false))
+        completion(.successFromNetwork(items: items))
 
     }
 

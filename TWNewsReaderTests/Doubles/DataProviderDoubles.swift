@@ -24,16 +24,11 @@ class DataProviderStub: DataProviderType {
     }
 
     func setupForGoodNetwork() {
-        stubResults = [.successFromNetwork(items: stubPayload, hasMoreItems: false)]
-    }
-
-    func setupForGoodNetworkWithMultipageData() {
-        stubResults = [.successFromNetwork(items: stubPayload, hasMoreItems: true),
-                      .successFromNetwork(items: stubPayload, hasMoreItems: false)]
+        stubResults = [.successFromNetwork(items: stubPayload)]
     }
 
     func setupForGoodNetworkWithNoData() {
-        stubResults = [.successFromNetwork(items: [], hasMoreItems: false)]
+        stubResults = [.successFromNetwork(items: [])]
     }
 
     func setupForBadNeworkWithNoLocalData() {

@@ -91,7 +91,7 @@ extension MainViewController: MainViewControllerType {
             tableView.isHidden = true
             stateFeedbackLabel.text = Text.loadingText.rawValue
 
-        case .loadedFromNetwork(let payload, let hasMoreItems):
+        case .loadedFromNetwork(let payload):
             tableView.isHidden = false
             items.append(contentsOf: payload)
             tableView.reloadData()
@@ -100,12 +100,9 @@ extension MainViewController: MainViewControllerType {
                            items.count)
 
             loadingStatusUpdateBanner.isHidden = false
-            if hasMoreItems {
-                loadingStatusLabel.text = Text.stillLoadingText.rawValue
-            } else {
-                loadingStatusLabel.text = Text.completedMessage.rawValue
-                animateHideLoadingStatusBanner()
-            }
+            loadingStatusLabel.text = Text.completedMessage.rawValue
+            animateHideLoadingStatusBanner()
+                        
 
         case .loadedFromLocalStorage(let payload):
             tableView.isHidden = false

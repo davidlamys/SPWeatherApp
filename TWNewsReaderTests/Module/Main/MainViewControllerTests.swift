@@ -73,7 +73,7 @@ class MainViewControllerTests: XCTestCase {
         // WHEN
         subject.setupView(state: .emptyState)
         subject.setupView(state: .loading)
-        subject.setupView(state: .loadedFromNetwork(items: stubPayload, hasMoreItems: false))
+        subject.setupView(state: .loadedFromNetwork(items: stubPayload))
 
         // THEN
         assert(subject.tableView.isHidden == false)
@@ -100,7 +100,7 @@ class MainViewControllerTests: XCTestCase {
         subject.setupView(state: .loadedFromLocalStorage(items: stubPayload))
         subject.retryButtonTapped(sender: subject!)
         subject.setupView(state: .loading)
-        subject.setupView(state: .loadedFromNetwork(items: stubPayload, hasMoreItems: false))
+        subject.setupView(state: .loadedFromNetwork(items: stubPayload))
 
         // THEN
         assert(subject.tableView.isHidden == false)
