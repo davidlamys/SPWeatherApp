@@ -51,6 +51,13 @@ extension LocalStorageProvider: LocalStorageProviderType {
     }
 
     func insertListItems(data newList: Items) {
+        let backgroundContext = persistentContainer.viewContext
+        newList.forEach({ PostObject.insert(into: backgroundContext, post: $0) })
+        do {
+            try backgroundContext.save()
+        } catch let error {
+            logError(error)
+        }
     }
 
     private func saveListItems(data list: Items) {
