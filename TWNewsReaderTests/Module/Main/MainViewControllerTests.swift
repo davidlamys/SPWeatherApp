@@ -44,6 +44,7 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.tableView.isHidden == true)
         assert(subject.loadingStatusUpdateBanner.isHidden == true)
         assert(subject.stateFeedbackLabel.text == Text.loadingText.rawValue)
+        assert(subject.activityIndicatorView.isAnimating == true)
     }
 
     func testLoadScreenWithPostsFromLocalStorage() {
@@ -66,6 +67,7 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.title == expectedTitle)
 
         assert(subject.loadingStatusUpdateBanner.isHidden == false)
+        assert(subject.activityIndicatorView.isAnimating == false)
         assert(subject.loadingStatusLabel.text == Text.apiFailedAndFetchedFromLocal.rawValue)
     }
 
@@ -89,6 +91,7 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.title == expectedTitle)
 
         assert(subject.loadingStatusUpdateBanner.isHidden == false)
+        assert(subject.activityIndicatorView.isAnimating == false)
         assert(subject.loadingStatusLabel.text == Text.completedMessage.rawValue)
     }
 
@@ -116,6 +119,7 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.title == expectedTitle)
 
         assert(subject.loadingStatusUpdateBanner.isHidden == false)
+        assert(subject.activityIndicatorView.isAnimating == false)
         assert(subject.loadingStatusLabel.text == Text.completedMessage.rawValue)
     }
 
@@ -126,10 +130,13 @@ class MainViewControllerTests: XCTestCase {
         subject.setupView(state: .displayWelcomeMessage)
 
         //THEN
-        assert(subject.tableView.isHidden == true)
         assert(subject.stateFeedbackLabel.text == Text.welcomMessage.rawValue)
+        assert(subject.tableView.isHidden == true)
         assert(subject.navigationItem.leftBarButtonItem?.isEnabled == true)
         assert(subject.loadingStatusUpdateBanner.isHidden == true)
+        assert(subject.activityIndicatorView.isAnimating == false)
+        assert(subject.title == nil)
+
     }
 
     func testLoadScreenWithEmptyListItemsAndNoInternet() {
@@ -138,10 +145,12 @@ class MainViewControllerTests: XCTestCase {
         subject.setupView(state: .loading)
         subject.setupView(state: .emptyState)
         //THEN
-        assert(subject.tableView.isHidden == true)
         assert(subject.stateFeedbackLabel.text == Text.noInternetTextForNewUser.rawValue)
+        assert(subject.tableView.isHidden == true)
         assert(subject.navigationItem.leftBarButtonItem?.isEnabled == true)
         assert(subject.loadingStatusUpdateBanner.isHidden == true)
+        assert(subject.activityIndicatorView.isAnimating == false)
+        assert(subject.title == nil)
     }
 
     func testWhenRetyButtonTapped() {

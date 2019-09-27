@@ -22,6 +22,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="u10-zS-SB4">
+                                <rect key="frame" x="188.5" y="656.5" width="37" height="37"/>
+                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bKc-OJ-brR">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
@@ -72,6 +75,8 @@
                             <constraint firstItem="5hg-ro-OuR" firstAttribute="centerY" secondItem="ysr-r6-cGf" secondAttribute="centerY" id="Lrn-ch-I14"/>
                             <constraint firstItem="5hg-ro-OuR" firstAttribute="height" secondItem="8F1-jV-LaP" secondAttribute="height" multiplier="0.75" id="V0d-CG-nHu"/>
                             <constraint firstItem="ysr-r6-cGf" firstAttribute="trailing" secondItem="bKc-OJ-brR" secondAttribute="trailing" id="V2X-R2-fBq"/>
+                            <constraint firstItem="u10-zS-SB4" firstAttribute="centerY" secondItem="5hg-ro-OuR" secondAttribute="centerY" constant="200" id="kHU-j7-jYD"/>
+                            <constraint firstItem="u10-zS-SB4" firstAttribute="centerX" secondItem="5hg-ro-OuR" secondAttribute="centerX" id="nei-Bb-fSH"/>
                             <constraint firstItem="bKc-OJ-brR" firstAttribute="bottom" secondItem="ysr-r6-cGf" secondAttribute="bottom" id="t5c-83-mxR"/>
                             <constraint firstItem="5hg-ro-OuR" firstAttribute="width" secondItem="8F1-jV-LaP" secondAttribute="width" multiplier="0.75" id="xVM-Kd-fjr"/>
                         </constraints>
@@ -85,6 +90,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="u10-zS-SB4" id="8IF-kM-TdA"/>
                         <outlet property="loadingStatusLabel" destination="Jhf-tn-NkH" id="AZK-bM-wdy"/>
                         <outlet property="loadingStatusUpdateBanner" destination="YRU-R0-7Xn" id="Swz-Le-wxf"/>
                         <outlet property="stateFeedbackLabel" destination="5hg-ro-OuR" id="y6M-J2-nn8"/>

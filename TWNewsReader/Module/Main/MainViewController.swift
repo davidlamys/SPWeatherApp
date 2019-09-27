@@ -29,7 +29,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingStatusUpdateBanner: UIView!
     @IBOutlet weak var loadingStatusLabel: UILabel!
-
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     private var items: Items = []
     var viewPresenter: MainViewPresenterType!
 
@@ -76,6 +77,8 @@ extension MainViewController: MainViewControllerType {
         precondition(Thread.isMainThread)
         navigationItem.leftBarButtonItem?.isEnabled = false
         loadingStatusUpdateBanner.isHidden = true
+        activityIndicatorView.stopAnimating()
+        
         switch state {
         case .displayWelcomeMessage:
             tableView.isHidden = true
@@ -90,6 +93,7 @@ extension MainViewController: MainViewControllerType {
         case .loading:
             tableView.isHidden = true
             stateFeedbackLabel.text = Text.loadingText.rawValue
+            activityIndicatorView.startAnimating()
 
         case .loadedFromNetwork(let payload):
             tableView.isHidden = false
