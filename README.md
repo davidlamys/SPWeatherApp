@@ -39,7 +39,7 @@ Master Scene
 - [x] upon tapping pass post object to detail scene
 
 Detail Scene
-- [] populate story
+- [x] populate story
 
 DataProvider
   - [x] expose function for view models to call to fetch data

@@ -13,26 +13,14 @@ protocol DetailViewControllerType: class {
 }
 
 final class DetailViewController: UIViewController {
-    @IBOutlet weak var profileImageView: UIImageView! // in a bigger project, the image view and the loading spinner will be in a component =/
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var organizationLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-
-    @IBOutlet weak var organizationStackView: UIStackView!
-    @IBOutlet weak var phoneStackView: UIStackView!
-    @IBOutlet weak var emailStackView: UIStackView!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var bodyTextView: UITextView!
 
     var viewModel: DetailViewModelType!
-
-    fileprivate var hasSetImageFromNetwork: Bool = false
-    fileprivate var hasImageFetchHasFailed: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
-        activityIndicatorView.hidesWhenStopped = true
     }
 }
 
@@ -50,6 +38,8 @@ extension DetailViewController: DetailViewControllerType {
 
     private func setupViewOnMainThread(item: Item) {
         precondition(Thread.isMainThread)
+        titleLabel.text = item.title
+        bodyTextView.text = item.body
     }
 
 }

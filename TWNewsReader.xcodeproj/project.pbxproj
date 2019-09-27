@@ -22,7 +22,6 @@
 		153F3DC8228328930006D614 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DC6228328930006D614 /* LaunchScreen.storyboard */; };
 		153F3DDE228458680006D614 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DDD228458670006D614 /* README.md */; };
 		1551B39C228EE8A8004EE659 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1551B39B228EE8A8004EE659 /* DetailViewController.swift */; };
-		1551B3A2228EE912004EE659 /* ImageViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1551B3A1228EE912004EE659 /* ImageViewState.swift */; };
 		15629B512288305400821ADD /* StubPDResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 15629B502288305400821ADD /* StubPDResponse.json */; };
 		15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B542288307B00821ADD /* CannedResponseLoader.swift */; };
 		157516F9233D245C00EF7E3B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157516F8233D245C00EF7E3B /* Global.swift */; };
@@ -83,7 +82,6 @@
 		153F3DD4228328930006D614 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		153F3DDD228458670006D614 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1551B39B228EE8A8004EE659 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		1551B3A1228EE912004EE659 /* ImageViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewState.swift; sourceTree = "<group>"; };
 		15629B502288305400821ADD /* StubPDResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StubPDResponse.json; sourceTree = "<group>"; };
 		15629B542288307B00821ADD /* CannedResponseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannedResponseLoader.swift; sourceTree = "<group>"; };
 		157516F8233D245C00EF7E3B /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 			children = (
 				1551B39B228EE8A8004EE659 /* DetailViewController.swift */,
 				1508CD83228F0E8900A8B51A /* DetailViewModel.swift */,
-				1551B3A1228EE912004EE659 /* ImageViewState.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -544,7 +541,6 @@
 				153F3DBB228328920006D614 /* AppDelegate.swift in Sources */,
 				15E5AB59233CC6E600FF16F4 /* Post.swift in Sources */,
 				15AD0BAA2289A55200D7E037 /* MainViewController.swift in Sources */,
-				1551B3A2228EE912004EE659 /* ImageViewState.swift in Sources */,
 				157516F9233D245C00EF7E3B /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

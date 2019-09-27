@@ -14,7 +14,7 @@ class DetailViewModelTests: XCTestCase {
     var subject: DetailViewModel!
     var detailViewControllerMock: DetailViewControllerMock!
     var dataProvider: DataProviderStub!
-    let david = stubPayload.first!
+    let firstPost = stubPayload.first!
 
     override func setUp() {
         super.setUp()
@@ -22,12 +22,12 @@ class DetailViewModelTests: XCTestCase {
         dataProvider = DataProviderStub()
         subject = DetailViewModel(view: detailViewControllerMock,
                                   dataProvider: dataProvider,
-                                  item: david)
+                                  item: firstPost)
     }
 
     func testWhenViewDidLoadIsCalled_ShouldCallInvokeSetupWithPersonInViewController() {
         subject.viewDidLoad()
-        assert(detailViewControllerMock.setupViewCalledWithItem == david)
+        assert(detailViewControllerMock.setupViewCalledWithItem == firstPost)
     }
 
 }
