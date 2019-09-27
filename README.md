@@ -79,3 +79,17 @@ Master Scene (after recovering from network loss)
     -[x] show master list of posts from network
 
 ## Retrospective 27 Sep 2019 ##
+- Overall I spent about 8-10 hours instead of the recommended 5. A bulk of the time is spent relearning how core data works as well as learning to write basic UITest.
+
+What did not go so well:
+- Repurposing the application took significantly longer than expected. I did not approach it systematically enough and it took quite a while
+- This is the second time I write tests in XCTest, I still prefer to have tools like quick or some derivative of hamcrest
+- UITesting without EarlGrey and the helpers is rather difficult and wordy
+
+What went well:
+- After replacing the old object of the application with the new object, it was quite reassuring to have the tests. It's quite nice to see the logic of the data provider preserved from one app to another.
+- It feels nice to have zero libraries.
+
+Wondering about:
+- Having a data provider keeps the view layer clean, but it seem to neglect core data and its prowess as an object graph. this may work for this tiny application, but I wonder how it scales.
+- May be it's really time to rename all viewmodels to presenter. ViewModels seem to be highly associated with two way bindings, and i'm most definitely not doing this here. 
