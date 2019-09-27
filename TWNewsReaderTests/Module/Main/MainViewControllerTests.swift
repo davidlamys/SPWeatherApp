@@ -82,7 +82,7 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.loadingStatusLabel.text == Text.apiFailedAndFetchedFromLocal.rawValue)
     }
 
-    func testLoadScreenWithEmptyContactList() {
+    func testLoadScreenWithEmptyListItems() {
         // WHEN
         subject.setupView(state: .emptyState)
         subject.setupView(state: .loading)

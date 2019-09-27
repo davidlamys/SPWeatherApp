@@ -9,9 +9,9 @@
 import Foundation
 
 protocol LocalStorageProviderType {
-    func getContactListFromLocal(completion: @escaping ((Items) -> Void))
-    func insertContactList(data: Items)
-    func deleteContactList()
+    func getListItemsFromLocal(completion: @escaping ((Items) -> Void))
+    func insertListItems(data: Items)
+    func deleteListItems()
 }
 
 class LocalStorageProvider {
@@ -19,7 +19,7 @@ class LocalStorageProvider {
     private let defaults: UserDefaults
 
     fileprivate struct Keys {
-        static func getKeyForContactList() -> String {
+        static func getKeyForListItems() -> String {
             return "SavedList"
         }
 
@@ -37,8 +37,8 @@ class LocalStorageProvider {
 extension LocalStorageProvider: LocalStorageProviderType {
 
     // MARK: Person
-    func getContactListFromLocal(completion: @escaping ((Items) -> Void)) {
-        guard let savedData = defaults.object(forKey: Keys.getKeyForContactList()) as? Data else {
+    func getListItemsFromLocal(completion: @escaping ((Items) -> Void)) {
+        guard let savedData = defaults.object(forKey: Keys.getKeyForListItems()) as? Data else {
             completion([])
             return
         }
@@ -54,23 +54,23 @@ extension LocalStorageProvider: LocalStorageProviderType {
         }
     }
 
-    func insertContactList(data newList: Items) {
-        getContactListFromLocal { localList in
-            self.saveContactList(data: localList + newList)
+    func insertListItems(data newList: Items) {
+        getListItemsFromLocal { localList in
+            self.saveListItems(data: localList + newList)
         }
     }
 
-    private func saveContactList(data list: Items) {
+    private func saveListItems(data list: Items) {
         let result = Result<Items, NSError>.failure(NSError())
         switch result {
         case .success(let data):
-            defaults.set(data, forKey: Keys.getKeyForContactList())
+            defaults.set(data, forKey: Keys.getKeyForListItems())
         case .failure(let error):
             logError(error)
         }
     }
 
-    func deleteContactList() {
-        defaults.set(nil, forKey: Keys.getKeyForContactList())
+    func deleteListItems() {
+        defaults.set(nil, forKey: Keys.getKeyForListItems())
     }
 }

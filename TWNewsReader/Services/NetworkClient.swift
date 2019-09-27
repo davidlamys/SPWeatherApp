@@ -13,25 +13,25 @@ let limit:Int = 500
 fileprivate let pipedriveAPIKey = Bundle.main.infoDictionary?["PipedriveAPIKey"] as! String
 
 enum RequestType {
-    case fetchContactList(startIndex: Int)
+    case fetchListItems(startIndex: Int)
 
     var baseURL: String {
         switch self {
-        case .fetchContactList(let startIndex):
+        case .fetchListItems(let startIndex):
             return "https://api.pipedrive.com/v1/persons?start=\(startIndex)&sort=name&limit=\(limit)&api_token="
         }
     }
 
     var parsingQueueLabel: String {
         switch self {
-        case .fetchContactList:
-            return "fetchContactList"
+        case .fetchListItems:
+            return "fetchListItems"
         }
     }
 
     func getURLString() -> String {
         switch self {
-        case .fetchContactList:
+        case .fetchListItems:
             return baseURL + pipedriveAPIKey
         }
     }

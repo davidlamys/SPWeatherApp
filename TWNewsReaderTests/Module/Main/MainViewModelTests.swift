@@ -94,7 +94,7 @@ class MainViewModelTests: XCTestCase {
         subject.retryFetch()
 
         // THEN
-        assert(dataProvider.fetchContactListCalledWithIndex == 0)
+        assert(dataProvider.fetchListItemsCalledWithIndex == 0)
         // THEN
         let firstState = MainViewState.loading
         let finalState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: false)

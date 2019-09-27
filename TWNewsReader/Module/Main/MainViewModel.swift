@@ -27,21 +27,21 @@ class MainViewModel: MainViewModelType {
     }
 
     func viewDidLoad() {
-        fetchContactList()
+        fetchListItems()
     }
 
     func fetchMore() {
-        fetchContactList()
+        fetchListItems()
     }
 
     func retryFetch() {
         nextIndex = 0
-        fetchContactList()
+        fetchListItems()
     }
 
-    private func fetchContactList() {
+    private func fetchListItems() {
         view.setupView(state: .loading)
-        dataProvider.fetchContactLists(startIndex: nextIndex) { [weak self] result in
+        dataProvider.fetchListItems(startIndex: nextIndex) { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -59,7 +59,7 @@ class MainViewModel: MainViewModelType {
                 } else {
                     self.view.setupView(state: .loadedFromNetwork(items: payload, hasMoreItems: hasMoreItems))
                     if hasMoreItems {
-                        self.fetchContactList()
+                        self.fetchListItems()
                     }
                 }
             }

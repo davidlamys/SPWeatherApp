@@ -18,7 +18,7 @@ class NetworkClientStub: NetworkClientType {
         error = nil
     }
 
-    func setupForGetContactListUnderGoodNetwork() {
+    func setupForGetListItemsUnderGoodNetwork() {
         let response = NetworkResponse(success: true,
                                        data: stubPayload,
                                        additionalData: nil,
