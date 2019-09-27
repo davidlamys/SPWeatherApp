@@ -63,6 +63,15 @@ extension LocalStorageProvider: LocalStorageProviderType {
     }
 
     func deleteListItems() {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "PostObject")
         
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        let backgroundContext = persistentContainer.newBackgroundContext()
+        do {
+            _ = try backgroundContext.execute(request)
+            try backgroundContext.save()
+        } catch let error {
+            logError(error)
+        }
     }
 }

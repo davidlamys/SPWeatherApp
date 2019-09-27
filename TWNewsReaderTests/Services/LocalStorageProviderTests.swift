@@ -14,7 +14,7 @@ import CoreData
 
 class LocalStorageProviderTests: XCTestCase {
     // source: https://medium.com/flawless-app-stories/cracking-the-tests-for-core-data-15ef893a3fee
-    var mockPersistantContainer: NSPersistentContainer = {
+    var mockInMemoryPersistantContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TWNewsReader")
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
@@ -33,6 +33,16 @@ class LocalStorageProviderTests: XCTestCase {
         return container
     }()
     
+    // source: https://stackoverflow.com/questions/45134431/is-nsinmemorystoretype-incompatible-with-nsbatchdeleterequest
+    var devContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "TWNewsReader")
+        container.persistentStoreDescriptions[0].url = URL(fileURLWithPath: "/dev/null")
+        container.loadPersistentStores { (description, error) in
+            XCTAssertNil(error)
+        }
+        return container
+    }()
+    
     var subject: LocalStorageProvider!
     var testUserDefaults: UserDefaults!
 
@@ -40,7 +50,7 @@ class LocalStorageProviderTests: XCTestCase {
         super.setUp()
 
         testUserDefaults = UserDefaultsMock()
-        subject = LocalStorageProvider(container: mockPersistantContainer)
+        subject = LocalStorageProvider(container: mockInMemoryPersistantContainer)
     }
 
     override func tearDown() {
@@ -64,10 +74,19 @@ class LocalStorageProviderTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
     }
     
+    func testDeleteItemsShouldDeleteItems() {
+        // MARK: this creates a coupling between test and implementation. :( apparently batch delete only works on SQLLite stores 
+        subject = LocalStorageProvider(container: devContainer)
+        subject.insertListItems(data: stubPayload)
+        subject.deleteListItems()
+        
+        assert(numberOfItemsInPersistentStore() == 0)
+    }
+    
     //Convenient method for getting the number of data in store now
     func numberOfItemsInPersistentStore() -> Int {
         let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "PostObject")
-        let results = try! mockPersistantContainer.viewContext.fetch(request)
+        let results = try! mockInMemoryPersistantContainer.viewContext.fetch(request)
         return results.count
     }
 }
