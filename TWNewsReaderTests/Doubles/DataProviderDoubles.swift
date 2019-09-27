@@ -14,7 +14,7 @@ class DataProviderStub: DataProviderType {
     private var dataSource: DataSource!
     private var payload = Items()
 
-    private var stubResults = [FetchListResultType]()
+    private var stubResults = [FetchListItemsResultType]()
 
     var imageLocalFetchCompletion: ((Data?) -> Void)?
     var imageNetworkFetchCompletion: ((Data?) -> Void)?
@@ -42,8 +42,8 @@ class DataProviderStub: DataProviderType {
         stubResults = [.fallbackFromLocalStorage(items: [])]
     }
 
-    func fetchListItems(startIndex: Int, completion: @escaping ((FetchListResultType) -> Void)) {
-        fetchListItemsCalledWithIndex = startIndex
+    func fetchListItems(completion: @escaping ((FetchListItemsResultType) -> Void)) {
+        fetchListItemsCalledWithIndex = 0
         if stubResults.isEmpty {
             print("end of stub results")
             return

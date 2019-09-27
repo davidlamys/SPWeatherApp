@@ -33,7 +33,7 @@ class DataProviderTests: XCTestCase {
         networkClientStub.setupForGetListItemsUnderGoodNetwork()
         let expectation = XCTestExpectation(description: "Calling stub network client")
 
-        subject.fetchListItems(startIndex: 0) { resultType in
+        subject.fetchListItems() { resultType in
             assert(self.localStorageProviderMock.insertListItemsCalledWithData == stubPayload)
             assert(self.localStorageProviderMock.deleteListItemsCalled)
             expectation.fulfill()
@@ -43,25 +43,12 @@ class DataProviderTests: XCTestCase {
 
     }
 
-    func testWhenFetchingSecondPageListItemsUnderGoodNetwork() {
-        networkClientStub.setupForGetListItemsUnderGoodNetwork()
-        let expectation = XCTestExpectation(description: "Calling stub network client")
-
-        subject.fetchListItems(startIndex: limit) { resultType in
-            assert(self.localStorageProviderMock.insertListItemsCalledWithData == stubPayload)
-            assert(self.localStorageProviderMock.deleteListItemsCalled == false)
-            expectation.fulfill()
-        }
-
-        wait(for: [expectation], timeout: 5.0)
-
-    }
     func testWhenFetchingListItemsWithNetworkError() {
         networkClientStub.setupForNetworkError()
         localStorageProviderMock.setupStorageWithStubList()
         let expectation = XCTestExpectation(description: "Calling stub network client")
 
-        subject.fetchListItems(startIndex: 0) { resultType in
+        subject.fetchListItems() { resultType in
             assert(self.localStorageProviderMock.getListItemsCalled == true)
             assert(self.localStorageProviderMock.insertListItemsCalledWithData == nil)
             expectation.fulfill()

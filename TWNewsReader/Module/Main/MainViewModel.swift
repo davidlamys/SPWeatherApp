@@ -18,7 +18,6 @@ protocol MainViewModelType {
 class MainViewModel: MainViewModelType {
     weak var view: MainViewControllerType!
     var dataProvider: DataProviderType!
-    var nextIndex: Int = 0
 
     init(view: MainViewControllerType,
          dataProvider: DataProviderType = DataProvider()) {
@@ -35,13 +34,12 @@ class MainViewModel: MainViewModelType {
     }
 
     func retryFetch() {
-        nextIndex = 0
         fetchListItems()
     }
 
     private func fetchListItems() {
         view.setupView(state: .loading)
-        dataProvider.fetchListItems(startIndex: nextIndex) { [weak self] result in
+        dataProvider.fetchListItems() { [weak self] result in
             guard let self = self else {
                 return
             }
@@ -53,7 +51,6 @@ class MainViewModel: MainViewModelType {
                     self.view.setupView(state: .loadedFromLocalStorage(items: payload))
                 }
             case .successFromNetwork(let payload, let hasMoreItems):
-                self.nextIndex += limit
                 if payload.isEmpty {
                     self.view.setupView(state: .displayWelcomeMessage)
                 } else {

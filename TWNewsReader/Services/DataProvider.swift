@@ -19,8 +19,7 @@ enum FetchListItemsResultType {
 }
 
 protocol DataProviderType {
-    func fetchListItems(startIndex: Int,
-                        completion: @escaping((FetchListItemsResultType) -> Void))
+    func fetchListItems(completion: @escaping((FetchListItemsResultType) -> Void))
 }
 
 struct DataProvider: DataProviderType {
@@ -36,27 +35,20 @@ struct DataProvider: DataProviderType {
         self.localStorageProvider = localStorageProvider
     }
 
-    fileprivate func handleSuccessResponse(_ response: (NetworkResponse),
-                                           startIndex: Int,
+    fileprivate func handleSuccessResponse(_ items: Items,
                                            completion: @escaping FetchListItemsHandler) {
-        if let persons = response.data {
-            if startIndex == 0 {
-                self.localStorageProvider.deleteListItems()
-            }
-            self.localStorageProvider.insertListItems(data: persons)
-            let hasMoreItems = (response.hasMoreItems)
-            completion(.successFromNetwork(items: persons, hasMoreItems: hasMoreItems))
-        } else if response.hasReachedRateLimit {
-            print("has reached rate limit")
-        } else {
-            print(response)
-        }
+    
+        self.localStorageProvider.deleteListItems()
+        self.localStorageProvider.insertListItems(data: items)
+        completion(.successFromNetwork(items: items, hasMoreItems: false))
+        
     }
+    
+    
 
-    func fetchListItems(startIndex: Int = 0,
-                        completion: @escaping FetchListItemsHandler) {
-        clientType.request(request: .fetchListItems(startIndex: startIndex),
-                       translator: TWNetworkResponseTranslator.translateFromNetworkResponse) { result in
+    func fetchListItems(completion: @escaping FetchListItemsHandler) {
+        clientType.request(request: .fetchListItems,
+                           translator: PostTranslator.translateFromNetworkResponse) { result in
             precondition(Thread.isMainThread == false)
             switch result {
             case .failure(let error):
@@ -64,7 +56,6 @@ struct DataProvider: DataProviderType {
                 self.getListItemsFromLocal(completion: completion)
             case .success(let response):
                 self.handleSuccessResponse(response,
-                                           startIndex: startIndex,
                                            completion: completion)
             }
         }

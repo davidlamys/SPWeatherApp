@@ -19,13 +19,7 @@ class NetworkClientStub: NetworkClientType {
     }
 
     func setupForGetListItemsUnderGoodNetwork() {
-        let response = NetworkResponse(success: true,
-                                       data: stubPayload,
-                                       additionalData: nil,
-                                       error: nil,
-                                       errorCode: nil,
-                                       redirectUrl: nil)
-        result = response
+        result = stubPayload
         error = nil
     }
 

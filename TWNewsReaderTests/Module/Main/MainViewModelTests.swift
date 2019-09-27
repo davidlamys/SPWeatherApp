@@ -25,7 +25,6 @@ class MainViewModelTests: XCTestCase {
     func testWhenViewDidLoadIsCalledInGoodNetwork() {
         // GIVEN
         dataProvider.setupForGoodNetwork()
-        let initialIndex = subject.nextIndex
 
         //WHEN
         subject.viewDidLoad()
@@ -33,14 +32,11 @@ class MainViewModelTests: XCTestCase {
         let firstState = MainViewState.loading
         let finalState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: false)
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
-        // a succesful fetch should increase the index
-        assert(subject.nextIndex - initialIndex == limit)
     }
 
     func testWhenViewDidLoadIsCalledInGoodNetworkWithMultiplePages() {
         // GIVEN
         dataProvider.setupForGoodNetworkWithMultipageData()
-        let initialIndex = subject.nextIndex
 
         //WHEN
         subject.viewDidLoad()
@@ -55,8 +51,6 @@ class MainViewModelTests: XCTestCase {
                                                                  intimediateStateTwo,
                                                                      finalState])
 
-        // a succesful fetch should increase the index
-        assert(subject.nextIndex - initialIndex == (2*limit))
     }
 
     func testWhenViewDidLoadIsCalledInGoodNetworkButThereIsNoData() {
@@ -87,7 +81,6 @@ class MainViewModelTests: XCTestCase {
 
     func testWhenRetyFetchIsCalled() {
         // GIVEN
-        subject.nextIndex = Int.max
         dataProvider.setupForGoodNetwork()
 
         // WHEN
@@ -99,8 +92,6 @@ class MainViewModelTests: XCTestCase {
         let firstState = MainViewState.loading
         let finalState = MainViewState.loadedFromNetwork(items: stubPayload, hasMoreItems: false)
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
-        // a succesful fetch should increase the index
-        assert(subject.nextIndex == limit)
 
     }
 

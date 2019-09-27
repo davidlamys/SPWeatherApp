@@ -9,16 +9,13 @@
 import Foundation
 import Alamofire
 
-let limit:Int = 500
-fileprivate let pipedriveAPIKey = Bundle.main.infoDictionary?["PipedriveAPIKey"] as! String
-
 enum RequestType {
-    case fetchListItems(startIndex: Int)
+    case fetchListItems
 
     var baseURL: String {
         switch self {
-        case .fetchListItems(let startIndex):
-            return "https://api.pipedrive.com/v1/persons?start=\(startIndex)&sort=name&limit=\(limit)&api_token="
+        case .fetchListItems:
+            return "https://jsonplaceholder.typicode.com/posts"
         }
     }
 
@@ -32,7 +29,7 @@ enum RequestType {
     func getURLString() -> String {
         switch self {
         case .fetchListItems:
-            return baseURL + pipedriveAPIKey
+            return baseURL
         }
     }
 }
