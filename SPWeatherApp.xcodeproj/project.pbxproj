@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		150448B222928596000D6216 /* LocalStorageProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150448B122928596000D6216 /* LocalStorageProviderTests.swift */; };
 		1508CD80228EFEC200A8B51A /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD7F228EFEC200A8B51A /* DetailViewControllerTests.swift */; };
 		1508CD82228F022700A8B51A /* StubData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD81228F022700A8B51A /* StubData.swift */; };
 		1508CD84228F0E8900A8B51A /* DetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1508CD83228F0E8900A8B51A /* DetailViewPresenter.swift */; };
@@ -546,7 +545,6 @@
 				1508CD8A228F1D7F00A8B51A /* DetailViewPresenterTests.swift in Sources */,
 				15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */,
 				15B25611233E314400406058 /* NetworkClientTests.swift in Sources */,
-				150448B222928596000D6216 /* LocalStorageProviderTests.swift in Sources */,
 				15AD0BD1228CFCBF00D7E037 /* NetworkClientDoubles.swift in Sources */,
 				15B25613233E333000406058 /* SessionDoubles.swift in Sources */,
 				15AD0BC1228CE6F300D7E037 /* MainViewControllerDoubles.swift in Sources */,
