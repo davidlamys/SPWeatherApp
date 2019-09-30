@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "153F3DB6228328920006D614"
-               BuildableName = "TWNewsReader.app"
+               BuildableName = "SPWeatherApp.app"
                BlueprintName = "SPWeatherApp"
                ReferencedContainer = "container:SPWeatherApp.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "153F3DB6228328920006D614"
-            BuildableName = "TWNewsReader.app"
+            BuildableName = "SPWeatherApp.app"
             BlueprintName = "SPWeatherApp"
             ReferencedContainer = "container:SPWeatherApp.xcodeproj">
          </BuildableReference>
@@ -78,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "153F3DB6228328920006D614"
-            BuildableName = "TWNewsReader.app"
+            BuildableName = "SPWeatherApp.app"
             BlueprintName = "SPWeatherApp"
             ReferencedContainer = "container:SPWeatherApp.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "153F3DB6228328920006D614"
-            BuildableName = "TWNewsReader.app"
+            BuildableName = "SPWeatherApp.app"
             BlueprintName = "SPWeatherApp"
             ReferencedContainer = "container:SPWeatherApp.xcodeproj">
          </BuildableReference>
