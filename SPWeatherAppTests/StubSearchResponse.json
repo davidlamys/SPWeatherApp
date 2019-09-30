@@ -1,0 +1,256 @@
+{
+    "search_api": {
+        "result": [
+            {
+                "areaName": [
+                    {
+                        "value": "New Bishini"
+                    }
+                ],
+                "country": [
+                    {
+                        "value": "Nigeria"
+                    }
+                ],
+                "region": [
+                    {
+                        "value": "Federal Capital Territory"
+                    }
+                ],
+                "latitude": "9.633",
+                "longitude": "7.400",
+                "population": "0",
+                "weatherUrl": [
+                    {
+                        "value": "https://www.worldweatheronline.com/v2/weather.aspx?q=9.6333,7.4"
+                    }
+                ]
+            },
+            {
+                "areaName": [
+                    {
+                        "value": "Bishini"
+                    }
+                ],
+                "country": [
+                    {
+                        "value": "Nigeria"
+                    }
+                ],
+                "region": [
+                    {
+                        "value": "Federal Capital Territory"
+                    }
+                ],
+                "latitude": "9.600",
+                "longitude": "7.433",
+                "population": "0",
+                "weatherUrl": [
+                    {
+                        "value": "https://www.worldweatheronline.com/v2/weather.aspx?q=9.6,7.4333"
+                    }
+                ]
+            },
+            {
+                "areaName": [
+                    {
+                        "value": "Old Bishini"
+                    }
+                ],
+                "country": [
+                    {
+                        "value": "Nigeria"
+                    }
+                ],
+                "region": [
+                    {
+                        "value": "Federal Capital Territory"
+                    }
+                ],
+                "latitude": "9.600",
+                "longitude": "7.433",
+                "population": "0",
+                "weatherUrl": [
+                    {
+                        "value": "https://www.worldweatheronline.com/v2/weather.aspx?q=9.6,7.4333"
+                    }
+                ]
+            },
+            {
+                "areaName": [
+                    {
+                        "value": "Gidan Sarkin Bishini"
+                    }
+                ],
+                "country": [
+                    {
+                        "value": "Nigeria"
+                    }
+                ],
+                "region": [
+                    {
+                        "value": "Federal Capital Territory"
+                    }
+                ],
+                "latitude": "9.617",
+                "longitude": "7.417",
+                "population": "0",
+                "weatherUrl": [
+                    {
+                        "value": "https://www.worldweatheronline.com/v2/weather.aspx?q=9.6167,7.4167"
+                    }
+                ]
+            },
+            {
+                "areaName": [
+                    {
+                        "value": "New Nabumai"
+                    }
+                ],
+                "country": [
+                    {
+                        "value": "Papua New Guinea"
+                    }
+                ],
+                "region": [
+                    {
+                        "value": "New Ireland"
+                    }
+                ],
+                "latitude": "-3.733",
+                "longitude": "152.433",
+                "population": "0",
+                "weatherUrl": [
+                    {
+                        "value": "https://www.worldweatheronline.com/v2/weather.aspx?q=-3.7333,152.4333"
+                    }
+                ]
+            },
+            {
+                "areaName": [
+                    {
+                        "value": "New Plymouth"
+                    }
+                ],
+                "country": [
+                    {
+                        "value": "New Zealand"
+                    }
+                ],
+                "region": [
+                    {
+                        "value": ""
+                    }
+                ],
+                "latitude": "-39.067",
+                "longitude": "174.083",
+                "population": "49169",
+                "weatherUrl": [
+                    {
+                        "value": "https://www.worldweatheronline.com/v2/weather.aspx?q=-39.0667,174.0833"
+                    }
+                ]
+            },
+            {
+                "areaName": [
+                    {
+                        "value": "New Brighton"
+                    }
+                ],
+                "country": [
+                    {
+                        "value": "New Zealand"
+                    }
+                ],
+                "region": [
+                    {
+                        "value": ""
+                    }
+                ],
+                "latitude": "-37.133",
+                "longitude": "175.283",
+                "population": "0",
+                "weatherUrl": [
+                    {
+                        "value": "https://www.worldweatheronline.com/v2/weather.aspx?q=-37.1333,175.2833"
+                    }
+                ]
+            },
+            {
+                "areaName": [
+                    {
+                        "value": "New Haven"
+                    }
+                ],
+                "country": [
+                    {
+                        "value": "New Zealand"
+                    }
+                ],
+                "region": [
+                    {
+                        "value": ""
+                    }
+                ],
+                "latitude": "-46.467",
+                "longitude": "169.717",
+                "population": "0",
+                "weatherUrl": [
+                    {
+                        "value": "https://www.worldweatheronline.com/v2/weather.aspx?q=-46.4667,169.7167"
+                    }
+                ]
+            },
+            {
+                "areaName": [
+                    {
+                        "value": "New Plymouth City"
+                    }
+                ],
+                "country": [
+                    {
+                        "value": "New Zealand"
+                    }
+                ],
+                "region": [
+                    {
+                        "value": ""
+                    }
+                ],
+                "latitude": "-39.067",
+                "longitude": "174.083",
+                "population": "0",
+                "weatherUrl": [
+                    {
+                        "value": "https://www.worldweatheronline.com/v2/weather.aspx?q=-39.0667,174.0833"
+                    }
+                ]
+            },
+            {
+                "areaName": [
+                    {
+                        "value": "New Southgate"
+                    }
+                ],
+                "country": [
+                    {
+                        "value": "UK United Kingdom"
+                    }
+                ],
+                "region": [
+                    {
+                        "value": "London"
+                    }
+                ],
+                "latitude": "51.613",
+                "longitude": "-0.138",
+                "population": "10000",
+                "weatherUrl": [
+                    {
+                        "value": "https://www.worldweatheronline.com/v2/weather.aspx?q=51.613,-0.138"
+                    }
+                ]
+            }
+        ]
+    }
+}
