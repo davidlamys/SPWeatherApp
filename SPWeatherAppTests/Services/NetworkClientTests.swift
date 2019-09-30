@@ -22,10 +22,10 @@ class NetworkClientTests: XCTestCase {
     func testWhenURLRequestIsSuccessful() {
         sessionStub.setupForGetListItemsUnderGoodNetwork()
         let expectation = XCTestExpectation(description: "Calling stub session")
-        let resultHandler: (Result<[Post], Error>) -> Void = { resultType in
+        let resultHandler: (Result<Items, Error>) -> Void = { resultType in
             switch resultType {
-            case .success(let posts):
-                assert(posts.count == 100)
+            case .success(let locations):
+                assert(locations.count == 10)
                 expectation.fulfill()
             default:
                 assertionFailure("expected success")
@@ -38,7 +38,7 @@ class NetworkClientTests: XCTestCase {
     func testWhenURLRequestHasError() {
         sessionStub.setupForNetworkError()
         let expectation = XCTestExpectation(description: "Calling stub session")
-        let resultHandler: (Result<[Post], Error>) -> Void = { resultType in
+        let resultHandler: (Result<Items, Error>) -> Void = { resultType in
             switch resultType {
             case .failure(let error):
                 let expectedError = NSError(domain: "some error", code: 1, userInfo: [:])
@@ -54,7 +54,7 @@ class NetworkClientTests: XCTestCase {
 
     func testWhenURLRequestHasNoErrorAndNoData() {
         let expectation = XCTestExpectation(description: "Calling stub session")
-        let resultHandler: (Result<[Post], Error>) -> Void = { resultType in
+        let resultHandler: (Result<Items, Error>) -> Void = { resultType in
             switch resultType {
             case .failure(let error):
                 let expectedError = NSError.init(domain: "com.david.SPWeatherApp", code: -1, userInfo: ["info": "unknown network error"])

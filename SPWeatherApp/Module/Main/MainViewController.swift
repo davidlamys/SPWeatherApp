@@ -18,7 +18,6 @@ enum Text: String {
     case loadingText = "Loading...please wait for the good stuff"
     case navigationTitle_DataFromNetwork = "Fetched %d posts from internetz"
     case navigationTitle_DataFromLocal = "Fetched %d cached posts"
-    case stillLoadingText = "More to come! Hang in tight!!"
     case completedMessage = "Congratulations, we have fetched all ;)"
     case apiFailedAndFetchedFromLocal = "Oops, something went wrong, showing data from local storage. Please retry later."
 }
@@ -140,8 +139,9 @@ extension MainViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {
             fatalError("cell is not configured")
         }
-        let post = items[indexPath.row]
-        cell.textLabel?.text = post.title
+        let location = items[indexPath.row]
+        cell.textLabel?.text = location.cityName
+        cell.detailTextLabel?.text = location.cityCountry
         return cell
     }
 }

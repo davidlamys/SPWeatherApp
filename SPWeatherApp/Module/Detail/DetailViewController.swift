@@ -40,8 +40,6 @@ extension DetailViewController: DetailViewControllerType {
 
     private func setupViewOnMainThread(item: Item) {
         precondition(Thread.isMainThread)
-        titleLabel.text = item.title
-        bodyTextView.text = item.body
     }
 
 }

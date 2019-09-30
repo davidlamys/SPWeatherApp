@@ -6,17 +6,15 @@
 //  Copyright © 2019 David_Lam. All rights reserved.
 //
 import UIKit
-
 @testable import SPWeatherApp
 
-let stubPayload = [
-    Post(userId: 1,
-         id: 1,
-         title: "Title 1",
-        body: "Some Long text 1"),
-    Post(userId: 10,
-         id: 100,
-         title: "Title 2",
-         body: "Some Long text 2")
-
+let stubPayload: Items = [
+    Location(areaName: "Area 51",
+             country: "USA",
+             lat: 37.14,
+             lon: -115.38),
+    Location(areaName: "Singapore",
+             country: "Singapore",
+             lat: 1.3521,
+             lon: 103.8198)
 ]

@@ -8,6 +8,6 @@
 
 import Foundation
 
-typealias Items = [Post]
-typealias Item = Post
-typealias Translator = PostTranslator
+typealias Items = [Location]
+typealias Item = Location
+typealias Translator = LocationTranslator

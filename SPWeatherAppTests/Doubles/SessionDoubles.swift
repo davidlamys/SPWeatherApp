@@ -20,7 +20,7 @@ class SessionStub: SessionType {
     }
 
     func setupForGetListItemsUnderGoodNetwork() {
-        result = ResponseLoader.loadLocalResponse(file: "StubPostsResponse")
+        result = ResponseLoader.loadLocalResponse(file: "StubSearchResponse")
         error = nil
     }
 
