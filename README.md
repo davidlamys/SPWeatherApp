@@ -1,94 +1,79 @@
 # Scenario #
 You need to implement an app that:
-- Reads JSON from a publicly available REST API endpoint
-- Parses it and shows the contents in a table view or collection view
-- Tapping on a table or collection view item shows a detailed view of that item
-- Persists the contents of the JSON data locally, so if the app is used without an
-Internet connection, it will show previously downloaded content. If there is no internet
-and no previously available data, please display an error in a user friendly way.
-- Compiles and runs using the latest App Store version of Xcode.
-- Written in Swift only
+- Allows user to search for city on a search bar and display weather of the selected city
+- Display list of previously view city
 
-What we don’t want to see:
-- Overengineering your code
-- Massive view controller
-- Lack of unit testing
-- Over-reliance on third party libraries
-- Persisting data in UserDefaults
-
-Initial Research
-- Based on the API suggested, the simplest way to  illustrate this is to build a simple news reader app. The master list shall display list of story titles, and the detail page can then display the body of the message. We can consider displaying the posts if time permits.
-
-## Plan 26 Sep 2019 ##
+## Plan 30 Sep 2019 ##
 
 ### Consideration: ###
-As I'm a believer of a repository pattern, and I'm not a adept CoreData developer, I'd continue using the repository pattern despite the fact that it negates the advantages of CoreData as an object graph.
+Since there is  no mention of persistence store preference, I intend to use the basic user defaults
+
 
 ### Personal Objectives: ###
-- [x]Experiment with Integration test with plain ol' XCUITest
-- [x]Replace Alamofire with URLSessionn if time permits
+- [ ] Experiment with Integration test with plain ol' XCUITest
+- [ ] Implement throttling without RxSwift
 
-#### Phase 1: Basic app: upon launching, fetch all posts and populate screen ####
+### Use Case 1. ###
 
-Master Scene
-- [x] upon launch, call dataProvider
-    - if dataProvider returns empty array from network
-      - [x] present placeholder label
-    - else
-      - [x] update master list of posts
-- [x] upon tapping pass post object to detail scene
+As a user
 
-Detail Scene
-- [x] populate story
+Given I am on the home screen
 
-DataProvider
-  - [x] expose function for view models to call to fetch data
-  - [x] build network requests
-    - [x] Call network NetworkClient
-      - [x] if network succeed then parse response
+When I type in to the search bar on the home page
 
-NetworkClient - Alamofire
-  - [x] Call GetPost API
-  
-- [x] Create POSO Post Object
-- [x] Create POSO Post Translator Object
+- [ ] Then I will see a list of available cities that pattern matches what I have typed
 
-#### Phase 2: Store posts upon successful request ####
-DataProvider
-- [x] given network call is successful, invoke localStorageProvider to save object
+### Use Case 2. ###
 
-LocalStorageProvider
-- [x] given POSO Post Object, insert CoreDataObjects into DB
+As a user
 
-#### Phase 3: Display posts from stored posts  ####
-DataProvider
-    - [x] given network call is unsuccessful, invoke localStorageProvider to retrieve object
+Given I am on the home screen
 
-LocalStorageProvider
-    - [x] retrieve core data object
-    - [x] convert core data object to POSO object
+And there is a list of available cities (based on what I've typed)
+ 
+When I tap on a city
 
-Master Scene (without network)
-  - upon launch, call dataProvider
-  - if dataProvider returns empty array from local storage
-    - [x] present placeholder label
-  - else
-    - [x] update master list of posts
-    
-Master Scene (after recovering from network loss)
-    -[x] show master list of posts from network
+- [ ] Then I will be on the city Screen
 
-## Retrospective 27 Sep 2019 ##
-- Overall I spent about 8-10 hours instead of the recommended 5. A bulk of the time is spent relearning how core data works as well as learning to write basic UITest.
+- [ ] Then I will see the current weather image
 
-What did not go so well:
-- Repurposing the application took significantly longer than expected. I did not approach it systematically enough and it took quite a while
-- This is the second time I write tests in XCTest, I still prefer to have tools like quick or some derivative of hamcrest
-- UITesting without EarlGrey and the helpers is rather difficult and wordy
+- [ ] Then I will see the current humidity
 
-What went well:
-- After replacing the old object of the application with the new object, it was quite reassuring to have the tests. It's quite nice to see the logic of the data provider preserved from one app to another.
-- It feels nice to have zero libraries.
+- [ ] Then I will see the current weather in text form
 
-Wondering about:
-- Having a data provider keeps the view layer clean, but it seem to neglect core data and its prowess as an object graph. this may work for this tiny application, but I wonder how it scales.
+- [ ] Then I will see the current weather temperature
+
+### Use Case 3. ###
+
+As a user
+
+Given I am on the home screen
+
+And I have not viewed a City's weather
+
+- [ ]  Then I should see a list view empty state
+
+### Use Case 4. ###
+
+As a user
+
+Given I am on the home screen
+
+And I have previously viewed any city's weather
+
+- [ ] Then I should see a ordered list of the recent 10 cities that I have previously seen.
+
+And I should see the latest City that I have viewed at the top of the list
+ 
+
+### Use Case 5. ###
+
+As a user
+
+Given I have previously viewed any city's weather
+
+When I have relaunched the app (terminating the app and relaunched)
+
+- [ ] Then I should see a ordered list of the recent 10 cities that I have previously seen.
+
+## Retrospective 2 Oct 2019 ##
