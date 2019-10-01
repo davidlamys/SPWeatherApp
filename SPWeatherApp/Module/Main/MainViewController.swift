@@ -34,7 +34,6 @@ class MainViewController: UIViewController {
     var viewPresenter: MainViewPresenterType!
 
     @IBAction func retryButtonTapped(sender: Any) {
-        viewPresenter.retryFetch()
         items = []
     }
 
@@ -43,7 +42,6 @@ class MainViewController: UIViewController {
         if viewPresenter == nil {
             viewPresenter = MainViewPresenter(view: self)
         }
-        viewPresenter.viewDidLoad()
         setupTableView()
     }
 

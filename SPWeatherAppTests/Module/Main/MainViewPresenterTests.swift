@@ -27,8 +27,9 @@ class MainViewPresenterTests: XCTestCase {
         dataProvider.setupForGoodNetwork()
 
         //WHEN
-        subject.viewDidLoad()
+        subject.fetchItems(query: "Singapore")
         // THEN
+        assert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
         let firstState = MainViewState.loading
         let finalState = MainViewState.loadedFromNetwork(items: stubPayload)
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
@@ -39,9 +40,10 @@ class MainViewPresenterTests: XCTestCase {
         dataProvider.setupForGoodNetworkWithNoData()
 
         //WHEN
-        subject.viewDidLoad()
+        subject.fetchItems(query: "Singapore")
 
         // THEN
+        assert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
         let firstState = MainViewState.loading
         let finalState = MainViewState.displayWelcomeMessage
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
@@ -52,9 +54,10 @@ class MainViewPresenterTests: XCTestCase {
         dataProvider.setupForBadNework()
 
         //WHEN
-        subject.viewDidLoad()
+        subject.fetchItems(query: "Singapore")
 
         // THEN
+        assert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
         let firstState = MainViewState.loading
         let finalState = MainViewState.loadedFromLocalStorage(items: stubPayload)
         XCTFail()

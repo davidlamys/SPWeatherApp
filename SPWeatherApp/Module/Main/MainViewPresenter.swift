@@ -9,9 +9,8 @@
 import Foundation
 
 protocol MainViewPresenterType {
-    func viewDidLoad()
-    func retryFetch()
     var view: MainViewControllerType! { get }
+    func fetchItems(query: String)
 }
 
 class MainViewPresenter: MainViewPresenterType {
@@ -24,17 +23,9 @@ class MainViewPresenter: MainViewPresenterType {
         self.dataProvider = dataProvider
     }
 
-    func viewDidLoad() {
-        fetchListItems()
-    }
-
-    func retryFetch() {
-        fetchListItems()
-    }
-
-    private func fetchListItems() {
+    func fetchItems(query: String) {
         view.setupView(state: .loading)
-        dataProvider.fetchListItems(query: "Singapore") { [weak self] result in
+        dataProvider.fetchListItems(query: query) { [weak self] result in
             guard let self = self else {
                 return
             }

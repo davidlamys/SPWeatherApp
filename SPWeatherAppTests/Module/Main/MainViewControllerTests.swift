@@ -21,11 +21,6 @@ class MainViewControllerTests: XCTestCase {
         _  = subject.view
     }
 
-    func testViewPresenterAwareThatViewHasLoaded() {
-        subject.viewDidLoad()
-        assert(viewPresenterFake.viewDidLoadCalled)
-    }
-
     func testSetupForEmptyState() {
         // WHEN
         subject.setupView(state: .emptyState)
@@ -129,8 +124,4 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.title == nil)
     }
 
-    func testWhenRetyButtonTapped() {
-        subject.retryButtonTapped(sender: self)
-        assert(viewPresenterFake.retryFetchCalled == true)
-    }
 }

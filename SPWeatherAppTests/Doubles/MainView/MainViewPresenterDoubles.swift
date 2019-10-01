@@ -10,19 +10,9 @@ import Foundation
 @testable import SPWeatherApp
 
 class MainViewPresenterFake: MainViewPresenter {
-    var viewDidLoadCalled = false
-    var fetchMoreCalled = false
-    var retryFetchCalled = false
     init() {
         // this is a questionable decision. need more future research
         super.init(view: MainViewControllerMock(),
                    dataProvider: DataProviderStub())
-    }
-    override func viewDidLoad() {
-        viewDidLoadCalled = true
-    }
-
-    override func retryFetch() {
-        retryFetchCalled = true
     }
 }
