@@ -11,7 +11,6 @@ import Foundation
 class LocalStorageProviderMock: LocalStorageProviderType {
 
     var insertListItemsCalledWithData: Items!
-    var saveImageCalledWith: (hash: String, data: Data)!
     var getListItemsCalled = false
     var deleteListItemsCalled = false
     private var payload = Items()
@@ -44,10 +43,6 @@ class LocalStorageProviderMock: LocalStorageProviderType {
 
     func getImage(hash: String, completion: @escaping ((Data?) -> Void)) {
 
-    }
-
-    func saveImage(hash: String, data: Data) {
-        saveImageCalledWith = (hash: hash, data: data)
     }
 
 }
