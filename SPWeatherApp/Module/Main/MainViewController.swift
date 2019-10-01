@@ -30,6 +30,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var loadingStatusLabel: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
     private var items: Items = []
     var viewPresenter: MainViewPresenterType!
 
@@ -43,6 +45,13 @@ class MainViewController: UIViewController {
             viewPresenter = MainViewPresenter(view: self)
         }
         setupTableView()
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search city"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
     }
 
     private func setupTableView() {
@@ -154,4 +163,10 @@ extension MainViewController: UITableViewDelegate {
         viewController.viewPresenter = detailViewPresenter
         navigationController?.pushViewController(viewController, animated: true)
     }
+}
+
+extension MainViewController: UISearchResultsUpdating {
+  // MARK: - UISearchResultsUpdating Delegate
+  func updateSearchResults(for searchController: UISearchController) {
+  }
 }
