@@ -21,7 +21,7 @@ Given I am on the home screen
 
 When I type in to the search bar on the home page
 
-- [ ] Then I will see a list of available cities that pattern matches what I have typed
+- [x] Then I will see a list of available cities that pattern matches what I have typed
 
 ### Use Case 2. ###
 
@@ -76,4 +76,8 @@ When I have relaunched the app (terminating the app and relaunched)
 
 - [ ] Then I should see a ordered list of the recent 10 cities that I have previously seen.
 
+## TODO ##
+Handle error cases for search api
+- [ ] handle network failure
+- [ ] handle no result found failure
 ## Retrospective 2 Oct 2019 ##
