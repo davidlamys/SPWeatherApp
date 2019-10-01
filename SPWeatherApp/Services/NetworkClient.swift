@@ -30,7 +30,7 @@ enum RequestType {
             let urlString = baseURL + "key=\(key)" + "&q=\(query)" + "&format=json&popular=no&num_of_results=200"
             return urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         case .fetchCityWeather(let lat, let lon):
-            let urlString = baseURL + "key=\(key)" + "&q=\(lat),\(lon)" + "&format=json&num_of_days=0"
+            let urlString = baseURL + "key=\(key)" + "&q=\(lat),\(lon)" + "&format=json&num_of_days=0&fx=no&mca=no&fx24=no&show_comments=no"
             return urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         }
     }
