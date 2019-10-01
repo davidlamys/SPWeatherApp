@@ -20,6 +20,18 @@ class MainViewControllerTests: XCTestCase {
         subject.viewPresenter = viewPresenterFake
         _  = subject.view
     }
+    
+    func testInvokePresenterFunctionWhenSearchBarIsUpdated() {
+        // GIVEN
+        let searchController = UISearchController()
+        searchController.searchBar.text = "MySearch"
+        
+        // WHEN
+        subject.updateSearchResults(for: searchController)
+        
+        // THEN
+        assert(viewPresenterFake.fetchItemsCalledWithQuery == "MySearch")
+    }
 
     func testSetupForEmptyState() {
         // WHEN

@@ -103,7 +103,7 @@ extension MainViewController: MainViewControllerType {
 
         case .loadedFromNetwork(let payload):
             tableView.isHidden = false
-            items.append(contentsOf: payload)
+            items = payload
             tableView.reloadData()
 
             title = String(format: Text.navigationTitle_DataFromNetwork.rawValue,
@@ -168,5 +168,7 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController: UISearchResultsUpdating {
   // MARK: - UISearchResultsUpdating Delegate
   func updateSearchResults(for searchController: UISearchController) {
+    let searchText = searchController.searchBar.text ?? ""
+    viewPresenter.fetchItems(query: searchText)
   }
 }
