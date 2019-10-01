@@ -59,7 +59,7 @@ class MainViewPresenterTests: XCTestCase {
         // THEN
         assert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
         let firstState = MainViewState.loading
-        let finalState = MainViewState.loadedFromLocalStorage(items: stubPayload)
+        let finalState = MainViewState.searchHistory(items: stubPayload)
         XCTFail()
     }
 

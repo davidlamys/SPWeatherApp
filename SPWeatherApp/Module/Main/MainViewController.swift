@@ -114,7 +114,7 @@ extension MainViewController: MainViewControllerType {
             animateHideLoadingStatusBanner()
                         
 
-        case .loadedFromLocalStorage(let payload):
+        case .searchHistory(let payload):
             tableView.isHidden = false
             items = payload
             tableView.reloadData()

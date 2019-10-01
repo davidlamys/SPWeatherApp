@@ -11,7 +11,7 @@ import Foundation
 enum MainViewState {
     case loading
     case loadedFromNetwork(items: Items)
-    case loadedFromLocalStorage(items: Items)
+    case searchHistory(items: Items)
     case emptyState
     case displayWelcomeMessage
 }

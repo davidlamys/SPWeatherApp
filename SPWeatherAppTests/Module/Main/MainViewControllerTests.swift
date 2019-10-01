@@ -54,11 +54,9 @@ class MainViewControllerTests: XCTestCase {
         assert(subject.activityIndicatorView.isAnimating == true)
     }
 
-    func testLoadScreenWithPostsFromLocalStorage() {
+    func testLoadScreenWithSearchHistory() {
         // WHEN
-        subject.setupView(state: .emptyState)
-        subject.setupView(state: .loading)
-        subject.setupView(state: .loadedFromLocalStorage(items: stubPayload))
+        subject.setupView(state: .searchHistory(items: stubPayload))
 
         // THEN
         assert(subject.tableView.isHidden == false)
