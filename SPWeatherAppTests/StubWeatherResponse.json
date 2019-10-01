@@ -1,0 +1,44 @@
+{
+    "data": {
+        "request": [
+            {
+                "type": "City",
+                "query": "London, United Kingdom"
+            }
+        ],
+        "current_condition": [
+            {
+                "observation_time": "07:45 AM",
+                "temp_C": "17",
+                "temp_F": "63",
+                "weatherCode": "116",
+                "weatherIconUrl": [
+                    {
+                        "value": "http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"
+                    }
+                ],
+                "weatherDesc": [
+                    {
+                        "value": "Partly cloudy"
+                    }
+                ],
+                "windspeedMiles": "8",
+                "windspeedKmph": "13",
+                "winddirDegree": "220",
+                "winddir16Point": "SW",
+                "precipMM": "0.0",
+                "precipInches": "0.0",
+                "humidity": "83",
+                "visibility": "10",
+                "visibilityMiles": "6",
+                "pressure": "999",
+                "pressureInches": "30",
+                "cloudcover": "25",
+                "FeelsLikeC": "17",
+                "FeelsLikeF": "63",
+                "uvIndex": 5
+            }
+        ]
+    }
+}
+
