@@ -8,27 +8,27 @@
 
 import Foundation
 
+// while api key is usually private and could be injected in jenkins, this is just an api key for the weather api...so...yolo..¯\_(ツ)_/¯
+private let key = "f475ee8edfaf447697e31822192509"
+private let postfix = "&format=json&popular=no&num_of_results=200"
+
 enum RequestType {
-    case fetchListItems
+    case fetchListItems(query: String)
 
     var baseURL: String {
         switch self {
         case .fetchListItems:
-            return "https://jsonplaceholder.typicode.com/posts"
-        }
-    }
-
-    var parsingQueueLabel: String {
-        switch self {
-        case .fetchListItems:
-            return "fetchListItems"
+            return "https://api.worldweatheronline.com/premium/v1/search.ashx?"
         }
     }
 
     func getURLString() -> String {
         switch self {
-        case .fetchListItems:
-            return baseURL
+        case .fetchListItems(let query):
+            
+            let string = baseURL + "key=\(key)" + "&q=\(query)" + postfix
+            print(string)
+            return string.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         }
     }
 }

@@ -13,6 +13,7 @@ class NetworkClientTests: XCTestCase {
     var subject: NetworkClient!
     var sessionStub: SessionStub!
     let translator = Translator.translateFromNetworkResponse
+    let someRequest = RequestType.fetchListItems(query: "some query")
     override func setUp() {
         super.setUp()
         sessionStub = SessionStub()
@@ -31,7 +32,7 @@ class NetworkClientTests: XCTestCase {
                 assertionFailure("expected success")
             }
         }
-        subject.request(request: .fetchListItems, translator: translator, completion: resultHandler)
+        subject.request(request: someRequest, translator: translator, completion: resultHandler)
         wait(for: [expectation], timeout: 5.0)
     }
 
@@ -48,7 +49,7 @@ class NetworkClientTests: XCTestCase {
                 assertionFailure("expected success")
             }
         }
-        subject.request(request: .fetchListItems, translator: translator, completion: resultHandler)
+        subject.request(request: someRequest, translator: translator, completion: resultHandler)
         wait(for: [expectation], timeout: 5.0)
     }
 
@@ -65,7 +66,7 @@ class NetworkClientTests: XCTestCase {
             }
         }
 
-        subject.request(request: .fetchListItems, translator: translator, completion: resultHandler)
+        subject.request(request: someRequest, translator: translator, completion: resultHandler)
         wait(for: [expectation], timeout: 5.0)
     }
 }
