@@ -48,7 +48,6 @@
 		15D48D462341D732004CC724 /* LocationTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D48D452341D732004CC724 /* LocationTranslator.swift */; };
 		15D48D482341D899004CC724 /* LocationTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D48D472341D899004CC724 /* LocationTranslatorTests.swift */; };
 		15D48D4A2341DD19004CC724 /* KeyValueArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D48D492341DD19004CC724 /* KeyValueArray.swift */; };
-		15E5AB57233CC2EC00FF16F4 /* StubPostsResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,7 +116,6 @@
 		15D48D452341D732004CC724 /* LocationTranslator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTranslator.swift; sourceTree = "<group>"; };
 		15D48D472341D899004CC724 /* LocationTranslatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTranslatorTests.swift; sourceTree = "<group>"; };
 		15D48D492341DD19004CC724 /* KeyValueArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueArray.swift; sourceTree = "<group>"; };
-		15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StubPostsResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,7 +212,6 @@
 		153F3DD1228328930006D614 /* SPWeatherAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				15E5AB56233CC2EC00FF16F4 /* StubPostsResponse.json */,
 				15D48D3F2341D44A004CC724 /* StubSearchResponse.json */,
 				153F3DD4228328930006D614 /* Info.plist */,
 				15AD0BBF228CE6DF00D7E037 /* Doubles */,
@@ -468,7 +465,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				15D48D402341D44A004CC724 /* StubSearchResponse.json in Resources */,
-				15E5AB57233CC2EC00FF16F4 /* StubPostsResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
