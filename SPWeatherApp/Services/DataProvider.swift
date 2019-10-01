@@ -15,11 +15,13 @@ enum DataSource {
 
 enum FetchListItemsResultType {
     case successFromNetwork(items: Items)
-    case fallbackFromLocalStorage(items: Items)
+    case failed
 }
 
+extension FetchListItemsResultType: Equatable {}
+
 protocol DataProviderType {
-    func fetchListItems(completion: @escaping((FetchListItemsResultType) -> Void))
+    func fetchListItems(query: String, completion: @escaping((FetchListItemsResultType) -> Void))
 }
 
 struct DataProvider: DataProviderType {
@@ -35,33 +37,18 @@ struct DataProvider: DataProviderType {
         self.localStorageProvider = localStorageProvider
     }
 
-    fileprivate func handleSuccessResponse(_ items: Items,
-                                           completion: @escaping FetchListItemsHandler) {
-
-        self.localStorageProvider.deleteListItems()
-        self.localStorageProvider.insertListItems(data: items)
-        completion(.successFromNetwork(items: items))
-
-    }
-
-    func fetchListItems(completion: @escaping FetchListItemsHandler) {
-        clientType.request(request: .fetchListItems(query: "usa"),
+    func fetchListItems(query: String,
+                        completion: @escaping FetchListItemsHandler) {
+        clientType.request(request: .fetchListItems(query: query),
                            translator: Translator.translateFromNetworkResponse) { result in
             precondition(Thread.isMainThread == false)
             switch result {
             case .failure(let error):
                 logError(error)
-                self.getListItemsFromLocal(completion: completion)
+                completion(.failed)
             case .success(let response):
-                self.handleSuccessResponse(response,
-                                           completion: completion)
+                completion(.successFromNetwork(items: response))
             }
-        }
-    }
-
-    private func getListItemsFromLocal(completion: @escaping ((FetchListItemsResultType) -> Void)) {
-        localStorageProvider.getListItemsFromLocal { (personsFromLocal) in
-            completion(.fallbackFromLocalStorage(items: personsFromLocal))
         }
     }
 

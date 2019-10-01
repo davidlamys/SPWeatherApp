@@ -33,6 +33,8 @@ enum RequestType {
     }
 }
 
+extension RequestType: Equatable {}
+
 protocol NetworkClientType {
     func request<T>(request: RequestType,
                            translator: @escaping (Data) -> (Result<T, Error>),

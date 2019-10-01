@@ -16,7 +16,7 @@ class DataProviderStub: DataProviderType {
 
     private var stubResults = [FetchListItemsResultType]()
 
-    var fetchListItemsCalledWithIndex: Int?
+    var fetchListItemsCalledWithQuery: String?
 
     func reset() {
         dataSource = nil
@@ -31,16 +31,12 @@ class DataProviderStub: DataProviderType {
         stubResults = [.successFromNetwork(items: [])]
     }
 
-    func setupForBadNeworkWithNoLocalData() {
-        stubResults = [.fallbackFromLocalStorage(items: [])]
-    }
-    
-    func setupForBadNeworkWithSomeLocalData() {
-        stubResults = [.fallbackFromLocalStorage(items: stubPayload)]
+    func setupForBadNework() {
+        stubResults = [.failed]
     }
 
-    func fetchListItems(completion: @escaping ((FetchListItemsResultType) -> Void)) {
-        fetchListItemsCalledWithIndex = 0
+    func fetchListItems(query: String, completion: @escaping ((FetchListItemsResultType) -> Void)) {
+        fetchListItemsCalledWithQuery = query
         if stubResults.isEmpty {
             print("end of stub results")
             return

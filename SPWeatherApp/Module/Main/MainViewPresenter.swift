@@ -34,17 +34,14 @@ class MainViewPresenter: MainViewPresenterType {
 
     private func fetchListItems() {
         view.setupView(state: .loading)
-        dataProvider.fetchListItems { [weak self] result in
+        dataProvider.fetchListItems(query: "Singapore") { [weak self] result in
             guard let self = self else {
                 return
             }
             switch result {
-            case .fallbackFromLocalStorage(let payload):
-                if payload.isEmpty {
-                    self.view.setupView(state: .emptyState)
-                } else {
-                    self.view.setupView(state: .loadedFromLocalStorage(items: payload))
-                }
+            case .failed:
+                //TODO: process failure cases
+                break
             case .successFromNetwork(let payload):
                 if payload.isEmpty {
                     self.view.setupView(state: .displayWelcomeMessage)

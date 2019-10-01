@@ -12,6 +12,7 @@ import Foundation
 class NetworkClientStub: NetworkClientType {
     private var result: Any?
     private var error: Error?
+    var calledWith: RequestType?
 
     func reset() {
         result = nil
@@ -31,6 +32,7 @@ class NetworkClientStub: NetworkClientType {
     func request<T>(request: RequestType,
                     translator: @escaping (Data) -> (Result<T, Error>),
                     completion: @escaping (Result<T, Error>) -> Void) {
+        calledWith = request
         DispatchQueue.global(qos: .background).async {
             if let result = self.result as? T {
                 completion(Result.success(result))

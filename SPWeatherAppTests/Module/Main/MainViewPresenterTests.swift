@@ -46,23 +46,10 @@ class MainViewPresenterTests: XCTestCase {
         let finalState = MainViewState.displayWelcomeMessage
         assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
     }
-
-    func testWhenViewDidLoadIsCalledInBadNetworkAndThereIsNoLocalData() {
-        // GIVEN
-        dataProvider.setupForBadNeworkWithNoLocalData()
-
-        //WHEN
-        subject.viewDidLoad()
-
-        // THEN
-        let firstState = MainViewState.loading
-        let finalState = MainViewState.emptyState
-        assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
-    }
     
-    func testWhenViewDidLoadIsCalledInBadNetworkAndThereIsSomeLocalData() {
+    func testWhenViewDidLoadIsCalledInBadNetwork() {
         // GIVEN
-        dataProvider.setupForBadNeworkWithSomeLocalData()
+        dataProvider.setupForBadNework()
 
         //WHEN
         subject.viewDidLoad()
@@ -70,23 +57,7 @@ class MainViewPresenterTests: XCTestCase {
         // THEN
         let firstState = MainViewState.loading
         let finalState = MainViewState.loadedFromLocalStorage(items: stubPayload)
-        assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
-    }
-
-    func testWhenRetyFetchIsCalled() {
-        // GIVEN
-        dataProvider.setupForGoodNetwork()
-
-        // WHEN
-        subject.retryFetch()
-
-        // THEN
-        assert(dataProvider.fetchListItemsCalledWithIndex == 0)
-        // THEN
-        let firstState = MainViewState.loading
-        let finalState = MainViewState.loadedFromNetwork(items: stubPayload)
-        assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
-
+        XCTFail()
     }
 
 }
