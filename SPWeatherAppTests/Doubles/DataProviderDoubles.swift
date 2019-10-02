@@ -17,6 +17,7 @@ class DataProviderStub: DataProviderType {
     private var stubResults = [FetchListItemsResultType]()
 
     var fetchListItemsCalledWithQuery: String?
+    var fetchWeatherCalledWithLocation: Location?
 
     func reset() {
         dataSource = nil
@@ -45,6 +46,10 @@ class DataProviderStub: DataProviderType {
         let result = stubResults.removeFirst()
         completion(result)
 
+    }
+    
+    func fetchWeather(for location: Location, completion: @escaping ((FetchWeatherResultType) -> Void)) {
+        fetchWeatherCalledWithLocation = location
     }
 
 }

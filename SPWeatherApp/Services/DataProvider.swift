@@ -17,11 +17,17 @@ enum FetchListItemsResultType {
     case successFromNetwork(items: Items)
     case failed
 }
-
 extension FetchListItemsResultType: Equatable {}
+
+enum FetchWeatherResultType {
+    case successFromNetwork(weatherCondition: WeatherCondition)
+    case failed
+}
+extension FetchWeatherResultType: Equatable {}
 
 protocol DataProviderType {
     func fetchListItems(query: String, completion: @escaping((FetchListItemsResultType) -> Void))
+    func fetchWeather(for location: Location, completion: @escaping((FetchWeatherResultType) -> Void))
 }
 
 struct DataProvider: DataProviderType {
@@ -48,6 +54,24 @@ struct DataProvider: DataProviderType {
                 completion(.failed)
             case .success(let response):
                 completion(.successFromNetwork(items: response))
+            }
+        }
+    }
+    
+    func fetchWeather(for location: Location, completion: @escaping (FetchWeatherResultType) -> Void) {
+        guard let lat = location.lat, let lon = location.lon else {
+            fatalError("throw defined error instead")
+        }
+        let request = RequestType.fetchCityWeather(lat: lat, lon: lon)
+        clientType.request(request: request,
+                           translator: WeatherTranslator.translateFromNetworkResponse) { result in
+            precondition(Thread.isMainThread == false)
+            switch result {
+            case .failure(let error):
+                logError(error)
+                completion(.failed)
+            case .success(let response):
+                completion(.successFromNetwork(weatherCondition: response))
             }
         }
     }

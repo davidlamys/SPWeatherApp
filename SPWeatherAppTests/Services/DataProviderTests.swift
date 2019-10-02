@@ -56,5 +56,21 @@ class DataProviderTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
 
     }
+    
+    func testWhenFetchingWeatherUnderGoodNetwork() {
+        // GIVEN
+        let location = stubPayload[1]
+        networkClientStub.setupForGetWeatherUnderGoodNetwork()
+        
+        let expectation = XCTestExpectation(description: "Calling stub network client")
+        
+        subject.fetchWeather(for: location) { result in
+            assert(self.networkClientStub.calledWith == RequestType.fetchCityWeather(lat: location.lat!, lon: location.lon!))
+            assert(result == FetchWeatherResultType.successFromNetwork(weatherCondition: stubWeatherPayload))
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5.0)
+        
+    }
 
 }

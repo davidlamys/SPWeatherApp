@@ -18,3 +18,9 @@ let stubPayload: Items = [
              lat: 1.3521,
              lon: 103.8198)
 ]
+
+let stubWeatherPayload = WeatherCondition(humidity: "100",
+                                          tempC: "31",
+                                          tempF: "102",
+                                          weatherDesc: "Very hot again",
+                                          weatherIconURL: "someURLString")

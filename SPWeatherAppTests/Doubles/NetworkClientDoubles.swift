@@ -23,6 +23,11 @@ class NetworkClientStub: NetworkClientType {
         result = stubPayload
         error = nil
     }
+    
+    func setupForGetWeatherUnderGoodNetwork() {
+        result = stubWeatherPayload
+        error = nil
+    }
 
     func setupForNetworkError() {
         result = nil
