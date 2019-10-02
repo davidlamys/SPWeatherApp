@@ -10,6 +10,7 @@ import UIKit
 
 protocol DetailViewControllerType: class {
     func setupView(item: Item)
+    func setupView(state: DetailViewState)
 }
 
 final class DetailViewController: UIViewController {
@@ -27,7 +28,10 @@ final class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: DetailViewControllerType {
-
+    func setupView(state: DetailViewState) {
+        
+    }
+    
     func setupView(item: Item) {
         if Thread.isMainThread {
             setupViewOnMainThread(item: item)

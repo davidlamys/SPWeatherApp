@@ -15,6 +15,7 @@ class DataProviderStub: DataProviderType {
     private var payload = Items()
 
     private var stubResults = [FetchListItemsResultType]()
+    private var stubWeatherResult: FetchWeatherResultType!
 
     var fetchListItemsCalledWithQuery: String?
     var fetchWeatherCalledWithLocation: Location?
@@ -32,6 +33,11 @@ class DataProviderStub: DataProviderType {
         stubResults = [.successFromNetwork(items: [])]
     }
 
+    
+    func setupForSuccessfulWeatherFetch() {
+        stubWeatherResult = .successFromNetwork(weatherCondition: stubWeatherPayload)
+    }
+    
     func setupForBadNework() {
         stubResults = [.failed]
     }
@@ -50,6 +56,9 @@ class DataProviderStub: DataProviderType {
     
     func fetchWeather(for location: Location, completion: @escaping ((FetchWeatherResultType) -> Void)) {
         fetchWeatherCalledWithLocation = location
+        if let stubWeatherResult = stubWeatherResult {
+            completion(stubWeatherResult)
+        }
     }
 
 }

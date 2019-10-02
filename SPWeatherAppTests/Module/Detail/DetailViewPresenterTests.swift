@@ -13,18 +13,34 @@ class DetailViewPresenterTests: XCTestCase {
 
     var subject: DetailViewPresenter!
     var detailViewControllerMock: DetailViewControllerMock!
-    let firstPost = stubPayload.first!
-
+    var dataProvider: DataProviderStub!
+    let location = stubPayload.first!
+    
     override func setUp() {
         super.setUp()
+        dataProvider = DataProviderStub()
         detailViewControllerMock = DetailViewControllerMock()
-        subject = DetailViewPresenter(view: detailViewControllerMock,
-                                      item: firstPost)
+        subject = DetailViewPresenter(dataProvider: dataProvider,
+                                      item: location,
+                                      view: detailViewControllerMock)
     }
 
     func testWhenViewDidLoadIsCalled_ShouldCallInvokeSetupWithPersonInViewController() {
         subject.viewDidLoad()
-        assert(detailViewControllerMock.setupViewCalledWithItem == firstPost)
+        XCTAssert(detailViewControllerMock.setupViewCalledWithItem == location)
+    }
+    
+    func testWhenViewDidLoad_ShouldFetchWeather() {
+        subject.viewDidLoad()
+        XCTAssert(dataProvider.fetchWeatherCalledWithLocation == location)
+        XCTAssert(detailViewControllerMock.setupViewCalledWithStates == [.loadingWeather])
+    }
+    
+    func testWhenFetchWeatherSucceed_ShouldCallSetupViewOnViewController() {
+        dataProvider.setupForSuccessfulWeatherFetch()
+        subject.viewDidLoad()
+        XCTAssert(detailViewControllerMock.setupViewCalledWithStates == [.loadingWeather, .loaded(weather: stubWeatherPayload)])
+    
     }
 
 }

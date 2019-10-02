@@ -158,8 +158,8 @@ extension MainViewController: UITableViewDelegate {
         //TODO: introduce coordinator if time permits
         let person = items[indexPath.row]
         let viewController = UIViewController.make(viewController: DetailViewController.self)
-        let detailViewPresenter = DetailViewPresenter(view: viewController,
-                                              item: person)
+        let detailViewPresenter = DetailViewPresenter(item: person,
+                                                      view: viewController)
         viewController.viewPresenter = detailViewPresenter
         navigationController?.pushViewController(viewController, animated: true)
     }
