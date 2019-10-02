@@ -14,24 +14,29 @@ protocol DetailViewControllerType: class {
 }
 
 final class DetailViewController: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var bodyTextView: UITextView!
 
+    enum Text: String {
+        case loadingText = "Loading.."
+        case temperatureText = "The temperature is %@."
+        case humidityText = "The humidity is %@."
+    }
+    
+    @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var loadingStackView: UIStackView!
+    @IBOutlet weak var weatherIconImageView: UIImageView!
+    @IBOutlet weak var weatherDescriptionLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    
     var viewPresenter: DetailViewPresenterType!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         viewPresenter.viewDidLoad()
-        titleLabel.accessibilityLabel = "Item Title"
-        bodyTextView.accessibilityLabel = "Item Body"
     }
 }
 
 extension DetailViewController: DetailViewControllerType {
-    func setupView(state: DetailViewState) {
-        
-    }
-    
     func setupView(item: Item) {
         if Thread.isMainThread {
             setupViewOnMainThread(item: item)
@@ -42,8 +47,46 @@ extension DetailViewController: DetailViewControllerType {
         }
     }
 
+    func setupView(state: DetailViewState) {
+        if Thread.isMainThread {
+            setupViewOnMainThread(state: state)
+        } else {
+            DispatchQueue.main.async {
+                self.setupViewOnMainThread(state: state)
+            }
+        }
+    }
+    
     private func setupViewOnMainThread(item: Item) {
         precondition(Thread.isMainThread)
+        title = item.cityName
+    }
+    
+    private func setupViewOnMainThread(state: DetailViewState) {
+        switch state {
+        case .loadingWeather:
+            loadingStackView.isHidden = false
+            loadingLabel.text = Text.loadingText.rawValue
+            weatherIconImageView.isHidden = true
+            weatherDescriptionLabel.isHidden = true
+            temperatureLabel.isHidden = true
+            humidityLabel.isHidden = true
+            
+        case .loaded(let weather):
+            loadingStackView.isHidden = false
+            weatherIconImageView.isHidden = true
+            
+            weatherDescriptionLabel.isHidden = false
+            weatherDescriptionLabel.text = weather.weatherDescription
+            
+            temperatureLabel.isHidden = false
+            temperatureLabel.text = String(format: Text.temperatureText.rawValue, weather.tempC)
+            
+            humidityLabel.isHidden = false
+            humidityLabel.text = String(format: Text.humidityText.rawValue, weather.humidity)
+        default:
+            break
+        }
     }
 
 }

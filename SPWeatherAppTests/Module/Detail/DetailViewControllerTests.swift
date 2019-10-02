@@ -13,6 +13,8 @@ class DetailViewControllerTests: XCTestCase {
 
     var subject: DetailViewController!
     var viewPresenterMock = DetailViewPresenterMock()
+    
+    fileprivate typealias Text = DetailViewController.Text
 
     override func setUp() {
         subject = UIViewController.make(viewController: DetailViewController.self)
@@ -26,9 +28,52 @@ class DetailViewControllerTests: XCTestCase {
         assert(viewPresenterMock.viewDidLoadCalled)
     }
 
+    func testAccessibilityLabelsAreSetWhenViewDidLoadIsCalled() {
+        subject.viewDidLoad()
+        
+        subject.loadingStackView.accessibilityLabel = "loadingStackView"
+        subject.weatherIconImageView.accessibilityLabel = "weatherIconImageView"
+        subject.weatherDescriptionLabel.accessibilityLabel = "weatherDescriptionLabel"
+        subject.temperatureLabel.accessibilityLabel = "temperatureLabel"
+        subject.humidityLabel.accessibilityLabel = "humidityLabel"
+    }
+
     func testWhenSetupViewIsCalled() {
         let firstPost = stubPayload.first!
         subject.setupView(item: firstPost)
+        
+        XCTAssert(subject.title == firstPost.cityName)
+    }
+    
+    func testWhenSetupViewWithLoading() {
+        subject.setupView(state: .loadingWeather)
+        
+        XCTAssert(subject.loadingStackView.isHidden == false)
+        XCTAssert(subject.loadingLabel.text == Text.loadingText.rawValue)
+        
+        XCTAssert(subject.weatherIconImageView.isHidden == true)
+        XCTAssert(subject.weatherDescriptionLabel.isHidden == true)
+        XCTAssert(subject.temperatureLabel.isHidden == true)
+        XCTAssert(subject.humidityLabel.isHidden == true)
+    }
+    
+    func testWhenSetupViewWithWeatherCondition() {
+        let fetchedWeather = stubWeatherPayload
+        subject.setupView(state: .loaded(weather: fetchedWeather))
+             
+        XCTAssert(subject.loadingStackView.isHidden == false)
+        XCTAssert(subject.weatherIconImageView.isHidden == true)
+        
+        XCTAssert(subject.weatherDescriptionLabel.isHidden == false)
+        XCTAssert(subject.weatherDescriptionLabel.text == fetchedWeather.weatherDescription)
+        
+        XCTAssert(subject.temperatureLabel.isHidden == false)
+        let expectedTemperatureLabelText = String(format: Text.temperatureText.rawValue, fetchedWeather.tempC)
+        XCTAssert(subject.temperatureLabel.text == expectedTemperatureLabelText)
+        
+        XCTAssert(subject.humidityLabel.isHidden == false)
+        let expectedHumidityLabelText = String(format: Text.humidityText.rawValue, fetchedWeather.humidity)
+        XCTAssert(subject.humidityLabel.text == expectedHumidityLabelText)
     }
 
 }
