@@ -33,15 +33,15 @@ And there is a list of available cities (based on what I've typed)
  
 When I tap on a city
 
-- [ ] Then I will be on the city Screen
+- [x] Then I will be on the city Screen
 
 - [ ] Then I will see the current weather image
 
-- [ ] Then I will see the current humidity
+- [x] Then I will see the current humidity
 
-- [ ] Then I will see the current weather in text form
+- [x] Then I will see the current weather in text form
 
-- [ ] Then I will see the current weather temperature
+- [x] Then I will see the current weather temperature
 
 ### Use Case 3. ###
 
@@ -78,6 +78,7 @@ When I have relaunched the app (terminating the app and relaunched)
 
 ## TODO ##
 Handle error cases for search api
-- [ ] handle network failure
+- [ ] handle network failure when fetching cities
 - [ ] handle no result found failure
+- [ ] handle network failure when fetching weather
 ## Retrospective 2 Oct 2019 ##
