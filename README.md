@@ -10,8 +10,8 @@ Since there is  no mention of persistence store preference, I intend to use the 
 
 
 ### Personal Objectives: ###
-- [ ] Experiment with Integration test with plain ol' XCUITest
-- [ ] Implement throttling without RxSwift
+- [x] Experiment with Integration test with plain ol' XCUITest
+- [x] Implement throttling without RxSwift
 
 ### Use Case 1. ###
 

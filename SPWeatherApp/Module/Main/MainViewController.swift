@@ -36,6 +36,8 @@ class MainViewController: UIViewController {
     
     private var items: Items = []
     var viewPresenter: MainViewPresenterType!
+    
+    let throttler = Throttler(minimumDelay: 0.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,7 +184,9 @@ extension MainViewController: UISearchResultsUpdating {
         return
     }
     if searchText.count >= 3 {
-        viewPresenter.fetchItems(query: searchText)
+        throttler.throttle { [weak self] in
+            self?.viewPresenter.fetchItems(query: searchText)
+        }
     } else {
         viewPresenter.searchWillBegin()
     }
