@@ -13,6 +13,9 @@ class MainViewPresenterFake: MainViewPresenter {
     
     var fetchItemsCalledWithQuery: String?
     var userWillViewItemCalledWith: Item?
+    var searchWillBeginCalledCount = 0
+    var loadRecentlyViewedCityCalledCount = 0
+    
     init() {
         // this is a questionable decision. need more future research
         super.init(view: MainViewControllerMock(),
@@ -28,6 +31,10 @@ class MainViewPresenterFake: MainViewPresenter {
     }
     
     override func loadRecentlyViewedCity() {
-        
+        loadRecentlyViewedCityCalledCount += 1
+    }
+    
+    override func searchWillBegin() {
+        searchWillBeginCalledCount += 1
     }
 }

@@ -13,9 +13,11 @@ protocol MainViewPresenterType {
     func fetchItems(query: String)
     func userWillViewItem(_ item: Item)
     func loadRecentlyViewedCity()
+    func searchWillBegin()
 }
 
 class MainViewPresenter: MainViewPresenterType {
+    
     weak var view: MainViewControllerType!
     var dataProvider: DataProviderType!
 
@@ -52,6 +54,10 @@ class MainViewPresenter: MainViewPresenterType {
         dataProvider.getRecentlyViewedItems { [weak self] items in
             self?.view.setupView(state: .loadRecentlyViewedCity(items: items))
         }
+    }
+    
+    func searchWillBegin() {
+        view.setupView(state: .willBeginSearch)
     }
 
 }

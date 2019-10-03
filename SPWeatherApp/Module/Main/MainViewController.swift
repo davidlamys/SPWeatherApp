@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
             viewPresenter = MainViewPresenter(view: self)
         }
         setupTableView()
-        
+        searchController.delegate = self
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search city"
@@ -63,6 +63,7 @@ class MainViewController: UIViewController {
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
     }
+    
 }
 
 extension MainViewController: MainViewControllerType {
@@ -120,6 +121,8 @@ extension MainViewController: MainViewControllerType {
             loadingStatusLabel.text = Text.welcomeBanner.rawValue
             
         case .willBeginSearch:
+            tableView.isHidden = true
+            stateFeedbackLabel.text = Text.searchHelperPrompt.rawValue
             break
             
         case .searchFailed:
@@ -169,7 +172,26 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController: UISearchResultsUpdating {
   // MARK: - UISearchResultsUpdating Delegate
   func updateSearchResults(for searchController: UISearchController) {
-    let searchText = searchController.searchBar.text ?? ""
-    viewPresenter.fetchItems(query: searchText)
+    guard
+        let searchText = searchController.searchBar.text,
+        searchText.count > 0
+    else {
+        return
+    }
+    if searchText.count > 3 {
+        viewPresenter.fetchItems(query: searchText)
+    } else {
+        viewPresenter.searchWillBegin()
+    }
   }
+}
+
+extension MainViewController: UISearchControllerDelegate {
+    func willPresentSearchController(_ searchController: UISearchController) {
+        viewPresenter.searchWillBegin()
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        viewPresenter.loadRecentlyViewedCity()
+    }
 }

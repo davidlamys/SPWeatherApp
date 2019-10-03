@@ -59,8 +59,8 @@ class MainViewPresenterTests: XCTestCase {
         // THEN
         XCTAssert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
         let firstState = MainViewState.loading
-        
-        XCTFail()
+        let finalState = MainViewState.searchFailed
+        XCTAssertEqual(mainViewControllerMock.setupViewCalledWithStates, [firstState, finalState])
     }
     
     func testWhenUserWillViewItem() {

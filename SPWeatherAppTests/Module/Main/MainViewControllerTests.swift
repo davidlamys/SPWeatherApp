@@ -21,6 +21,10 @@ class MainViewControllerTests: XCTestCase {
         _  = subject.view
     }
     
+    func testUponViewDidLoad_shouldFetchRecentlyViewedCities() {
+        XCTAssertEqual(viewPresenterFake.loadRecentlyViewedCityCalledCount, 1)
+    }
+    
     func testInvokePresenterFunctionWhenSearchBarIsUpdated() {
         // GIVEN
         let searchController = UISearchController()
@@ -31,6 +35,31 @@ class MainViewControllerTests: XCTestCase {
         
         // THEN
         XCTAssert(viewPresenterFake.fetchItemsCalledWithQuery == "MySearch")
+    }
+    
+    func testInvokePresenterFunctionWhenSearchBarIsUpdatedWithEmptyString() {
+        // GIVEN
+        let searchController = UISearchController()
+        searchController.searchBar.text = ""
+        
+        // WHEN
+        subject.updateSearchResults(for: searchController)
+        
+        // THEN
+        XCTAssertNil(viewPresenterFake.fetchItemsCalledWithQuery)
+    }
+    
+    func testInvokePresenterFunctionWhenSearchBarIsUpdatedWithLessThanThreeChars() {
+        // GIVEN
+        let searchController = UISearchController()
+        searchController.searchBar.text = "SI"
+        
+        // WHEN
+        subject.updateSearchResults(for: searchController)
+        
+        // THEN
+        XCTAssertNil(viewPresenterFake.fetchItemsCalledWithQuery)
+        XCTAssertEqual(viewPresenterFake.searchWillBeginCalledCount, 1)
     }
 
     func testSetupForEmptyState() {
@@ -113,11 +142,29 @@ class MainViewControllerTests: XCTestCase {
         XCTAssertNil(subject.title)
     }
     
+    func testSetupForWillBeginSearch() {
+        subject.setupView(state: .willBeginSearch)
+        
+        XCTAssert(subject.tableView.isHidden)
+        XCTAssertEqual(subject.stateFeedbackLabel.text, Text.searchHelperPrompt.rawValue)
+    }
+    
     func testWhenUserSelectItem_shouldNotifyPresenter() {
         subject.setupView(state: .loadedFromNetwork(items: stubPayload))
         subject.tableView(subject.tableView, didSelectRowAt: IndexPath(item: 0, section: 0))
         
         XCTAssert(viewPresenterFake.userWillViewItemCalledWith == stubPayload.first)
+    }
+    
+    func testWhenSearchWillBegin_shouldNotifySelf() {
+        //questionable test
+        subject.willPresentSearchController(UISearchController())
+        XCTAssertEqual(viewPresenterFake.searchWillBeginCalledCount, 1)
+    }
+    
+    func testWhenSearchWillEnd_shouldLoadRecentlyViewedCities() {
+        subject.willDismissSearchController(UISearchController())
+        XCTAssertEqual(viewPresenterFake.loadRecentlyViewedCityCalledCount, 2)
     }
 
 }
