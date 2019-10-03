@@ -51,7 +51,7 @@ Given I am on the home screen
 
 And I have not viewed a City's weather
 
-- [ ]  Then I should see a list view empty state
+- [x]  Then I should see a list view empty state
 
 ### Use Case 4. ###
 
@@ -61,7 +61,7 @@ Given I am on the home screen
 
 And I have previously viewed any city's weather
 
-- [ ] Then I should see a ordered list of the recent 10 cities that I have previously seen.
+- [x] Then I should see a ordered list of the recent 10 cities that I have previously seen.
 
 And I should see the latest City that I have viewed at the top of the list
  
@@ -74,11 +74,11 @@ Given I have previously viewed any city's weather
 
 When I have relaunched the app (terminating the app and relaunched)
 
-- [ ] Then I should see a ordered list of the recent 10 cities that I have previously seen.
+- [x] Then I should see a ordered list of the recent 10 cities that I have previously seen.
 
 ## TODO ##
 Handle error cases for search api
-- [ ] handle network failure when fetching cities
-- [ ] handle no result found failure
+- [x] handle network failure when fetching cities
+- [x] handle no result found failure
 - [ ] handle network failure when fetching weather
-## Retrospective 2 Oct 2019 ##
+## Retrospective 3 Oct 2019 ##
