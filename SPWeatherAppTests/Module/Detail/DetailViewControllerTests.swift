@@ -83,5 +83,12 @@ class DetailViewControllerTests: XCTestCase {
         XCTAssert(subject.loadingStackView.isHidden == true)
         XCTAssert(subject.weatherIconImageView.isHidden == false)
     }
+    
+    func testWhenSettingUpWithError() {
+        subject.setupView(state: .error)
+        
+        XCTAssert(subject.loadingIndicator.isHidden)
+        XCTAssertEqual(subject.loadingLabel.text, Text.errorText.rawValue)
+    }
 
 }

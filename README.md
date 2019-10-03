@@ -80,5 +80,5 @@ When I have relaunched the app (terminating the app and relaunched)
 Handle error cases for search api
 - [x] handle network failure when fetching cities
 - [x] handle no result found failure
-- [ ] handle network failure when fetching weather
+- [x] handle network failure when fetching weather
 ## Retrospective 3 Oct 2019 ##

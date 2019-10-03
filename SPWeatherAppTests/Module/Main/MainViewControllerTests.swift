@@ -18,6 +18,7 @@ class MainViewControllerTests: XCTestCase {
         subject = UIViewController.make(viewController: MainViewController.self)
         viewPresenterFake = MainViewPresenterFake()
         subject.viewPresenter = viewPresenterFake
+        subject.throttler = FakeThrottler()
         _  = subject.view
     }
     

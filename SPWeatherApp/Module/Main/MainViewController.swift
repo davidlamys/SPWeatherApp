@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     private var items: Items = []
     var viewPresenter: MainViewPresenterType!
     
-    let throttler = Throttler(minimumDelay: 0.0)
+    var throttler: ThrottlerType = Throttler(minimumDelay: 0.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()

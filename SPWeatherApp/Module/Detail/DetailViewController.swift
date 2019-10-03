@@ -19,9 +19,11 @@ final class DetailViewController: UIViewController {
         case loadingText = "Loading.."
         case temperatureText = "The temperature is %@."
         case humidityText = "The humidity is %@."
+        case errorText = "Something went wrong, please try again later"
     }
     
     @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingStackView: UIStackView!
     @IBOutlet weak var weatherIconImageView: UIImageView!
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
@@ -100,8 +102,9 @@ extension DetailViewController: DetailViewControllerType {
                 weatherIconImageView.isHidden = false
                 weatherIconImageView.image = image
             }
-        default:
-            break
+        case .error:
+            loadingLabel.text = Text.errorText.rawValue
+            loadingIndicator.isHidden = true
         }
     }
 

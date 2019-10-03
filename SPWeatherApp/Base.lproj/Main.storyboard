@@ -182,6 +182,7 @@
                     <navigationItem key="navigationItem" id="DRy-qZ-4Nt"/>
                     <connections>
                         <outlet property="humidityLabel" destination="tbm-1N-AcR" id="4YA-if-eiu"/>
+                        <outlet property="loadingIndicator" destination="BbM-Tg-o0u" id="099-Pi-fzP"/>
                         <outlet property="loadingLabel" destination="r53-Au-cLh" id="Wdp-YZ-LKR"/>
                         <outlet property="loadingStackView" destination="gg7-lT-Tmb" id="vP8-pa-Fg8"/>
                         <outlet property="temperatureLabel" destination="Q22-1l-TdY" id="Ywx-ya-XiY"/>
