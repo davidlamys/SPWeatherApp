@@ -31,4 +31,13 @@ class LocationTranslatorTests: XCTestCase {
         XCTAssert(firstLocation.lon == 7.400)
         
     }
+    
+    func testLocationTranslatorParseToDataAndBack() {
+        let locationToDataResult = LocationTranslator.translateToData(from: stubPayload)
+        let data = try! locationToDataResult.get()
+        let dataToLocationResult = LocationTranslator.translateFromUserDefaults(data: data)
+        let locations = try! dataToLocationResult.get()
+        
+        XCTAssertEqual(locations, stubPayload)
+    }
 }
