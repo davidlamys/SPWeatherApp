@@ -62,5 +62,12 @@ class MainViewPresenterTests: XCTestCase {
         let finalState = MainViewState.searchHistory(items: stubPayload)
         XCTFail()
     }
+    
+    func testWhenUserWillViewItem() {
+        let location = stubPayload.first!
+        subject.userWillViewItem(location)
+        
+        XCTAssertEqual(dataProvider.storeItemCalledWithItem, location)
+    }
 
 }

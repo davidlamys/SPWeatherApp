@@ -118,5 +118,11 @@ class DataProviderTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         
     }
+    
+    func testWhenStoreItemCalled_shouldInvokeLocalStorageProvider() {
+        subject.store(item: stubPayload.first!)
+        
+        XCTAssertEqual(localStorageProviderMock.insertListItemCalledWithItem, stubPayload.first!)
+    }
 
 }

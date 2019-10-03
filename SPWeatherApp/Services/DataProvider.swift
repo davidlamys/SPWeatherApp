@@ -36,10 +36,11 @@ protocol DataProviderType {
     func fetchListItems(query: String, completion: @escaping((FetchListItemsResultType) -> Void))
     func fetchWeather(for location: Location, completion: @escaping((FetchWeatherResultType) -> Void))
     func fetchIcon(urlString: String, completion: @escaping((FetchWeatherIconResultType) -> Void))
+    func store(item: Item)
 }
 
 struct DataProvider: DataProviderType {
-
+    
     typealias FetchListItemsHandler = ((FetchListItemsResultType) -> Void)
 
     let clientType: NetworkClientType
@@ -99,5 +100,9 @@ struct DataProvider: DataProviderType {
             }
         }
      }
+    
+    func store(item: Item) {
+        localStorageProvider.insertItem(item: item)
+    }
 
 }

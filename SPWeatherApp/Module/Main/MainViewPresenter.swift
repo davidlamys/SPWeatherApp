@@ -45,7 +45,7 @@ class MainViewPresenter: MainViewPresenterType {
     }
     
     func userWillViewItem(_ item: Item) {
-        
+        dataProvider.store(item: item)
     }
 
 }

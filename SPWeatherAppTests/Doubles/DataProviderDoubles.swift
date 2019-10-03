@@ -21,6 +21,7 @@ class DataProviderStub: DataProviderType {
     var fetchListItemsCalledWithQuery: String?
     var fetchWeatherCalledWithLocation: Location?
     var fetchWeatherIconCalledWithURL: String?
+    var storeItemCalledWithItem: Item?
 
     func reset() {
         dataSource = nil
@@ -73,5 +74,8 @@ class DataProviderStub: DataProviderType {
         }
      }
      
+    func store(item: Item) {
+        storeItemCalledWithItem = item
+    }
 
 }
