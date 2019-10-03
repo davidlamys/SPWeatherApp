@@ -31,11 +31,11 @@ class DetailViewControllerTests: XCTestCase {
     func testAccessibilityLabelsAreSetWhenViewDidLoadIsCalled() {
         subject.viewDidLoad()
         
-        subject.loadingStackView.accessibilityLabel = "loadingStackView"
-        subject.weatherIconImageView.accessibilityLabel = "weatherIconImageView"
-        subject.weatherDescriptionLabel.accessibilityLabel = "weatherDescriptionLabel"
-        subject.temperatureLabel.accessibilityLabel = "temperatureLabel"
-        subject.humidityLabel.accessibilityLabel = "humidityLabel"
+        subject.loadingStackView.accessibilityIdentifier = "loadingStackView"
+        subject.weatherIconImageView.accessibilityIdentifier = "weatherIconImageView"
+        subject.weatherDescriptionLabel.accessibilityIdentifier = "weatherDescriptionLabel"
+        subject.temperatureLabel.accessibilityIdentifier = "temperatureLabel"
+        subject.humidityLabel.accessibilityIdentifier = "humidityLabel"
     }
 
     func testWhenSetupViewIsCalled() {

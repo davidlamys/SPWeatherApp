@@ -34,6 +34,15 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         viewPresenter.viewDidLoad()
         weatherIconImageView.layer.cornerRadius = 10.0
+        setupAccessibilityIdentifer()
+    }
+    
+    private func setupAccessibilityIdentifer() {
+        loadingStackView.accessibilityIdentifier = "loadingStackView"
+        weatherIconImageView.accessibilityIdentifier = "weatherIconImageView"
+        weatherDescriptionLabel.accessibilityIdentifier = "weatherDescriptionLabel"
+        temperatureLabel.accessibilityIdentifier = "temperatureLabel"
+        humidityLabel.accessibilityIdentifier = "humidityLabel"
     }
 }
 

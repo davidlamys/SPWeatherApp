@@ -11,7 +11,7 @@ import XCTest
 class SPWeatherAppUITests: XCTestCase {
     var app: XCUIApplication!
     let existPredicate = NSPredicate(format: "exists == true")
-    let kPostTitleString = "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+    let kResultTextString = "Kampong Ayer Gemuruh"
 
     override func setUp() {
         super.setUp()
@@ -26,15 +26,20 @@ class SPWeatherAppUITests: XCTestCase {
     func testTappingOnCellShowsDetailScreen() {
         app.launch()
         
-        let firstPostTitle = app.tables["MainTable"].cells.staticTexts[kPostTitleString]
+        let searchfield = app.searchFields.element(boundBy: 0)
+        searchfield.tap()
+        searchfield.typeText("Sin")
+
+        let firstSearchResult = app.tables["MainTable"].cells.staticTexts["kResultTextString"]
         
-        expectation(for: existPredicate, evaluatedWith: firstPostTitle, handler: nil)
+        expectation(for: existPredicate, evaluatedWith: firstSearchResult, handler: nil)
         waitForExpectations(timeout: 10, handler: nil)
-        XCTAssert(firstPostTitle.exists)
-        firstPostTitle.tap()
+        XCTAssert(firstSearchResult.exists)
+        firstSearchResult.tap()
         
-        XCTAssert(app.staticTexts["Item Title"].exists)
-        XCTAssert(app.textViews["Item Body"].exists)
+        XCTAssert(app.staticTexts["weatherDescriptionLabel"].exists)
+        XCTAssert(app.staticTexts["temperatureLabel"].exists)
+        XCTAssert(app.staticTexts["humidityLabel"].exists)
     }
 
 }
