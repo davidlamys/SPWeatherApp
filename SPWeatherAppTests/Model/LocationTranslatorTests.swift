@@ -22,13 +22,13 @@ class LocationTranslatorTests: XCTestCase {
             return
         }
 
-        assert(locations.count == 10)
+        XCTAssert(locations.count == 10)
         
         let firstLocation = locations.first!
-        assert(firstLocation.areaName.firstValue == "New Bishini")
-        assert(firstLocation.country.firstValue == "Nigeria")
-        assert(firstLocation.lat == 9.633)
-        assert(firstLocation.lon == 7.400)
+        XCTAssert(firstLocation.areaName.firstValue == "New Bishini")
+        XCTAssert(firstLocation.country.firstValue == "Nigeria")
+        XCTAssert(firstLocation.lat == 9.633)
+        XCTAssert(firstLocation.lon == 7.400)
         
     }
 }

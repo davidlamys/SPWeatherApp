@@ -26,10 +26,10 @@ class NetworkClientTests: XCTestCase {
         let resultHandler: (Result<Items, Error>) -> Void = { resultType in
             switch resultType {
             case .success(let locations):
-                assert(locations.count == 10)
+                XCTAssert(locations.count == 10)
                 expectation.fulfill()
             default:
-                assertionFailure("expected success")
+                XCTFail("expected success")
             }
         }
         subject.request(request: someRequest, translator: translator, completion: resultHandler)
@@ -43,10 +43,10 @@ class NetworkClientTests: XCTestCase {
             switch resultType {
             case .failure(let error):
                 let expectedError = NSError(domain: "some error", code: 1, userInfo: [:])
-                assert(error as! NSError == expectedError)
+                XCTAssert(error as! NSError == expectedError)
                 expectation.fulfill()
             default:
-                assertionFailure("expected success")
+                XCTFail("expected success")
             }
         }
         subject.request(request: someRequest, translator: translator, completion: resultHandler)
@@ -59,10 +59,10 @@ class NetworkClientTests: XCTestCase {
             switch resultType {
             case .failure(let error):
                 let expectedError = NSError.init(domain: "com.david.SPWeatherApp", code: -1, userInfo: ["info": "unknown network error"])
-                assert(error as! NSError == expectedError)
+                XCTAssert(error as! NSError == expectedError)
                 expectation.fulfill()
             default:
-                assertionFailure("expected success")
+                XCTFail("expected success")
             }
         }
 

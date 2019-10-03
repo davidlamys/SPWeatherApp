@@ -29,10 +29,10 @@ class MainViewPresenterTests: XCTestCase {
         //WHEN
         subject.fetchItems(query: "Singapore")
         // THEN
-        assert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
+        XCTAssert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
         let firstState = MainViewState.loading
         let finalState = MainViewState.loadedFromNetwork(items: stubPayload)
-        assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
+        XCTAssert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
     }
 
     func testWhenViewDidLoadIsCalledInGoodNetworkButThereIsNoData() {
@@ -43,10 +43,10 @@ class MainViewPresenterTests: XCTestCase {
         subject.fetchItems(query: "Singapore")
 
         // THEN
-        assert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
+        XCTAssert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
         let firstState = MainViewState.loading
         let finalState = MainViewState.displayWelcomeMessage
-        assert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
+        XCTAssert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
     }
     
     func testWhenViewDidLoadIsCalledInBadNetwork() {
@@ -57,7 +57,7 @@ class MainViewPresenterTests: XCTestCase {
         subject.fetchItems(query: "Singapore")
 
         // THEN
-        assert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
+        XCTAssert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
         let firstState = MainViewState.loading
         let finalState = MainViewState.searchHistory(items: stubPayload)
         XCTFail()

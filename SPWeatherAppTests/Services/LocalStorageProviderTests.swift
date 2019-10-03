@@ -55,7 +55,7 @@ class LocalStorageProviderTests: XCTestCase {
 
     func testInsertShouldStoreItems() {
         subject.insertListItems(data: stubPayload)
-        assert(numberOfItemsInPersistentStore() == 2)
+        XCTAssert(numberOfItemsInPersistentStore() == 2)
     }
 
     func testGetListItemShouldReturnCorrectItems() {
@@ -63,7 +63,7 @@ class LocalStorageProviderTests: XCTestCase {
 
         let expectation = XCTestExpectation(description: "Fetching from local storage")
         subject.getListItemsFromLocal { result in
-            assert(result == stubPayload)
+            XCTAssert(result == stubPayload)
             expectation.fulfill()
         }
 
@@ -76,7 +76,7 @@ class LocalStorageProviderTests: XCTestCase {
         subject.insertListItems(data: stubPayload)
         subject.deleteListItems()
 
-        assert(numberOfItemsInPersistentStore() == 0)
+        XCTAssert(numberOfItemsInPersistentStore() == 0)
     }
 
     //Convenient method for getting the number of data in store now

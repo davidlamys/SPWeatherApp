@@ -25,7 +25,7 @@ class DetailViewControllerTests: XCTestCase {
 
     func testViewPresenterAwareThatViewHasLoaded() {
         subject.viewDidLoad()
-        assert(viewPresenterMock.viewDidLoadCalled)
+        XCTAssert(viewPresenterMock.viewDidLoadCalled)
     }
 
     func testAccessibilityLabelsAreSetWhenViewDidLoadIsCalled() {

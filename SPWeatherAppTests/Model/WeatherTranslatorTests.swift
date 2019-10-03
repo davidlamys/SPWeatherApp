@@ -22,12 +22,12 @@ class WeatherTranslatorTests: XCTestCase {
             return
         }
         
-        assert(weatherCondition.humidity == "83")
-        assert(weatherCondition.tempC == "17")
-        assert(weatherCondition.tempF == "63")
-        assert(weatherCondition.weatherDescription == "Partly cloudy")
+        XCTAssert(weatherCondition.humidity == "83")
+        XCTAssert(weatherCondition.tempC == "17")
+        XCTAssert(weatherCondition.tempF == "63")
+        XCTAssert(weatherCondition.weatherDescription == "Partly cloudy")
         let expectedURLString = "http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"
-        assert(weatherCondition.iconURLString == expectedURLString)
+        XCTAssert(weatherCondition.iconURLString == expectedURLString)
         
     }
 }

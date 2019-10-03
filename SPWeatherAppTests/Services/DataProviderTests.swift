@@ -34,8 +34,8 @@ class DataProviderTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Calling stub network client")
 
         subject.fetchListItems(query: "Singapore") { result in
-            assert(self.networkClientStub.calledWith == RequestType.fetchListItems(query: "Singapore"))
-            assert(result == FetchListItemsResultType.successFromNetwork(items: stubPayload))
+            XCTAssert(self.networkClientStub.calledWith == RequestType.fetchListItems(query: "Singapore"))
+            XCTAssert(result == FetchListItemsResultType.successFromNetwork(items: stubPayload))
             expectation.fulfill()
         }
 
@@ -48,7 +48,7 @@ class DataProviderTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Calling stub network client")
 
         subject.fetchListItems(query: "Singapore") { result in
-            assert(result == FetchListItemsResultType.failed)
+            XCTAssert(result == FetchListItemsResultType.failed)
             expectation.fulfill()
         }
 
@@ -64,8 +64,8 @@ class DataProviderTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Calling stub network client")
         
         subject.fetchWeather(for: location) { result in
-            assert(self.networkClientStub.calledWith == RequestType.fetchCityWeather(lat: location.lat!, lon: location.lon!))
-            assert(result == FetchWeatherResultType.successFromNetwork(weatherCondition: stubWeatherPayload))
+            XCTAssert(self.networkClientStub.calledWith == RequestType.fetchCityWeather(lat: location.lat!, lon: location.lon!))
+            XCTAssert(result == FetchWeatherResultType.successFromNetwork(weatherCondition: stubWeatherPayload))
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 5.0)
@@ -80,7 +80,7 @@ class DataProviderTests: XCTestCase {
         
         //WHEN
         subject.fetchWeather(for: location) { result in
-            assert(result == FetchWeatherResultType.failed)
+            XCTAssert(result == FetchWeatherResultType.failed)
             expectation.fulfill()
         }
         
@@ -95,8 +95,8 @@ class DataProviderTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Calling stub network client")
         
         subject.fetchIcon(urlString: "urlString") { result in
-            assert(self.networkClientStub.calledWith == RequestType.fetch(urlString: "urlString"))
-            assert(result == FetchWeatherIconResultType.successFromNetwork(data: Data()))
+            XCTAssert(self.networkClientStub.calledWith == RequestType.fetch(urlString: "urlString"))
+            XCTAssert(result == FetchWeatherIconResultType.successFromNetwork(data: Data()))
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 5.0)
@@ -110,8 +110,8 @@ class DataProviderTests: XCTestCase {
         
         //WHEN
         subject.fetchIcon(urlString: "urlString") { result in
-            assert(self.networkClientStub.calledWith == RequestType.fetch(urlString: "urlString"))
-            assert(result == FetchWeatherIconResultType.failed)
+            XCTAssert(self.networkClientStub.calledWith == RequestType.fetch(urlString: "urlString"))
+            XCTAssert(result == FetchWeatherIconResultType.failed)
             expectation.fulfill()
         }
         
