@@ -35,7 +35,7 @@ When I tap on a city
 
 - [x] Then I will be on the city Screen
 
-- [ ] Then I will see the current weather image
+- [x] Then I will see the current weather image
 
 - [x] Then I will see the current humidity
 
