@@ -12,6 +12,7 @@ protocol MainViewPresenterType {
     var view: MainViewControllerType! { get }
     func fetchItems(query: String)
     func userWillViewItem(_ item: Item)
+    func loadRecentlyViewedCity()
 }
 
 class MainViewPresenter: MainViewPresenterType {
@@ -46,6 +47,12 @@ class MainViewPresenter: MainViewPresenterType {
     
     func userWillViewItem(_ item: Item) {
         dataProvider.store(item: item)
+    }
+    
+    func loadRecentlyViewedCity() {
+        dataProvider.getRecentlyViewedItems { [weak self] items in
+            self?.view.setupView(state: .loadRecentlyViewedCity(items: items))
+        }
     }
 
 }

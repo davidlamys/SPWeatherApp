@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
         searchController.searchBar.placeholder = "Search city"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
+        viewPresenter.loadRecentlyViewedCity()
     }
 
     private func setupTableView() {
@@ -110,7 +110,7 @@ extension MainViewController: MainViewControllerType {
             animateHideLoadingStatusBanner()
                         
 
-        case .searchHistory(let payload):
+        case .loadRecentlyViewedCity(let payload):
             tableView.isHidden = false
             items = payload
             tableView.reloadData()

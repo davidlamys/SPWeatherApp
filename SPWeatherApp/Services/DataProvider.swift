@@ -37,6 +37,7 @@ protocol DataProviderType {
     func fetchWeather(for location: Location, completion: @escaping((FetchWeatherResultType) -> Void))
     func fetchIcon(urlString: String, completion: @escaping((FetchWeatherIconResultType) -> Void))
     func store(item: Item)
+    func getRecentlyViewedItems(completion: @escaping ((Items) -> Void))
 }
 
 struct DataProvider: DataProviderType {
@@ -103,6 +104,10 @@ struct DataProvider: DataProviderType {
     
     func store(item: Item) {
         localStorageProvider.insertItem(item: item)
+    }
+    
+    func getRecentlyViewedItems(completion: @escaping ((Items) -> Void)) {
+        localStorageProvider.getListItemsFromLocal(completion: completion)
     }
 
 }

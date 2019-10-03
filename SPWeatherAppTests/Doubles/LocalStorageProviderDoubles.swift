@@ -41,10 +41,5 @@ class LocalStorageProviderMock: LocalStorageProviderType {
     func insertItem(item: Item) {
         insertListItemCalledWithItem = item
     }
-    
-
-    func getImage(hash: String, completion: @escaping ((Data?) -> Void)) {
-
-    }
 
 }

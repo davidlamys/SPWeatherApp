@@ -124,5 +124,10 @@ class DataProviderTests: XCTestCase {
         
         XCTAssertEqual(localStorageProviderMock.insertListItemCalledWithItem, stubPayload.first!)
     }
+    
+    func testWhenGetRecentlyViewedItemsCalled_shouldInvokeLocalStorageProvider() {
+        subject.getRecentlyViewedItems(completion: { _ in })
+        XCTAssert(localStorageProviderMock.getListItemsCalled)
+    }
 
 }

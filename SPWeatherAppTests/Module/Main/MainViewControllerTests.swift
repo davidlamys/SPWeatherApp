@@ -56,7 +56,7 @@ class MainViewControllerTests: XCTestCase {
 
     func testLoadScreenWithSearchHistory() {
         // WHEN
-        subject.setupView(state: .searchHistory(items: stubPayload))
+        subject.setupView(state: .loadRecentlyViewedCity(items: stubPayload))
 
         // THEN
         XCTAssert(subject.tableView.isHidden == false)

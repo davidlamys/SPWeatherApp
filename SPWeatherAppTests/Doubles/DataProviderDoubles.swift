@@ -17,6 +17,7 @@ class DataProviderStub: DataProviderType {
     private var stubResults = [FetchListItemsResultType]()
     private var stubWeatherResult: FetchWeatherResultType!
     private var stubWeatherIconResult: FetchWeatherIconResultType!
+    private var stubViewHistory = Items()
 
     var fetchListItemsCalledWithQuery: String?
     var fetchWeatherCalledWithLocation: Location?
@@ -46,6 +47,10 @@ class DataProviderStub: DataProviderType {
     
     func setupForBadNework() {
         stubResults = [.failed]
+    }
+    
+    func setupStubHistory() {
+        stubViewHistory = stubPayload
     }
 
     func fetchListItems(query: String, completion: @escaping ((FetchListItemsResultType) -> Void)) {
@@ -78,4 +83,8 @@ class DataProviderStub: DataProviderType {
         storeItemCalledWithItem = item
     }
 
+    func getRecentlyViewedItems(completion: @escaping ((Items) -> Void)) {
+        completion(stubViewHistory)
+    }
+    
 }

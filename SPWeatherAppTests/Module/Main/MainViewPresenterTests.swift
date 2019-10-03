@@ -59,7 +59,7 @@ class MainViewPresenterTests: XCTestCase {
         // THEN
         XCTAssert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
         let firstState = MainViewState.loading
-        let finalState = MainViewState.searchHistory(items: stubPayload)
+        
         XCTFail()
     }
     
@@ -68,6 +68,13 @@ class MainViewPresenterTests: XCTestCase {
         subject.userWillViewItem(location)
         
         XCTAssertEqual(dataProvider.storeItemCalledWithItem, location)
+    }
+    
+    func testWhenLoadRecentlyViewedCityIsCalled() {
+        dataProvider.setupStubHistory()
+        subject.loadRecentlyViewedCity()
+        
+        XCTAssertEqual(mainViewControllerMock.setupViewCalledWithStates, [.loadRecentlyViewedCity(items: stubPayload)])
     }
 
 }
