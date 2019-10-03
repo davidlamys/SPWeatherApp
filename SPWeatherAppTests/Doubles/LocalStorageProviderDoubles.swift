@@ -10,13 +10,14 @@ import Foundation
 
 class LocalStorageProviderMock: LocalStorageProviderType {
 
-    var insertListItemsCalledWithData: Items!
+
+    var insertListItemCalledWithItem: Item!
     var getListItemsCalled = false
     var deleteListItemsCalled = false
     private var payload = Items()
 
     func reset() {
-        insertListItemsCalledWithData = nil
+        insertListItemCalledWithItem = nil
         payload = []
     }
 
@@ -36,10 +37,11 @@ class LocalStorageProviderMock: LocalStorageProviderType {
         getListItemsCalled = true
         completion(payload)
     }
-
-    func insertListItems(data: Items) {
-        insertListItemsCalledWithData = data
+    
+    func insertItem(item: Item) {
+        insertListItemCalledWithItem = item
     }
+    
 
     func getImage(hash: String, completion: @escaping ((Data?) -> Void)) {
 

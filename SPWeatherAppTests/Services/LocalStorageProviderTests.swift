@@ -12,77 +12,70 @@ import CoreData
 @testable import SPWeatherApp
 
 class LocalStorageProviderTests: XCTestCase {
-    // source: https://medium.com/flawless-app-stories/cracking-the-tests-for-core-data-15ef893a3fee
-    var mockInMemoryPersistantContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "SPWeatherApp")
-        let description = NSPersistentStoreDescription()
-        description.type = NSInMemoryStoreType
-        description.shouldAddStoreAsynchronously = false // Make it simpler in test env
-
-        container.persistentStoreDescriptions = [description]
-        container.loadPersistentStores { (description, error) in
-            // Check if the data store is in memory
-            precondition( description.type == NSInMemoryStoreType )
-
-            // Check if creating container wrong
-            if let error = error {
-                fatalError("Create an in-mem coordinator failed \(error)")
-            }
-        }
-        return container
-    }()
-
-    // source: https://stackoverflow.com/questions/45134431/is-nsinmemorystoretype-incompatible-with-nsbatchdeleterequest
-    var devContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "SPWeatherApp")
-        container.persistentStoreDescriptions[0].url = URL(fileURLWithPath: "/dev/null")
-        container.loadPersistentStores { (_, error) in
-            XCTAssertNil(error)
-        }
-        return container
-    }()
 
     var subject: LocalStorageProvider!
+    var testUserDefaults: UserDefaults!
 
     override func setUp() {
         super.setUp()
-        subject = LocalStorageProvider(container: mockInMemoryPersistantContainer)
+        testUserDefaults = UserDefaultsMock()
+        subject = LocalStorageProvider(userDefaults: testUserDefaults)
     }
 
     override func tearDown() {
         super.tearDown()
     }
 
-    func testInsertShouldStoreItems() {
-        subject.insertListItems(data: stubPayload)
-        XCTAssert(numberOfItemsInPersistentStore() == 2)
-    }
-
     func testGetListItemShouldReturnCorrectItems() {
-        subject.insertListItems(data: stubPayload)
+        subject.insertItem(item: stubPayload.first!)
 
         let expectation = XCTestExpectation(description: "Fetching from local storage")
         subject.getListItemsFromLocal { result in
-            XCTAssert(result == stubPayload)
+            XCTAssert(result == [stubPayload.first])
             expectation.fulfill()
         }
 
         wait(for: [expectation], timeout: 5.0)
     }
-
-    func testDeleteItemsShouldDeleteItems() {
-        // MARK: this creates a coupling between test and implementation. :( apparently batch delete only works on SQLLite stores 
-        subject = LocalStorageProvider(container: devContainer)
-        subject.insertListItems(data: stubPayload)
-        subject.deleteListItems()
-
-        XCTAssert(numberOfItemsInPersistentStore() == 0)
+    
+    func testInsertingItemsShouldComeFirst() {
+        subject.insertItem(item: stubPayload.last!)
+        subject.insertItem(item: stubPayload.first!)
+        
+        let expectation = XCTestExpectation(description: "Fetching from local storage")
+        subject.getListItemsFromLocal { result in
+            XCTAssert(result == [stubPayload.first, stubPayload.last])
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5.0)
     }
-
-    //Convenient method for getting the number of data in store now
-    func numberOfItemsInPersistentStore() -> Int {
-        let request: NSFetchRequest<NSFetchRequestResult> = PostObject.fetchRequest
-        let results = try! mockInMemoryPersistantContainer.viewContext.fetch(request)
-        return results.count
+    
+    func testInsertingSameItemsShouldRearrangeList() {
+        subject.insertItem(item: stubPayload.last!)
+        subject.insertItem(item: stubPayload.first!)
+        subject.insertItem(item: stubPayload.last!)
+        
+        let expectation = XCTestExpectation(description: "Fetching from local storage")
+        subject.getListItemsFromLocal { result in
+            XCTAssert(result == [stubPayload.last, stubPayload.first])
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5.0)
+    }
+    
+    func testInsertingPastLimitShouldRemoveOldestData() {
+        subject = LocalStorageProvider(userDefaults: testUserDefaults, limit: 1)
+        subject.insertItem(item: stubPayload.last!)
+        subject.insertItem(item: stubPayload.first!)
+        
+        let expectation = XCTestExpectation(description: "Fetching from local storage")
+          subject.getListItemsFromLocal { result in
+              XCTAssert(result == [stubPayload.first])
+              expectation.fulfill()
+          }
+          
+          wait(for: [expectation], timeout: 5.0)
     }
 }

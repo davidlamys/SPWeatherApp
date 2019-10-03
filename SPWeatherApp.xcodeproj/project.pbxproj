@@ -21,6 +21,8 @@
 		1551B39C228EE8A8004EE659 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1551B39B228EE8A8004EE659 /* DetailViewController.swift */; };
 		15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B542288307B00821ADD /* CannedResponseLoader.swift */; };
 		157516F9233D245C00EF7E3B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157516F8233D245C00EF7E3B /* Global.swift */; };
+		15936F062345C54600DEFD2D /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15936F052345C54600DEFD2D /* UserDefaultsDoubles.swift */; };
+		15936F072345C6CB00DEFD2D /* LocalStorageProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150448B122928596000D6216 /* LocalStorageProviderTests.swift */; };
 		15975E9D23293BF200D7F65B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15975E9C23293BF200D7F65B /* main.swift */; };
 		15AD0BAA2289A55200D7E037 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BA92289A55200D7E037 /* MainViewController.swift */; };
 		15AD0BB3228AF41300D7E037 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD0BB2228AF41300D7E037 /* MainViewControllerTests.swift */; };
@@ -93,6 +95,7 @@
 		1551B39B228EE8A8004EE659 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		15629B542288307B00821ADD /* CannedResponseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannedResponseLoader.swift; sourceTree = "<group>"; };
 		157516F8233D245C00EF7E3B /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		15936F052345C54600DEFD2D /* UserDefaultsDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsDoubles.swift; sourceTree = "<group>"; };
 		15975E9C23293BF200D7F65B /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		15AD0BA92289A55200D7E037 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		15AD0BB2228AF41300D7E037 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
@@ -321,6 +324,7 @@
 		15AD0BBF228CE6DF00D7E037 /* Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				15936F052345C54600DEFD2D /* UserDefaultsDoubles.swift */,
 				1508CD86228F18AD00A8B51A /* DetailView */,
 				1508CD85228F189F00A8B51A /* MainView */,
 				15AD0BC4228CEAC700D7E037 /* DataProviderDoubles.swift */,
@@ -550,9 +554,11 @@
 				1508CD82228F022700A8B51A /* StubData.swift in Sources */,
 				1508CD8C228F1DCD00A8B51A /* DetailViewControllerDoubles.swift in Sources */,
 				15AD0BD5228D862400D7E037 /* LocalStorageProviderDoubles.swift in Sources */,
+				15936F072345C6CB00DEFD2D /* LocalStorageProviderTests.swift in Sources */,
 				15AD0BBE228CE6C000D7E037 /* MainViewPresenterTests.swift in Sources */,
 				1508CD8A228F1D7F00A8B51A /* DetailViewPresenterTests.swift in Sources */,
 				15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */,
+				15936F062345C54600DEFD2D /* UserDefaultsDoubles.swift in Sources */,
 				15B25611233E314400406058 /* NetworkClientTests.swift in Sources */,
 				15AD0BD1228CFCBF00D7E037 /* NetworkClientDoubles.swift in Sources */,
 				15B25613233E333000406058 /* SessionDoubles.swift in Sources */,
