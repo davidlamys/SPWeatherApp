@@ -69,7 +69,6 @@ class MainViewControllerTests: XCTestCase {
         assert(secondCell.textLabel?.text == "Singapore")
         assert(secondCell.detailTextLabel?.text == "Singapore")
 
-        assert(subject.navigationItem.leftBarButtonItem?.isEnabled == true)
         let expectedTitle = String(format: Text.navigationTitle_DataFromLocal.rawValue, 2)
         assert(subject.title == expectedTitle)
 

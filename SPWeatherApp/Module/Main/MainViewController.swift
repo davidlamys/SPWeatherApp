@@ -35,10 +35,6 @@ class MainViewController: UIViewController {
     private var items: Items = []
     var viewPresenter: MainViewPresenterType!
 
-    @IBAction func retryButtonTapped(sender: Any) {
-        items = []
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         if viewPresenter == nil {

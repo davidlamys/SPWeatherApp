@@ -98,13 +98,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ysr-r6-cGf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZUO-u3-TC3">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="ihi-kX-dtt">
-                            <connections>
-                                <action selector="retryButtonTappedWithSender:" destination="da3-Zu-bYk" id="Dhu-Vn-A7S"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="ZUO-u3-TC3"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="u10-zS-SB4" id="8IF-kM-TdA"/>
                         <outlet property="loadingStatusLabel" destination="Jhf-tn-NkH" id="AZK-bM-wdy"/>
