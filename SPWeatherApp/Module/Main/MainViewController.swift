@@ -178,7 +178,7 @@ extension MainViewController: UISearchResultsUpdating {
     else {
         return
     }
-    if searchText.count > 3 {
+    if searchText.count >= 3 {
         viewPresenter.fetchItems(query: searchText)
     } else {
         viewPresenter.searchWillBegin()
