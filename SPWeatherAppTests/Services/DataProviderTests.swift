@@ -86,6 +86,37 @@ class DataProviderTests: XCTestCase {
         
         wait(for: [expectation], timeout: 5.0)
         
-    }    
+    }
+    
+    func testWhenFetchingWeatherIconUnderGoodNetwork() {
+        // GIVEN
+        networkClientStub.setupForGetWeatherIconUnderGoodNetwork()
+        
+        let expectation = XCTestExpectation(description: "Calling stub network client")
+        
+        subject.fetchIcon(urlString: "urlString") { result in
+            assert(self.networkClientStub.calledWith == RequestType.fetch(urlString: "urlString"))
+            assert(result == FetchWeatherIconResultType.successFromNetwork(data: Data()))
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5.0)
+        
+    }
+
+    func testWhenFetchingWeatherIconWithNetworkError() {
+        // GIVEN
+        networkClientStub.setupForNetworkError()
+        let expectation = XCTestExpectation(description: "Calling stub network client")
+        
+        //WHEN
+        subject.fetchIcon(urlString: "urlString") { result in
+            assert(self.networkClientStub.calledWith == RequestType.fetch(urlString: "urlString"))
+            assert(result == FetchWeatherIconResultType.failed)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5.0)
+        
+    }
 
 }

@@ -32,7 +32,6 @@ class DataProviderStub: DataProviderType {
     func setupForGoodNetworkWithNoData() {
         stubResults = [.successFromNetwork(items: [])]
     }
-
     
     func setupForSuccessfulWeatherFetch() {
         stubWeatherResult = .successFromNetwork(weatherCondition: stubWeatherPayload)
@@ -60,5 +59,9 @@ class DataProviderStub: DataProviderType {
             completion(stubWeatherResult)
         }
     }
+    
+    func fetchIcon(urlString: String, completion: @escaping ((FetchWeatherIconResultType) -> Void)) {
+     }
+     
 
 }
