@@ -32,10 +32,25 @@ class DetailViewPresenter: DetailViewPresenterType {
         dataProvider.fetchWeather(for: item, completion: fetchWeatherHandler)
     }
 
-    func fetchWeatherHandler(result: FetchWeatherResultType) {
+    private func fetchWeatherHandler(result: FetchWeatherResultType) {
         switch result {
         case .successFromNetwork(weatherCondition: let weather):
             view.setupView(state: .loaded(weather: weather))
+            guard let weatherIconURLString = weather.iconURLString else {
+                return
+            }
+            
+            dataProvider.fetchIcon(urlString: weatherIconURLString,
+                                   completion: fetchWeatherIconHandler)
+        case .failed:
+            view.setupView(state: .error)
+        }
+    }
+    
+    private func fetchWeatherIconHandler(result: FetchWeatherIconResultType) {
+        switch result {
+        case .successFromNetwork(let data):
+            view.setupView(state: .loadedIcon(imageData: data))
         case .failed:
             view.setupView(state: .error)
         }

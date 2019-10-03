@@ -11,6 +11,7 @@ import Foundation
 enum DetailViewState {
     case loadingWeather
     case loaded(weather: WeatherCondition)
+    case loadedIcon(imageData: Data)
     case error
 }
 

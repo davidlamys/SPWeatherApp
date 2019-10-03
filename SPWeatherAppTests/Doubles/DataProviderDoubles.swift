@@ -16,9 +16,11 @@ class DataProviderStub: DataProviderType {
 
     private var stubResults = [FetchListItemsResultType]()
     private var stubWeatherResult: FetchWeatherResultType!
+    private var stubWeatherIconResult: FetchWeatherIconResultType!
 
     var fetchListItemsCalledWithQuery: String?
     var fetchWeatherCalledWithLocation: Location?
+    var fetchWeatherIconCalledWithURL: String?
 
     func reset() {
         dataSource = nil
@@ -35,6 +37,10 @@ class DataProviderStub: DataProviderType {
     
     func setupForSuccessfulWeatherFetch() {
         stubWeatherResult = .successFromNetwork(weatherCondition: stubWeatherPayload)
+    }
+    
+    func setupForSuccessfulWeatherIconFetch() {
+        stubWeatherIconResult = .successFromNetwork(data: Data())
     }
     
     func setupForBadNework() {
@@ -61,6 +67,10 @@ class DataProviderStub: DataProviderType {
     }
     
     func fetchIcon(urlString: String, completion: @escaping ((FetchWeatherIconResultType) -> Void)) {
+        fetchWeatherIconCalledWithURL = urlString
+        if let stubWeatherIconResult = stubWeatherIconResult {
+            completion(stubWeatherIconResult)
+        }
      }
      
 

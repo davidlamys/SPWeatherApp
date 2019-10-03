@@ -40,7 +40,24 @@ class DetailViewPresenterTests: XCTestCase {
         dataProvider.setupForSuccessfulWeatherFetch()
         subject.viewDidLoad()
         XCTAssert(detailViewControllerMock.setupViewCalledWithStates == [.loadingWeather, .loaded(weather: stubWeatherPayload)])
+    }
     
+    func testWhenFetchWeatherSucceed_ShouldCallFetchWeatherIcon() {
+        dataProvider.setupForSuccessfulWeatherFetch()
+        subject.viewDidLoad()
+        XCTAssert(dataProvider.fetchWeatherIconCalledWithURL == stubWeatherPayload.iconURLString)
+    }
+    
+    func testWhenFetchWeatherIconSucceedToo_ShouldCallSetupViewOnViewController() {
+        dataProvider.setupForSuccessfulWeatherFetch()
+        dataProvider.setupForSuccessfulWeatherIconFetch()
+        subject.viewDidLoad()
+        
+        let expectedStates: [DetailViewState] = [.loadingWeather,
+                                                 .loaded(weather: stubWeatherPayload),
+                                                 .loadedIcon(imageData: Data())]
+        XCTAssert(detailViewControllerMock.setupViewCalledWithStates == expectedStates)
     }
 
 }
+

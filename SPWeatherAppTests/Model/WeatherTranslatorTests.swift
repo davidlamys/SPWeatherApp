@@ -26,8 +26,8 @@ class WeatherTranslatorTests: XCTestCase {
         assert(weatherCondition.tempC == "17")
         assert(weatherCondition.tempF == "63")
         assert(weatherCondition.weatherDescription == "Partly cloudy")
-        let expectedURL = URL(string: "http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png")
-        assert(weatherCondition.iconURL == expectedURL)
+        let expectedURLString = "http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png"
+        assert(weatherCondition.iconURLString == expectedURLString)
         
     }
 }

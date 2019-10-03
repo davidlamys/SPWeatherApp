@@ -50,10 +50,7 @@ extension WeatherCondition {
     var weatherDescription: String? {
         return weatherDesc.firstValue
     }
-    var iconURL: URL? {
-        guard let urlString = weatherIconURL.firstValue else {
-            return nil
-        }
-        return URL(string: urlString)
+    var iconURLString: String? {
+        return weatherIconURL.firstValue
     }
 }
