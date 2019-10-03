@@ -21,6 +21,7 @@ enum Text: String {
     case completedMessage = "Congratulations, we have found some cities ;)"
     case welcomeBanner = "Welcome new user, search for city to begin"
     case searchHelperPrompt = "Type 3 or more characters to begin search"
+    case searchFailed = "Oops something went wrong"
 }
 
 class MainViewController: UIViewController {
@@ -126,6 +127,8 @@ extension MainViewController: MainViewControllerType {
             break
             
         case .searchFailed:
+            tableView.isHidden = true
+            stateFeedbackLabel.text = Text.searchFailed.rawValue
             break
         }
     }

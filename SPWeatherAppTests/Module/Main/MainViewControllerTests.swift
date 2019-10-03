@@ -156,6 +156,13 @@ class MainViewControllerTests: XCTestCase {
         XCTAssert(viewPresenterFake.userWillViewItemCalledWith == stubPayload.first)
     }
     
+    func testWhenSearchFailed() {
+        subject.setupView(state: .searchFailed)
+        
+        XCTAssert(subject.tableView.isHidden)
+        XCTAssertEqual(subject.stateFeedbackLabel.text, Text.searchFailed.rawValue)
+    }
+    
     func testWhenSearchWillBegin_shouldNotifySelf() {
         //questionable test
         subject.willPresentSearchController(UISearchController())
