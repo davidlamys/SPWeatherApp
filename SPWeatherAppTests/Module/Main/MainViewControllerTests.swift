@@ -94,7 +94,6 @@ class MainViewControllerTests: XCTestCase {
         assert(secondCell.textLabel?.text == "Singapore")
         assert(secondCell.detailTextLabel?.text == "Singapore")
 
-        assert(subject.navigationItem.leftBarButtonItem?.isEnabled == false)
         let expectedTitle = String(format: Text.navigationTitle_DataFromNetwork.rawValue, 2)
         assert(subject.title == expectedTitle)
 
@@ -112,7 +111,6 @@ class MainViewControllerTests: XCTestCase {
         //THEN
         assert(subject.stateFeedbackLabel.text == Text.welcomMessage.rawValue)
         assert(subject.tableView.isHidden == true)
-        assert(subject.navigationItem.leftBarButtonItem?.isEnabled == true)
         assert(subject.loadingStatusUpdateBanner.isHidden == true)
         assert(subject.activityIndicatorView.isAnimating == false)
         assert(subject.title == nil)
@@ -127,10 +125,16 @@ class MainViewControllerTests: XCTestCase {
         //THEN
         assert(subject.stateFeedbackLabel.text == Text.noInternetTextForNewUser.rawValue)
         assert(subject.tableView.isHidden == true)
-        assert(subject.navigationItem.leftBarButtonItem?.isEnabled == true)
         assert(subject.loadingStatusUpdateBanner.isHidden == true)
         assert(subject.activityIndicatorView.isAnimating == false)
         assert(subject.title == nil)
+    }
+    
+    func testWhenUserSelectItem_shouldNotifyPresenter() {
+        subject.setupView(state: .loadedFromNetwork(items: stubPayload))
+        subject.tableView(subject.tableView, didSelectRowAt: IndexPath(item: 0, section: 0))
+        
+        XCTAssert(viewPresenterFake.userWillViewItemCalledWith == stubPayload.first)
     }
 
 }

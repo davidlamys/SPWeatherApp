@@ -152,9 +152,11 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //TODO: introduce coordinator if time permits
-        let person = items[indexPath.row]
+        let location = items[indexPath.row]
+        viewPresenter.userWillViewItem(location)
+        
         let viewController = UIViewController.make(viewController: DetailViewController.self)
-        let detailViewPresenter = DetailViewPresenter(item: person,
+        let detailViewPresenter = DetailViewPresenter(item: location,
                                                       view: viewController)
         viewController.viewPresenter = detailViewPresenter
         navigationController?.pushViewController(viewController, animated: true)

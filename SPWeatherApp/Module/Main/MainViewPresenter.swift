@@ -11,6 +11,7 @@ import Foundation
 protocol MainViewPresenterType {
     var view: MainViewControllerType! { get }
     func fetchItems(query: String)
+    func userWillViewItem(_ item: Item)
 }
 
 class MainViewPresenter: MainViewPresenterType {
@@ -41,6 +42,10 @@ class MainViewPresenter: MainViewPresenterType {
                 }
             }
         }
+    }
+    
+    func userWillViewItem(_ item: Item) {
+        
     }
 
 }

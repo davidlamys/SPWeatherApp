@@ -11,6 +11,7 @@ import Foundation
 
 class MainViewPresenterFake: MainViewPresenter {
     var fetchItemsCalledWithQuery: String?
+    var userWillViewItemCalledWith: Item?
     init() {
         // this is a questionable decision. need more future research
         super.init(view: MainViewControllerMock(),
@@ -19,5 +20,9 @@ class MainViewPresenterFake: MainViewPresenter {
     
     override func fetchItems(query: String) {
         fetchItemsCalledWithQuery = query
+    }
+    
+    override func userWillViewItem(_ item: Item) {
+        userWillViewItemCalledWith = item
     }
 }
