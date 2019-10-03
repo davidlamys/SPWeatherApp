@@ -14,7 +14,7 @@ protocol MainViewControllerType: class {
 
 enum Text: String {
     case welcomMessage = "Hello dear new user, looks like there is no news article :)"
-    case noResult = "Looks like this is the first time you use the app and there is no internet"
+    case noResult = "No results found for: %@"
     case loadingText = "Loading...please wait for the good stuff"
     case navigationTitle_DataFromNetwork = "Found %d cities from internetz"
     case navigationTitle_recentlyViewed = "Recently viewed %d cities"

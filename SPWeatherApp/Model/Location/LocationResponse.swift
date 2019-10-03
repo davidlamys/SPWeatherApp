@@ -14,3 +14,20 @@ struct LocationNetworkResponse: Codable {
         let result: [Location]
     }
 }
+
+struct LocationNetworkErrorResponse: Codable {
+    private let data: Error
+    struct Error: Codable {
+        let error: KeyValueArray
+    }
+    
+    init(errorMessage: String) {
+        self.data = Error(error: [["msg": errorMessage]])
+    }
+}
+
+extension LocationNetworkErrorResponse {
+    var errorMessage: String? {
+        return data.error.firstValue
+    }
+}

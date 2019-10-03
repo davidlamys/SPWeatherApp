@@ -20,6 +20,7 @@
 		153F3DDE228458680006D614 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 153F3DDD228458670006D614 /* README.md */; };
 		1551B39C228EE8A8004EE659 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1551B39B228EE8A8004EE659 /* DetailViewController.swift */; };
 		15629B552288307B00821ADD /* CannedResponseLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15629B542288307B00821ADD /* CannedResponseLoader.swift */; };
+		157348312345F369009C07A2 /* StubNoSearchResultRespone.json in Resources */ = {isa = PBXBuildFile; fileRef = 157348302345F369009C07A2 /* StubNoSearchResultRespone.json */; };
 		157516F9233D245C00EF7E3B /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157516F8233D245C00EF7E3B /* Global.swift */; };
 		15936F062345C54600DEFD2D /* UserDefaultsDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15936F052345C54600DEFD2D /* UserDefaultsDoubles.swift */; };
 		15936F072345C6CB00DEFD2D /* LocalStorageProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150448B122928596000D6216 /* LocalStorageProviderTests.swift */; };
@@ -94,6 +95,7 @@
 		153F3DDD228458670006D614 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1551B39B228EE8A8004EE659 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		15629B542288307B00821ADD /* CannedResponseLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannedResponseLoader.swift; sourceTree = "<group>"; };
+		157348302345F369009C07A2 /* StubNoSearchResultRespone.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StubNoSearchResultRespone.json; sourceTree = "<group>"; };
 		157516F8233D245C00EF7E3B /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		15936F052345C54600DEFD2D /* UserDefaultsDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsDoubles.swift; sourceTree = "<group>"; };
 		15975E9C23293BF200D7F65B /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				15D48D3F2341D44A004CC724 /* StubSearchResponse.json */,
+				157348302345F369009C07A2 /* StubNoSearchResultRespone.json */,
 				15ED41CA234339F200E4FC8A /* StubWeatherResponse.json */,
 				153F3DD4228328930006D614 /* Info.plist */,
 				15AD0BBF228CE6DF00D7E037 /* Doubles */,
@@ -504,6 +507,7 @@
 			files = (
 				15D48D402341D44A004CC724 /* StubSearchResponse.json in Resources */,
 				15ED41CB234339F200E4FC8A /* StubWeatherResponse.json in Resources */,
+				157348312345F369009C07A2 /* StubNoSearchResultRespone.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

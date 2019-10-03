@@ -32,6 +32,17 @@ class LocationTranslatorTests: XCTestCase {
         
     }
     
+    func testWhenNoMatchingWeatherFound() {
+        response = ResponseLoader.loadLocalResponse(file: "StubNoSearchResultRespone")
+        
+        let translationResult = LocationTranslator.translateFromNetworkResponse(data: response as! Data)
+        guard case .success(let locations) = translationResult else {
+            XCTFail("failed to parse from stub response")
+            return
+        }
+        XCTAssert(locations.isEmpty)
+    }
+    
     func testLocationTranslatorParseToDataAndBack() {
         let locationToDataResult = LocationTranslator.translateToData(from: stubPayload)
         let data = try! locationToDataResult.get()

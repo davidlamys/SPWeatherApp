@@ -8,6 +8,9 @@
 
 import Foundation
 
+// This is fragile but...time is limited
+let noResultErrorMessage = "Unable to find any matching weather location to the query submitted!"
+
 struct LocationTranslator {
     static func translateFromNetworkResponse(data: Data) -> Result<[Location], Error> {
         do {
@@ -15,7 +18,31 @@ struct LocationTranslator {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let response = try decoder.decode(LocationNetworkResponse.self, from: data)
             return Result.success(response.searchApi.result)
-
+        } catch {
+            let result = translateErrorMessageFromNetworkResponse(data: data)
+            switch result {
+            case .success(let errorMessage):
+                if errorMessage == noResultErrorMessage {
+                    return Result.success([])
+                }
+            default:
+                break
+            }
+            return Result.failure(error)
+        }
+    }
+    
+    static func translateErrorMessageFromNetworkResponse(data: Data) -> Result<String, Error> {
+        do {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            let response = try decoder.decode(LocationNetworkErrorResponse.self, from: data)
+            if let errorMessage = response.errorMessage {
+                return Result.success(errorMessage)
+            } else {
+                let unknownError = NSError.init(domain: "com.david.SPWeatherApp", code: -1, userInfo: ["info": "unknown network error"])
+                return Result.failure(unknownError)
+            }
         } catch {
             return Result.failure(error)
         }
