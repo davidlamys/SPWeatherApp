@@ -45,7 +45,6 @@ class DataProviderTests: XCTestCase {
 
     func testWhenFetchingListItemsWithNetworkError() {
         networkClientStub.setupForNetworkError()
-        localStorageProviderMock.setupStorageWithStubList()
         let expectation = XCTestExpectation(description: "Calling stub network client")
 
         subject.fetchListItems(query: "Singapore") { result in
@@ -72,5 +71,21 @@ class DataProviderTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
         
     }
+
+    func testWhenFetchingWeatherWithNetworkError() {
+        // GIVEN
+        let location = stubPayload[1]
+        networkClientStub.setupForNetworkError()
+        let expectation = XCTestExpectation(description: "Calling stub network client")
+        
+        //WHEN
+        subject.fetchWeather(for: location) { result in
+            assert(result == FetchWeatherResultType.failed)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 5.0)
+        
+    }    
 
 }
