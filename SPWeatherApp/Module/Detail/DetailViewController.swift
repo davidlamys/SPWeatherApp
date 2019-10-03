@@ -33,6 +33,7 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewPresenter.viewDidLoad()
+        weatherIconImageView.layer.cornerRadius = 10.0
     }
 }
 
@@ -84,6 +85,12 @@ extension DetailViewController: DetailViewControllerType {
             
             humidityLabel.isHidden = false
             humidityLabel.text = String(format: Text.humidityText.rawValue, weather.humidity)
+        case .loadedIcon(let imageData):
+            loadingStackView.isHidden = true
+            if let image = UIImage(data: imageData) {
+                weatherIconImageView.isHidden = false
+                weatherIconImageView.image = image
+            }
         default:
             break
         }

@@ -75,5 +75,13 @@ class DetailViewControllerTests: XCTestCase {
         let expectedHumidityLabelText = String(format: Text.humidityText.rawValue, fetchedWeather.humidity)
         XCTAssert(subject.humidityLabel.text == expectedHumidityLabelText)
     }
+    
+    func testWhenSetupViewWithWeatherIcon() {
+        let imageData = Data()
+        subject.setupView(state: .loadedIcon(imageData: imageData))
+        
+        XCTAssert(subject.loadingStackView.isHidden == true)
+        XCTAssert(subject.weatherIconImageView.isHidden == false)
+    }
 
 }

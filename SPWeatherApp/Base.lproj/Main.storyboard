@@ -126,7 +126,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hQc-Qw-8vi">
-                                <rect key="frame" x="20" y="64" width="374" height="238.5"/>
+                                <rect key="frame" x="20" y="334" width="374" height="238.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gg7-lT-Tmb">
                                         <rect key="frame" x="142.5" y="0.0" width="89" height="37"/>
@@ -178,7 +178,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RR6-gO-S4a" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hQc-Qw-8vi" secondAttribute="bottom" constant="20" id="0ga-tL-5oi"/>
-                            <constraint firstItem="hQc-Qw-8vi" firstAttribute="top" secondItem="RR6-gO-S4a" secondAttribute="top" constant="20" id="OzI-9d-d7N"/>
+                            <constraint firstItem="hQc-Qw-8vi" firstAttribute="centerY" secondItem="RR6-gO-S4a" secondAttribute="centerY" id="5Va-dV-3Qc"/>
+                            <constraint firstItem="hQc-Qw-8vi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RR6-gO-S4a" secondAttribute="top" constant="20" id="OzI-9d-d7N"/>
                             <constraint firstItem="hQc-Qw-8vi" firstAttribute="leading" secondItem="RR6-gO-S4a" secondAttribute="leading" constant="20" id="SrX-Nd-dHO"/>
                             <constraint firstItem="RR6-gO-S4a" firstAttribute="trailing" secondItem="hQc-Qw-8vi" secondAttribute="trailing" constant="20" id="rbk-Gw-vZS"/>
                         </constraints>
