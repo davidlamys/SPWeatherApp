@@ -14,6 +14,7 @@ private let key = "f475ee8edfaf447697e31822192509"
 enum RequestType {
     case fetchListItems(query: String)
     case fetchCityWeather(lat: Double, lon: Double)
+    case fetch(urlString: String)
 
     var baseURL: String {
         switch self {
@@ -21,6 +22,8 @@ enum RequestType {
             return "https://api.worldweatheronline.com/premium/v1/search.ashx?"
         case .fetchCityWeather:
             return "https://api.worldweatheronline.com/premium/v1/weather.ashx?"
+        case .fetch:
+            return ""
         }
     }
 
@@ -32,6 +35,8 @@ enum RequestType {
         case .fetchCityWeather(let lat, let lon):
             let urlString = baseURL + "key=\(key)" + "&q=\(lat),\(lon)" + "&format=json&num_of_days=0&fx=no&mca=no&fx24=no&show_comments=no"
             return urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        case .fetch(let urlString):
+            return urlString
         }
     }
 }
