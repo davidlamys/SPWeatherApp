@@ -10,6 +10,7 @@ import Foundation
 @testable import SPWeatherApp
 
 class MainViewPresenterFake: MainViewPresenter {
+    
     var fetchItemsCalledWithQuery: String?
     var userWillViewItemCalledWith: Item?
     init() {
@@ -24,5 +25,9 @@ class MainViewPresenterFake: MainViewPresenter {
     
     override func userWillViewItem(_ item: Item) {
         userWillViewItemCalledWith = item
+    }
+    
+    override func loadRecentlyViewedCity() {
+        
     }
 }

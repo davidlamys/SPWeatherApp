@@ -33,11 +33,10 @@ class MainViewPresenter: MainViewPresenterType {
             }
             switch result {
             case .failed:
-                //TODO: process failure cases
-                break
+                self.view.setupView(state: .searchFailed)
             case .successFromNetwork(let payload):
                 if payload.isEmpty {
-                    self.view.setupView(state: .displayWelcomeMessage)
+                    self.view.setupView(state: .noResultFound(query: query))
                 } else {
                     self.view.setupView(state: .loadedFromNetwork(items: payload))
                 }

@@ -14,12 +14,13 @@ protocol MainViewControllerType: class {
 
 enum Text: String {
     case welcomMessage = "Hello dear new user, looks like there is no news article :)"
-    case noInternetTextForNewUser = "Looks like this is the first time you use the app and there is no internet"
+    case noResult = "Looks like this is the first time you use the app and there is no internet"
     case loadingText = "Loading...please wait for the good stuff"
-    case navigationTitle_DataFromNetwork = "Fetched %d posts from internetz"
-    case navigationTitle_DataFromLocal = "Fetched %d cached posts"
-    case completedMessage = "Congratulations, we have fetched all ;)"
-    case apiFailedAndFetchedFromLocal = "Oops, something went wrong, showing data from local storage. Please retry later."
+    case navigationTitle_DataFromNetwork = "Found %d cities from internetz"
+    case navigationTitle_recentlyViewed = "Recently viewed %d cities"
+    case completedMessage = "Congratulations, we have found some cities ;)"
+    case welcomeBanner = "Welcome new user, search for city to begin"
+    case searchHelperPrompt = "Type 3 or more characters to begin search"
 }
 
 class MainViewController: UIViewController {
@@ -77,20 +78,14 @@ extension MainViewController: MainViewControllerType {
 
     private func setupViewOnMainThread(state: MainViewState) {
         precondition(Thread.isMainThread)
-        navigationItem.leftBarButtonItem?.isEnabled = false
         loadingStatusUpdateBanner.isHidden = true
         activityIndicatorView.stopAnimating()
         
         switch state {
-        case .displayWelcomeMessage:
+        case .noResultFound(let query):
             tableView.isHidden = true
-            stateFeedbackLabel.text = Text.welcomMessage.rawValue
-            navigationItem.leftBarButtonItem?.isEnabled = true
-
-        case .emptyState:
-            tableView.isHidden = true
-            stateFeedbackLabel.text = Text.noInternetTextForNewUser.rawValue
-            navigationItem.leftBarButtonItem?.isEnabled = true
+            let feedbackText = String(format: Text.noResult.rawValue, query)
+            stateFeedbackLabel.text = feedbackText
 
         case .loading:
             tableView.isHidden = true
@@ -115,12 +110,20 @@ extension MainViewController: MainViewControllerType {
             items = payload
             tableView.reloadData()
 
-            title = String(format: Text.navigationTitle_DataFromLocal.rawValue,
-                           items.count)
-            navigationItem.leftBarButtonItem?.isEnabled = true
-
-            loadingStatusUpdateBanner.isHidden = false
-            loadingStatusLabel.text = Text.apiFailedAndFetchedFromLocal.rawValue
+            if payload.isEmpty {
+                title = nil
+            } else {
+                title = String(format: Text.navigationTitle_recentlyViewed.rawValue,
+                items.count)
+            }
+            loadingStatusUpdateBanner.isHidden = !payload.isEmpty
+            loadingStatusLabel.text = Text.welcomeBanner.rawValue
+            
+        case .willBeginSearch:
+            break
+            
+        case .searchFailed:
+            break
         }
     }
 

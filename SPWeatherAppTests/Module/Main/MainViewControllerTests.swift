@@ -35,12 +35,13 @@ class MainViewControllerTests: XCTestCase {
 
     func testSetupForEmptyState() {
         // WHEN
-        subject.setupView(state: .emptyState)
+        subject.setupView(state: .noResultFound(query: "Singapura"))
 
         //THEN
         XCTAssert(subject.tableView.isHidden == true)
         XCTAssert(subject.loadingStatusUpdateBanner.isHidden == true)
-        XCTAssert(subject.stateFeedbackLabel.text == Text.noInternetTextForNewUser.rawValue)
+        let expectedText = String(format: Text.noResult.rawValue, "Singapura")
+        XCTAssert(subject.stateFeedbackLabel.text == expectedText)
     }
 
     func testSetupForLoadingScreen() {
@@ -69,17 +70,16 @@ class MainViewControllerTests: XCTestCase {
         XCTAssert(secondCell.textLabel?.text == "Singapore")
         XCTAssert(secondCell.detailTextLabel?.text == "Singapore")
 
-        let expectedTitle = String(format: Text.navigationTitle_DataFromLocal.rawValue, 2)
+        let expectedTitle = String(format: Text.navigationTitle_recentlyViewed.rawValue, 2)
         XCTAssert(subject.title == expectedTitle)
 
-        XCTAssert(subject.loadingStatusUpdateBanner.isHidden == false)
-        XCTAssert(subject.activityIndicatorView.isAnimating == false)
-        XCTAssert(subject.loadingStatusLabel.text == Text.apiFailedAndFetchedFromLocal.rawValue)
+        XCTAssertTrue(subject.loadingStatusUpdateBanner.isHidden)
+        XCTAssertFalse(subject.activityIndicatorView.isAnimating)
+        XCTAssert(subject.loadingStatusLabel.text == Text.welcomeBanner.rawValue)
     }
 
-    func testLoadScreenWithPostsFromNetwork() {
+    func testLoadScreenWithLocationsFromNetwork() {
         // WHEN
-        subject.setupView(state: .emptyState)
         subject.setupView(state: .loading)
         subject.setupView(state: .loadedFromNetwork(items: stubPayload))
 
@@ -102,32 +102,15 @@ class MainViewControllerTests: XCTestCase {
         XCTAssert(subject.loadingStatusLabel.text == Text.completedMessage.rawValue)
     }
 
-    func testLoadScreenWithEmptyListItems() {
+    func testLoadScreenWithNoRecentlyViewedCities() {
         // WHEN
-        subject.setupView(state: .emptyState)
-        subject.setupView(state: .loading)
-        subject.setupView(state: .displayWelcomeMessage)
+        subject.setupView(state: .loadRecentlyViewedCity(items: []))
 
         //THEN
-        XCTAssert(subject.stateFeedbackLabel.text == Text.welcomMessage.rawValue)
-        XCTAssert(subject.tableView.isHidden == true)
-        XCTAssert(subject.loadingStatusUpdateBanner.isHidden == true)
-        XCTAssert(subject.activityIndicatorView.isAnimating == false)
-        XCTAssert(subject.title == nil)
-
-    }
-
-    func testLoadScreenWithEmptyListItemsAndNoInternet() {
-        // WHEN
-        subject.setupView(state: .emptyState)
-        subject.setupView(state: .loading)
-        subject.setupView(state: .emptyState)
-        //THEN
-        XCTAssert(subject.stateFeedbackLabel.text == Text.noInternetTextForNewUser.rawValue)
-        XCTAssert(subject.tableView.isHidden == true)
-        XCTAssert(subject.loadingStatusUpdateBanner.isHidden == true)
-        XCTAssert(subject.activityIndicatorView.isAnimating == false)
-        XCTAssert(subject.title == nil)
+        XCTAssertFalse(subject.loadingStatusUpdateBanner.isHidden)
+        XCTAssertEqual(subject.loadingStatusLabel.text, Text.welcomeBanner.rawValue)
+        XCTAssertFalse(subject.activityIndicatorView.isAnimating)
+        XCTAssertNil(subject.title)
     }
     
     func testWhenUserSelectItem_shouldNotifyPresenter() {

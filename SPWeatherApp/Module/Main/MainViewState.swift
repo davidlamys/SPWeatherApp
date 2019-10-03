@@ -12,8 +12,9 @@ enum MainViewState {
     case loading
     case loadedFromNetwork(items: Items)
     case loadRecentlyViewedCity(items: Items)
-    case emptyState
-    case displayWelcomeMessage
+    case noResultFound(query: String)
+    case willBeginSearch
+    case searchFailed
 }
 
 extension MainViewState: Equatable {}

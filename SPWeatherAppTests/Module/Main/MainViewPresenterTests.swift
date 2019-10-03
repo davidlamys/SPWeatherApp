@@ -45,7 +45,7 @@ class MainViewPresenterTests: XCTestCase {
         // THEN
         XCTAssert(dataProvider.fetchListItemsCalledWithQuery == "Singapore")
         let firstState = MainViewState.loading
-        let finalState = MainViewState.displayWelcomeMessage
+        let finalState = MainViewState.noResultFound(query: "Singapore")
         XCTAssert(mainViewControllerMock!.setupViewCalledWithStates == [firstState, finalState])
     }
     
