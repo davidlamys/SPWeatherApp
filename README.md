@@ -94,4 +94,4 @@ What went well:
 
 Wondering about:
 - Tradeoffs between reusability vs readibility. I used typealias for "Item" but the code feels less readible over time
-
+- Is having a dataProvider layer here an overkill? There is no logic for offline mode per se. Might have been better off without a dataProvider.
