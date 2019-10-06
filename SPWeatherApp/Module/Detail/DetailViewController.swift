@@ -40,11 +40,11 @@ final class DetailViewController: UIViewController {
     }
     
     private func setupAccessibilityIdentifer() {
-        loadingStackView.accessibilityIdentifier = "loadingStackView"
-        weatherIconImageView.accessibilityIdentifier = "weatherIconImageView"
-        weatherDescriptionLabel.accessibilityIdentifier = "weatherDescriptionLabel"
-        temperatureLabel.accessibilityIdentifier = "temperatureLabel"
-        humidityLabel.accessibilityIdentifier = "humidityLabel"
+        loadingStackView.accessibilityLabel = "loadingStackView"
+        weatherIconImageView.accessibilityLabel = "weatherIconImageView"
+        weatherDescriptionLabel.accessibilityLabel = "weatherDescriptionLabel"
+        temperatureLabel.accessibilityLabel = "temperatureLabel"
+        humidityLabel.accessibilityLabel = "humidityLabel"
     }
 }
 

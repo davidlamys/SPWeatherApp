@@ -30,13 +30,16 @@ class SPWeatherAppUITests: XCTestCase {
         searchfield.tap()
         searchfield.typeText("Sin")
 
-        let firstSearchResult = app.tables["MainTable"].cells.staticTexts["kResultTextString"]
+        let firstSearchResult = app.tables["MainTable"].cells.staticTexts[kResultTextString]
         
         expectation(for: existPredicate, evaluatedWith: firstSearchResult, handler: nil)
         waitForExpectations(timeout: 10, handler: nil)
         XCTAssert(firstSearchResult.exists)
         firstSearchResult.tap()
         
+        let weatherDecriptionLabel = app.staticTexts["weatherDescriptionLabel"]
+        expectation(for: existPredicate, evaluatedWith: weatherDecriptionLabel, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
         XCTAssert(app.staticTexts["weatherDescriptionLabel"].exists)
         XCTAssert(app.staticTexts["temperatureLabel"].exists)
         XCTAssert(app.staticTexts["humidityLabel"].exists)
